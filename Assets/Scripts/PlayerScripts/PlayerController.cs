@@ -1,3 +1,4 @@
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -14,8 +15,18 @@ public class PlayerController : MonoBehaviour
 
     public IWeapon equippedWeapon;
     
+    [SerializeField] private int maxHealth = 100;
+    private int currentHealth;
+
+    public int CurrentHealth
+    {
+        get => currentHealth;
+        private set => currentHealth = Mathf.Clamp(value, 0, maxHealth);
+    }
+    
     void Start()
     {
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
@@ -52,5 +63,10 @@ public class PlayerController : MonoBehaviour
         transform.rotation = targetRotation;
 
         rb.linearVelocity = new Vector3(moveDirection.x * speed, rb.linearVelocity.y, moveDirection.z * speed);
+    }
+    
+    public void Heal(int amount)
+    {
+        CurrentHealth += amount;
     }
 }

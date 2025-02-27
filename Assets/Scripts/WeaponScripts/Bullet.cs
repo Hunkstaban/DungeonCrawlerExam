@@ -9,16 +9,19 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision != null)
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-
-            if (enemy != null)
+            if (collision.gameObject.CompareTag("Enemy"))
             {
-                enemy.TakeDamage(damage);
-            }
-        }
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
-        Destroy(gameObject);
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

@@ -9,7 +9,7 @@ public class SpiderAI : Enemy
     public float moveSpeed = 3f;
     public float rotationSpeed = 5f;
     
-
+    
     [Header("Projectile Settings")]
     public GameObject acidBulletPrefab;
     public Transform muzzle;
@@ -25,8 +25,8 @@ public class SpiderAI : Enemy
     }
 
     
-
-    public override int health { get; set; } = 50;
+    
+    public override int health { get; set; } = 100;
     public override float attackRange { get; set; } = 15f;
     public override float attackCooldown { get; set; } = 2f;
 

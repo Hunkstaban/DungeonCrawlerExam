@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b92b3d18149b604099844f3d8b54485, type: 3}
-  m_Name: MinorFireRateBuff
+  m_Script: {fileID: 11500000, guid: f7c9a0e00c07e454b8aed33ed1d9d619, type: 3}
+  m_Name: SuperSpeedLvl3
   m_EditorClassIdentifier: 
-  amount: 0
-  fireRate: 300
+  amountSpeed: 15

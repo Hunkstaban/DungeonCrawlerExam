@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
     public Transform camContainer; // Follows camera's horizontal rotation
 
     [SerializeField]
-    private int currentHealth = 100;
+    public int currentHealth = 100;
     
     [SerializeField]
-    private int maxHealth = 100;
+    public int maxHealth = 100;
 
     public GameObject targetPoint;
     

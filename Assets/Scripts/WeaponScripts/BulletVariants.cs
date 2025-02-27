@@ -6,10 +6,16 @@ public class BulletVariants : BulletEffect
 {
     
     public int amount;
+    public int fireRate;
+    
     
     // in C# we use override when wanted to implement the inherited method (in this case from the abscract class "BulletEffect")
-    public override void Apply(GameObject bullet)
+    public override void Apply(GameObject target)
     {
-        bullet.GetComponent<Bullet>().damage += amount;
+        target.GetComponent<Bullet>().damage += amount;
+        target.GetComponent<Gun>().speed += fireRate;
+        
     }
+    
+    
 }

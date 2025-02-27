@@ -7,6 +7,11 @@ public class fireBullet1 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Destroyable"))
+        {
+            Destroy(collision.gameObject);
+            
+        }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
@@ -19,4 +24,6 @@ public class fireBullet1 : MonoBehaviour
         }
         Destroy(gameObject, 3);
     }
+
+   
 }

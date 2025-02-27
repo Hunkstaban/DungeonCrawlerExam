@@ -1,7 +1,9 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class fireBullet1 : MonoBehaviour
 {
+    
     public int damage = 30;
 
 
@@ -10,7 +12,7 @@ public class fireBullet1 : MonoBehaviour
         if (collision.gameObject.CompareTag("Destroyable"))
         {
             Destroy(collision.gameObject);
-            
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {

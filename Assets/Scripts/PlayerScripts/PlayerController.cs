@@ -7,6 +7,12 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public Transform camContainer; // Follows camera's horizontal rotation
 
+    [SerializeField]
+    private int currentHealth = 100;
+    
+    [SerializeField]
+    private int maxHealth = 100;
+
     public GameObject targetPoint;
     
     private Vector2 movementInput;
@@ -52,5 +58,19 @@ public class PlayerController : MonoBehaviour
         transform.rotation = targetRotation;
 
         rb.linearVelocity = new Vector3(moveDirection.x * speed, rb.linearVelocity.y, moveDirection.z * speed);
+    }
+    
+    public int getHealth()
+    {
+        return currentHealth;
+    }
+    public void setHealth(int health)
+    {
+        currentHealth = health;
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0) Destroy(gameObject);
     }
 }

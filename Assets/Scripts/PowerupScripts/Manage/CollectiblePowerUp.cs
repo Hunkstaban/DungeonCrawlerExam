@@ -12,7 +12,6 @@ public class CollectiblePowerUp : MonoBehaviour
             if (powerUpManager != null)
             {
                 powerUpManager.CollectItem(powerUpScript);
-                // gameObject.SetActive(false);
                 Destroy(gameObject);
             }
         }

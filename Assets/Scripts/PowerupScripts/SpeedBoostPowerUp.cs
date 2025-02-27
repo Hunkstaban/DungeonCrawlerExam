@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Powerups/SpeedBoost")]
 public class SpeedBoostPowerUp : TimedPowerUp
 {
     public float boostAmount = 20f;
@@ -9,7 +10,8 @@ public class SpeedBoostPowerUp : TimedPowerUp
     {
         if (player != null)
         {
-            StartCoroutine(TemporarySpeedBoost(player));
+            player.speed += boostAmount;
+            Debug.Log($"Speed boosted to {player.speed} for {durationInSeconds} seconds.");
         }
         else
         {
@@ -17,17 +19,9 @@ public class SpeedBoostPowerUp : TimedPowerUp
         }
     }
 
-    private IEnumerator TemporarySpeedBoost(PlayerController player)
+    public override void DeactivatePowerup(PlayerController player)
     {
-        float originalSpeed = player.speed;
-        player.speed += boostAmount;
-
-        Debug.Log($"Speed boosted to {player.speed} for {durationInSeconds} seconds.");
-        yield return new WaitForSeconds(durationInSeconds);
-        
-        player.speed = originalSpeed;
+        player.speed /= boostAmount;
         Debug.Log("Speed boost ended, speed restored.");
-        
-        Destroy(gameObject);
     }
 }

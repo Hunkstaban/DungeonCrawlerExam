@@ -5,8 +5,12 @@ public abstract class TimedPowerUp : PowerUp
 {
     public float durationInSeconds = 5f;
 
-    public IEnumerator StartPowerupCountdown(GameObject target)
+    public abstract void DeactivatePowerup(PlayerController player);
+
+    public IEnumerator StartPowerupCountdown(PlayerController player)
     {
         yield return new WaitForSeconds(durationInSeconds);
+        
+        DeactivatePowerup(player);
     }
 }

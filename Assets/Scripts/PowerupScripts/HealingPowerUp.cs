@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[CreateAssetMenu(menuName = "Powerups/Healing")]
 public class HealingPowerUp : PowerUp
 {
     public int healAmount = 30; // Adjust as needed
@@ -10,7 +11,6 @@ public class HealingPowerUp : PowerUp
         {
             player.Heal(healAmount);
             Debug.Log($"Player healed by {healAmount}. Current health: {player.CurrentHealth}");
-            // Destroy(gameObject); // Remove power-up after use
         }
         else
         {

@@ -10,7 +10,6 @@ public class PowerUpManager : MonoBehaviour
 {
     public Image[] powerUpSlots;
     public TextMeshProUGUI[] powerUpAmountOverlay;
-    public Sprite defaultSlotSprite;
 
     public TextMeshProUGUI powerUpOverlayText;
     public TextMeshProUGUI powerUpSelected;
@@ -29,29 +28,12 @@ public class PowerUpManager : MonoBehaviour
         powerUpSelected.SetText("Selected: " + selectedIndex);
     }
 
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("PowerUp"))
-        {
-            PowerUp colliderPowerUp = collider.GetComponent<PowerUp>();
-            if (colliderPowerUp != null)
-            {
-                CollectItem(colliderPowerUp);
-                // collider.GetComponent<MeshRenderer>().enabled = false;
-                // collider.GetComponent<Collider>().enabled = false;
-                // colliderPowerUp.ApplyPowerUp(player);
-                Destroy(collider.gameObject);
-                // collider.gameObject.SetActive(false);
-            }
-        }
-    }
-
     public void CollectItem(PowerUp powerUpScript)
     {
         if (powerUpInventory.ContainsKey(powerUpScript)) powerUpInventory[powerUpScript]++;
         else powerUpInventory[powerUpScript] = 1;
         
-        // Debug.Log($"Player collected {powerUpScript}! Total: {powerUpInventory[powerUpScript]}");
+        Debug.Log($"Player collected {powerUpScript}! Total: {powerUpInventory[powerUpScript]}");
         UpdateUI();
     }
 
@@ -59,44 +41,22 @@ public class PowerUpManager : MonoBehaviour
     {
         if (powerUpInventory.Count == 0) return;
         if (selectedIndex+1 > powerUpInventory.Count) return;
-        PowerUp selectedItem = powerUpInventory.Keys.ElementAt(selectedIndex);
-        powerUpInventory[selectedItem]--;
+        
+        PowerUp selectedPowerup = powerUpInventory.Keys.ElementAt(selectedIndex);
+        powerUpInventory[selectedPowerup]--;
+        if (powerUpInventory[selectedPowerup] <= 0) powerUpInventory.Remove(selectedPowerup);
 
-        if (powerUpInventory[selectedItem] <= 0) powerUpInventory.Remove(selectedItem);
+        Debug.Log($"Player used {selectedPowerup}!");
 
-        // Debug.Log($"Player used {selectedItem}!");
-
-        // ApplyPowerUp(selectedItem);
-        selectedItem.ApplyPowerUp(player);
+        selectedPowerup.ApplyPowerUp(player);
+        TimedPowerUp selectedTimedPowerUp = selectedPowerup as TimedPowerUp;
+        if (selectedTimedPowerUp != null)
+        {
+            StartCoroutine(selectedTimedPowerUp.StartPowerupCountdown(player));
+        }
+        
         UpdateUI();
     }
-
-    private void ApplyPowerUp(PowerUp itemType)
-    {
-        // Debug.Log($"Applying {itemType}");
-        // switch (itemType)
-        // {
-        //     case ItemType.SpeedBoost:
-        //         ApplyPowerUp<SpeedBoostPowerUp>();
-        //         break;
-        //     case ItemType.JumpBoost:
-        //         ApplyPowerUp<JumpBoostPowerUp>();
-        //         break;
-        //     case ItemType.Healing:
-        //         ApplyPowerUp<HealingPowerUp>();
-        //         break;
-        // }
-    }
-
-    // private void ApplyPowerUp<T>() where T : PowerUp
-    // {
-    //     GameObject powerUpObject = new GameObject(typeof(T).Name);
-    //     T powerUp = powerUpObject.AddComponent<T>();
-    //     powerUp.ApplyPowerUp(player);
-    //
-    //     float powerUpDuration = powerUp.duration > 0 ? powerUp.duration : 5f;
-    //     Destroy(powerUpObject, powerUpDuration + 0.5f);
-    // }
 
     private void UpdateUI()
     {
@@ -106,23 +66,19 @@ public class PowerUpManager : MonoBehaviour
             if (i < powerUpInventory.Count)
             {
                 PowerUp currentPowerUp = powerUpInventory.Keys.ElementAt(i);
+                if (currentPowerUp.powerUpIcon) Debug.LogError($"No Powerup Icon Added to {currentPowerUp}");
                 powerUpSlots[i].sprite = currentPowerUp.powerUpIcon;
 
                 powerUpAmountOverlay[i].text = powerUpInventory[currentPowerUp].ToString();
                 // powerUpAmountOverlay[i].gameObject.SetActive(true);
             }
-            // else
-            // {
-            //     powerUpSlots[i].sprite = defaultSlotSprite;
-            //     powerUpAmountOverlay[i].gameObject.SetActive(false);
-            // }
+            else
+            {
+                powerUpSlots[i].sprite = null;
+                // powerUpAmountOverlay[i].gameObject.SetActive(false);
+            }
         }
     }
-
-    // private Sprite GetPowerUpSprite(PowerUp itemType)
-    // {
-    //     return Resources.Load<Sprite>($"PowerUps/{itemType}");
-    // }
 
     private void Update()
     {
@@ -151,6 +107,6 @@ public class PowerUpManager : MonoBehaviour
     {
         selectedIndex = index;
         UpdateUI();
-        // Debug.Log($"Selected Power-Up: {powerUps.Keys.ElementAt(index)}");
+        Debug.Log($"Selected Power-Up: {powerUpInventory.Keys.ElementAt(index)}");
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SpeedBoostPowerUp : PowerUp
+public class SpeedBoostPowerUp : TimedPowerUp
 {
     public float boostAmount = 20f;
     
@@ -22,8 +22,8 @@ public class SpeedBoostPowerUp : PowerUp
         float originalSpeed = player.speed;
         player.speed += boostAmount;
 
-        Debug.Log($"Speed boosted to {player.speed} for {duration} seconds.");
-        yield return new WaitForSeconds(duration);
+        Debug.Log($"Speed boosted to {player.speed} for {durationInSeconds} seconds.");
+        yield return new WaitForSeconds(durationInSeconds);
         
         player.speed = originalSpeed;
         Debug.Log("Speed boost ended, speed restored.");

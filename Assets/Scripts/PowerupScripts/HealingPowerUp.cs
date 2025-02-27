@@ -10,7 +10,7 @@ public class HealingPowerUp : PowerUp
         {
             player.Heal(healAmount);
             Debug.Log($"Player healed by {healAmount}. Current health: {player.CurrentHealth}");
-            Destroy(gameObject); // Remove power-up after use
+            // Destroy(gameObject); // Remove power-up after use
         }
         else
         {

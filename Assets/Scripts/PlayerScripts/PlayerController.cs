@@ -26,9 +26,10 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = 50;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        Debug.Log(CurrentHealth);
     }
 
     void OnMove(InputValue value)
@@ -68,5 +69,6 @@ public class PlayerController : MonoBehaviour
     public void Heal(int amount)
     {
         CurrentHealth += amount;
+        Debug.Log(CurrentHealth);
     }
 }

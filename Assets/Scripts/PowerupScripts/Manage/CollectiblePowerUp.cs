@@ -2,7 +2,7 @@
 
 public class CollectiblePowerUp : MonoBehaviour
 {
-    public PowerUp itemType;
+    public PowerUp powerUpScript;
     
     private void OnTriggerEnter(Collider collider)
     {
@@ -11,7 +11,7 @@ public class CollectiblePowerUp : MonoBehaviour
             PowerUpManager powerUpManager = collider.GetComponent<PowerUpManager>();
             if (powerUpManager != null)
             {
-                powerUpManager.CollectItem(itemType);
+                powerUpManager.CollectItem(powerUpScript);
                 // gameObject.SetActive(false);
                 Destroy(gameObject);
             }

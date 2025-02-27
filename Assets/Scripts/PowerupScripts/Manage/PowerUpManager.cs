@@ -15,7 +15,7 @@ public class PowerUpManager : MonoBehaviour
     public TextMeshProUGUI powerUpOverlayText;
     public TextMeshProUGUI powerUpSelected;
     
-    private Dictionary<PowerUp, int> powerUps = new();
+    private Dictionary<PowerUp, int> powerUpInventory = new();
     
     private PlayerController player;
     private int selectedIndex = 0;
@@ -37,30 +37,34 @@ public class PowerUpManager : MonoBehaviour
             if (colliderPowerUp != null)
             {
                 CollectItem(colliderPowerUp);
+                // collider.GetComponent<MeshRenderer>().enabled = false;
+                // collider.GetComponent<Collider>().enabled = false;
+                // colliderPowerUp.ApplyPowerUp(player);
                 Destroy(collider.gameObject);
+                // collider.gameObject.SetActive(false);
             }
         }
     }
 
-    public void CollectItem(PowerUp powerUpType)
+    public void CollectItem(PowerUp powerUpScript)
     {
-        if (powerUps.ContainsKey(powerUpType)) powerUps[powerUpType]++;
-        else powerUps[powerUpType] = 1;
-
-        Debug.Log($"Player collected {powerUpType}! Total: {powerUps[powerUpType]}");
+        if (powerUpInventory.ContainsKey(powerUpScript)) powerUpInventory[powerUpScript]++;
+        else powerUpInventory[powerUpScript] = 1;
+        
+        // Debug.Log($"Player collected {powerUpScript}! Total: {powerUpInventory[powerUpScript]}");
         UpdateUI();
     }
 
     public void UseSelectedItem()
     {
-        if (powerUps.Count == 0) return;
+        if (powerUpInventory.Count == 0) return;
+        if (selectedIndex+1 > powerUpInventory.Count) return;
+        PowerUp selectedItem = powerUpInventory.Keys.ElementAt(selectedIndex);
+        powerUpInventory[selectedItem]--;
 
-        PowerUp selectedItem = powerUps.Keys.ElementAt(selectedIndex);
-        powerUps[selectedItem]--;
+        if (powerUpInventory[selectedItem] <= 0) powerUpInventory.Remove(selectedItem);
 
-        if (powerUps[selectedItem] <= 0) powerUps.Remove(selectedItem);
-
-        Debug.Log($"Player used {selectedItem}!");
+        // Debug.Log($"Player used {selectedItem}!");
 
         // ApplyPowerUp(selectedItem);
         selectedItem.ApplyPowerUp(player);
@@ -69,7 +73,7 @@ public class PowerUpManager : MonoBehaviour
 
     private void ApplyPowerUp(PowerUp itemType)
     {
-        Debug.Log($"Applying {itemType}");
+        // Debug.Log($"Applying {itemType}");
         // switch (itemType)
         // {
         //     case ItemType.SpeedBoost:
@@ -84,27 +88,27 @@ public class PowerUpManager : MonoBehaviour
         // }
     }
 
-    private void ApplyPowerUp<T>() where T : PowerUp
-    {
-        GameObject powerUpObject = new GameObject(typeof(T).Name);
-        T powerUp = powerUpObject.AddComponent<T>();
-        powerUp.ApplyPowerUp(player);
-
-        float powerUpDuration = powerUp.duration > 0 ? powerUp.duration : 5f;
-        Destroy(powerUpObject, powerUpDuration + 0.5f);
-    }
+    // private void ApplyPowerUp<T>() where T : PowerUp
+    // {
+    //     GameObject powerUpObject = new GameObject(typeof(T).Name);
+    //     T powerUp = powerUpObject.AddComponent<T>();
+    //     powerUp.ApplyPowerUp(player);
+    //
+    //     float powerUpDuration = powerUp.duration > 0 ? powerUp.duration : 5f;
+    //     Destroy(powerUpObject, powerUpDuration + 0.5f);
+    // }
 
     private void UpdateUI()
     {
         for (int i = 0; i < powerUpSlots.Length; i++)
         {
             powerUpSlots[i].color = (i == selectedIndex) ? Color.white : new Color(0.8f, 0.8f, 0.8f);
-            if (i < powerUps.Count)
+            if (i < powerUpInventory.Count)
             {
-                PowerUp currentPowerUp = powerUps.Keys.ElementAt(i);
+                PowerUp currentPowerUp = powerUpInventory.Keys.ElementAt(i);
                 powerUpSlots[i].sprite = currentPowerUp.powerUpIcon;
 
-                powerUpAmountOverlay[i].text = powerUps[currentPowerUp].ToString();
+                powerUpAmountOverlay[i].text = powerUpInventory[currentPowerUp].ToString();
                 // powerUpAmountOverlay[i].gameObject.SetActive(true);
             }
             // else

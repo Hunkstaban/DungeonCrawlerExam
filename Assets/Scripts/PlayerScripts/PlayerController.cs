@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         currentHealth = 50;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        Debug.Log(CurrentHealth);
+        Debug.Log("Current Health: " + CurrentHealth);
     }
 
     void OnMove(InputValue value)

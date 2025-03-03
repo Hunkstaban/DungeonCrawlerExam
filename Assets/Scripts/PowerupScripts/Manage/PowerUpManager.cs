@@ -66,7 +66,7 @@ public class PowerUpManager : MonoBehaviour
             if (i < powerUpInventory.Count)
             {
                 PowerUp currentPowerUp = powerUpInventory.Keys.ElementAt(i);
-                if (currentPowerUp.powerUpIcon) Debug.LogError($"No Powerup Icon Added to {currentPowerUp}");
+                if (!currentPowerUp.powerUpIcon) Debug.LogError($"No Powerup Icon Added to {currentPowerUp}");
                 powerUpSlots[i].sprite = currentPowerUp.powerUpIcon;
 
                 powerUpAmountOverlay[i].text = powerUpInventory[currentPowerUp].ToString();
@@ -83,7 +83,7 @@ public class PowerUpManager : MonoBehaviour
     private void Update()
     {
         HandleSelectedInput();
-        HandleUseInput();
+        if (Input.GetKeyDown(KeyCode.G)) UseSelectedItem();
         powerUpSelected.SetText("Selected: " + selectedIndex);
     }
 
@@ -94,19 +94,11 @@ public class PowerUpManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectPowerUp(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectPowerUp(3);
     }
-
-    private void HandleUseInput()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            UseSelectedItem();
-        }
-    }
-
+    
     private void SelectPowerUp(int index)
     {
         selectedIndex = index;
         UpdateUI();
-        Debug.Log($"Selected Power-Up: {powerUpInventory.Keys.ElementAt(index)}");
+        // Debug.Log($"Selected Power-Up: {powerUpInventory.Keys.ElementAt(index)}");
     }
 }

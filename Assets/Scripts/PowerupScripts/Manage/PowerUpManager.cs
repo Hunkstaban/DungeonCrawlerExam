@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -10,11 +11,16 @@ public class PowerUpManager : MonoBehaviour
 {
     public Image[] powerUpSlots;
     public TextMeshProUGUI[] powerUpAmountOverlay;
+    public Image[] powerUpCountdownBg;
+    public TextMeshProUGUI[] powerUpCountdownText;
 
     public TextMeshProUGUI powerUpOverlayText;
     public TextMeshProUGUI powerUpSelected;
     
-    private Dictionary<PowerUp, int> powerUpInventory = new();
+    private PowerUp[] powerUpInventory = new PowerUp[4];
+    private int[] powerUpCounts = new int[4];
+    
+    private List<PowerUp> activePowerups = new();
     
     private PlayerController player;
     private int selectedIndex = 0;
@@ -23,37 +29,96 @@ public class PowerUpManager : MonoBehaviour
     {
         UpdateUI();
         player = GetComponent<PlayerController>();
-        if (player == null) Debug.LogError("PlayerController reference missing in PowerUpManager!");
+        if (player == null) Debug.LogError("PlayerController reference missing on the player!");
         powerUpOverlayText.SetText("Collected: ");
         powerUpSelected.SetText("Selected: " + selectedIndex);
+
+        for (int i = 0; i < powerUpCountdownText.Length; i++)
+        {
+            powerUpCountdownBg[i].gameObject.SetActive(false);
+            powerUpCountdownText[i].gameObject.SetActive(false);
+        }
     }
 
     public void CollectItem(PowerUp powerUpScript)
     {
-        if (powerUpInventory.ContainsKey(powerUpScript)) powerUpInventory[powerUpScript]++;
-        else powerUpInventory[powerUpScript] = 1;
-        
-        Debug.Log($"Player collected {powerUpScript}! Total: {powerUpInventory[powerUpScript]}");
-        UpdateUI();
+        for (int i = 0; i < powerUpInventory.Length; i++)
+        {
+            if (powerUpInventory[i] == null || powerUpInventory[i] == powerUpScript)
+            {
+                powerUpInventory[i] = powerUpScript;
+                powerUpCounts[i]++;
+                UpdateUI();
+                Debug.Log($"Player collected {powerUpScript}!");
+                return;
+            }
+        }
+        Debug.Log("Inventory Full!");
     }
 
     public void UseSelectedItem()
     {
-        if (powerUpInventory.Count == 0) return;
-        if (selectedIndex+1 > powerUpInventory.Count) return;
+        if (selectedIndex < 0 || selectedIndex >= powerUpInventory.Length) return;
+        if (powerUpInventory[selectedIndex] == null) return;
         
-        PowerUp selectedPowerup = powerUpInventory.Keys.ElementAt(selectedIndex);
-        powerUpInventory[selectedPowerup]--;
-        if (powerUpInventory[selectedPowerup] <= 0) powerUpInventory.Remove(selectedPowerup);
+        PowerUp selectedPowerup = powerUpInventory[selectedIndex];
+        if (activePowerups.Contains(selectedPowerup))
+        {
+            Debug.Log($"Powerup {selectedPowerup} is already active!");
+            return;
+        }
 
+        activePowerups.Add(selectedPowerup);
         Debug.Log($"Player used {selectedPowerup}!");
 
         selectedPowerup.ApplyPowerUp(player);
         TimedPowerUp selectedTimedPowerUp = selectedPowerup as TimedPowerUp;
+        
         if (selectedTimedPowerUp != null)
         {
-            StartCoroutine(selectedTimedPowerUp.StartPowerupCountdown(player));
+            StartCoroutine(RemovePowerupAfterDuration(selectedTimedPowerUp, selectedIndex));
         }
+        else
+        {
+            RemovePowerupFromInventory(selectedIndex);
+        }
+    }
+
+    private IEnumerator RemovePowerupAfterDuration(TimedPowerUp timedPowerUp, int index)
+    {
+        float remainingTime = timedPowerUp.durationInSeconds;
+        
+        powerUpCountdownBg[index].gameObject.SetActive(true);
+        powerUpCountdownText[index].gameObject.SetActive(true);
+        
+        StartCoroutine(timedPowerUp.StartPowerupCountdown(player));
+
+        while (remainingTime > 0)
+        {
+            powerUpCountdownText[index].SetText($"{Mathf.Ceil(remainingTime)}");
+            yield return new WaitForSeconds(1f);
+            remainingTime -= 1f;
+        }
+        
+        powerUpCountdownBg[index].gameObject.SetActive(false);
+        powerUpCountdownText[index].gameObject.SetActive(false);
+        
+        RemovePowerupFromInventory(index);
+    }
+
+    private void RemovePowerupFromInventory(int index)
+    {
+        if (powerUpInventory[index] != null)
+        {
+            powerUpCounts[index]--;
+            if (powerUpCounts[index] <= 0)
+            {
+                powerUpInventory[index] = null;
+                powerUpCounts[index] = 0;
+            }
+        }
+        
+        activePowerups.Remove(powerUpInventory[index]);
         
         UpdateUI();
     }
@@ -63,18 +128,19 @@ public class PowerUpManager : MonoBehaviour
         for (int i = 0; i < powerUpSlots.Length; i++)
         {
             powerUpSlots[i].color = (i == selectedIndex) ? Color.white : new Color(0.8f, 0.8f, 0.8f);
-            if (i < powerUpInventory.Count)
+            if (powerUpInventory[i] != null)
             {
-                PowerUp currentPowerUp = powerUpInventory.Keys.ElementAt(i);
+                PowerUp currentPowerUp = powerUpInventory[i];
                 if (!currentPowerUp.powerUpIcon) Debug.LogError($"No Powerup Icon Added to {currentPowerUp}");
+                
                 powerUpSlots[i].sprite = currentPowerUp.powerUpIcon;
-
-                powerUpAmountOverlay[i].text = powerUpInventory[currentPowerUp].ToString();
+                powerUpAmountOverlay[i].text = powerUpCounts[i].ToString();
                 // powerUpAmountOverlay[i].gameObject.SetActive(true);
             }
             else
             {
                 powerUpSlots[i].sprite = null;
+                powerUpAmountOverlay[i].text = "0";
                 // powerUpAmountOverlay[i].gameObject.SetActive(false);
             }
         }

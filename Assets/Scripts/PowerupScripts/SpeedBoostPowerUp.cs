@@ -21,7 +21,7 @@ public class SpeedBoostPowerUp : TimedPowerUp
 
     public override void DeactivatePowerup(PlayerController player)
     {
-        player.speed /= boostAmount;
+        player.speed -= boostAmount;
         Debug.Log("Speed boost ended, speed restored.");
     }
 }

@@ -1,3 +1,4 @@
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -20,10 +21,21 @@ public class PlayerController : MonoBehaviour
 
     public IWeapon equippedWeapon;
     
+    [SerializeField] private int maxHealth = 100;
+    private int currentHealth;
+
+    public int CurrentHealth
+    {
+        get => currentHealth;
+        private set => currentHealth = Mathf.Clamp(value, 0, maxHealth);
+    }
+    
     void Start()
     {
+        currentHealth = 50;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        Debug.Log("Current Health: " + CurrentHealth);
     }
 
     void OnMove(InputValue value)
@@ -72,5 +84,10 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
         if (currentHealth <= 0) Destroy(gameObject);
+    }
+    public void Heal(int amount)
+    {
+        CurrentHealth += amount;
+        Debug.Log(CurrentHealth);
     }
 }

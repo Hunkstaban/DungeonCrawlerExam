@@ -7,9 +7,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 5f;
     public Transform camContainer; // Follows camera's horizontal rotation
-
-    [SerializeField]
-    private int currentHealth = 100;
     
     [SerializeField]
     private int maxHealth = 100;
@@ -21,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
     public IWeapon equippedWeapon;
     
-    [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
     public int CurrentHealth
@@ -82,7 +78,7 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        CurrentHealth -= damage;
         if (currentHealth <= 0) Destroy(gameObject);
     }
     public void Heal(int amount)

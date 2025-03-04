@@ -68,19 +68,12 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector3(moveDirection.x * speed, rb.linearVelocity.y, moveDirection.z * speed);
     }
     
-    public int getHealth()
-    {
-        return currentHealth;
-    }
-    public void setHealth(int health)
-    {
-        currentHealth = health;
-    }
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
         if (currentHealth <= 0) Destroy(gameObject);
     }
+    
     public void Heal(int amount)
     {
         CurrentHealth += amount;

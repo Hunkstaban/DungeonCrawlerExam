@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName = "Powerups/Healing")]
-public class HealingPowerUp : PowerUp
+[CreateAssetMenu(menuName = "PowerUpsAndBuffs/Healing")]
+public class HealBuff : PowerUp
 {
     public int healAmount = 30; // Adjust as needed
     public override void ApplyPowerUp(PlayerController player)

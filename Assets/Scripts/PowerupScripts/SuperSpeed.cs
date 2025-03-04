@@ -1,13 +1,27 @@
+﻿using System.Collections;
 using UnityEngine;
 
-// this will make its nice in the menu out in Unity when creating Script
-[CreateAssetMenu(menuName = "PowerUpsAndBuffs/SuperSpeed")]
-public class SuperSpeed : PickUpEffect
+[CreateAssetMenu(menuName = "PowerUpsAndBuffs/SpeedBoost")]
+public class SuperSpeed : TimedPowerUp
 {
+    public float boostAmount = 20f;
     
-    public float amountSpeed;
-    public override void Apply(GameObject target)
+    public override void ApplyPowerUp(PlayerController player)
     {
-        target.GetComponent<PlayerController>().speed += amountSpeed;
+        if (player != null)
+        {
+            player.speed += boostAmount;
+            Debug.Log($"Speed boosted to {player.speed} for {durationInSeconds} seconds.");
+        }
+        else
+        {
+            Debug.LogError("PlayerController reference is missing!");
+        }
+    }
+
+    public override void DeactivatePowerup(PlayerController player)
+    {
+        player.speed -= boostAmount;
+        Debug.Log("Speed boost ended, speed restored.");
     }
 }

@@ -7,11 +7,15 @@ public interface IWeapon
     void AimAtTarget(Vector3 target);
     
     void SetProjectile(GameObject projectile);
-    GameObject GetProjectile();
+    IBullet GetProjectile();
     
-    float SetSpeed(GameObject speed);
+    void SetSpeed(float speed);
+    
+    float GetSpeed();
 
     void EnableMultiShot(bool enable);
+
+    Transform GetMuzzle();
 
     void Remove();
 }

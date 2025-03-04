@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour, IWeapon
 {
-    public GameObject projectile;
+    public IBullet projectile;
 
     public Transform muzzle;
 
@@ -66,14 +66,24 @@ public class Gun : MonoBehaviour, IWeapon
         this.projectile = projectile;
     }
 
-    public GameObject GetProjectile()
+    public IBullet GetProjectile()
     {
         return this.projectile;
     }
-
-    public float SetSpeed(GameObject speed)
+    
+    public Transform GetMuzzle()
     {
-        return this.speed;
+        return muzzle;
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+    
+    public float GetSpeed()
+    {
+        return speed;
     }
 
     public void EnableMultiShot(bool enable)

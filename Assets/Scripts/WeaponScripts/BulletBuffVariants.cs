@@ -19,7 +19,7 @@ public class BulletBuffVariants : PickUpEffect
             return; // Exit early if target is null
         }
 
-        target.GetComponent<Bullet>().damage += amount;
+        target.GetComponent<Bullet>().Damage += amount;
         target.GetComponent<Gun>().speed += fireRate;
     }
 }

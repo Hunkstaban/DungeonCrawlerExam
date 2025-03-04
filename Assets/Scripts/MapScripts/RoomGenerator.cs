@@ -6,13 +6,13 @@ using UnityEngine;
 public class RoomGenerator : MonoBehaviour
 {
 
-    public List<GameObject> rooms;
+    public List<MapSegment> rooms;
 
-    public GameObject startRoom;
+    public MapSegment startRoom;
     
-     public GameObject backRoom;
-     public GameObject middleRoom;
-     public GameObject frontRoom;
+     public MapSegment backRoom;
+     public MapSegment middleRoom;
+     public MapSegment frontRoom;
      
      // [HideInInspector]
 
@@ -23,63 +23,68 @@ public class RoomGenerator : MonoBehaviour
     {
         if (!hasStarted)
         {
-            backRoom = startRoom;
-            middleRoom = GetRandomRoom();
-            backRoom = Instantiate(backRoom, new Vector3(0, 0, 0), Quaternion.identity);
-            
-            Vector3 spawnPosition = backRoom.transform.position + backRoom.transform.forward * GetSegmentLength(backRoom);
-            middleRoom = Instantiate(middleRoom, spawnPosition, Quaternion.identity);
+            backRoom = Instantiate(startRoom, Vector3.zero, Quaternion.identity);
+
+            // Get the exit plane of the first room
+            Transform exitTransform = backRoom.exitPlane.transform;
+
+            // Calculate the correct spawn position at the end of the exitPlane
+            Vector3 spawnPosition = exitTransform.position + exitTransform.forward * (GetSegmentLength(backRoom) / 2);
+
+            // Instantiate the next room at the correct position
+            middleRoom = Instantiate(GetRandomRoom(), spawnPosition, Quaternion.identity);
+
             hasStarted = true;
         }
-        
     }
-    
-    public float GetSegmentLength(GameObject segment)
+
+// Corrected GetSegmentLength method
+    public float GetSegmentLength(MapSegment segment)
     {
-        Transform planeTransform = segment.transform.Find("Plane");
+        Transform planeTransform = segment.exitPlane.transform;
         if (planeTransform != null)
         {
             MeshRenderer renderer = planeTransform.GetComponent<MeshRenderer>();
             if (renderer != null)
             {
-                return renderer.bounds.size.z; // Adjust if using a different axis
+                return renderer.bounds.size.z; // Use bounds instead of localScale
             }
         }
         return 0f;
     }
     
-    public GameObject GetRandomRoom()
+    public MapSegment GetRandomRoom()
     {
         int randomIndex = UnityEngine.Random.Range(0, rooms.Count);
         return rooms[randomIndex];
     }
     
-    public void SetFrontRoom(GameObject room)
+    public void SetFrontRoom(MapSegment room)
     {
         frontRoom = room;
     }
     
-    public void SetMiddleRoom(GameObject room)
+    public void SetMiddleRoom(MapSegment room)
     {
         middleRoom = room;
     }
     
-    public void SetBackRoom(GameObject room)
+    public void SetBackRoom(MapSegment room)
     {
         backRoom = room;
     }
     
-    public GameObject GetFrontRoom()
+    public MapSegment GetFrontRoom()
     {
         return frontRoom;
     }
     
-    public GameObject GetMiddleRoom()
+    public MapSegment GetMiddleRoom()
     {
         return middleRoom;
     }
     
-    public GameObject GetBackRoom()
+    public MapSegment GetBackRoom()
     {
         return backRoom;
     }

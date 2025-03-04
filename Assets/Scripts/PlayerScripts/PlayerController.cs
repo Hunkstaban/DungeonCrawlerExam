@@ -55,19 +55,25 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Aim at target if applicable.
         equippedWeapon?.AimAtTarget(targetPoint.transform.position);
+    
+        // Ground check.
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
 
+        // Calculate movement direction.
         Vector3 moveDirection = (camContainer.forward * movementInput.y + camContainer.right * movementInput.x).normalized;
-        moveDirection.y = 0;
+        moveDirection.y = 0; // Ensure no vertical movement.
 
-        // Rotate player only on the Y-axis (Horizontal rotation)
-        Quaternion targetRotation = Quaternion.Euler(0, camContainer.eulerAngles.y, 0);
-        transform.rotation = targetRotation;
-
+        // Set Rigidbody velocity while preserving the current Y velocity.
         rb.linearVelocity = new Vector3(moveDirection.x * speed, rb.linearVelocity.y, moveDirection.z * speed);
+
+        // Calculate target rotation based on the camera's Y rotation.
+        Quaternion targetRotation = Quaternion.Euler(0, camContainer.eulerAngles.y, 0);
+
+        // Rotate using Rigidbody's MoveRotation for smooth physics-based rotation.
+        rb.MoveRotation(targetRotation);
     }
-    
     public int getHealth()
     {
         return currentHealth;

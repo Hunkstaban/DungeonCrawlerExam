@@ -21,7 +21,7 @@ public class CinemaCam : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         
         

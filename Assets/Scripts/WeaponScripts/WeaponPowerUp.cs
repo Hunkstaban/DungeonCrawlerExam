@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class PowerUp : MonoBehaviour
+public class WeaponPowerUp : MonoBehaviour
 {
   
    public PickUpEffect pickUpEffect;

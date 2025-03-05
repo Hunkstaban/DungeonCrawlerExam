@@ -3,12 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUpsAndBuffs/FireBulletPowerUpV2")]
 public class FireBulletPowerUpV2 : TimedPowerUp
 {
-    public GameObject bullet;
+    [SerializeField] private GameObject bullet;
     private GameObject baseBullets;
 
     public override void ApplyPowerUp(PlayerController player)
     {
-        baseBullets = player.equippedWeapon.GetProjectile(); // save the original bullets
+        baseBullets = player.equippedWeapon.GetProjectileObject(); // save the original bullets
         player.equippedWeapon.SetProjectile(bullet);
     }
 

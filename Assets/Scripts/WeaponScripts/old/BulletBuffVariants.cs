@@ -20,6 +20,6 @@ public class BulletBuffVariants : PickUpEffect
         }
 
         //target.GetComponent<Bullet>().Damage += amount;
-        target.GetComponent<Gun>().speed += fireRate;
+        // target.GetComponent<Gun>().speed += fireRate;
     }
 }

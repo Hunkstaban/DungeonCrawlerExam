@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IProjectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public int damage = 10;
+    [SerializeField] private int damage = 10;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,5 +23,15 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    public int GetDamage()
+    {
+        return damage;
+    }
+
+    public void SetDamage(int newDamage)
+    {
+        damage = newDamage;
     }
 }

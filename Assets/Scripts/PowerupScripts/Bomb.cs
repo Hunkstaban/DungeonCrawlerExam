@@ -4,15 +4,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUpsAndBuffs/Bomb")]
 public class Bomb : TimedPowerUp
 {
-    public GameObject bombPrefab;
-    public GameObject explosion;
-    public GameObject explosionRadiusIndicator;
+    [SerializeField] private GameObject bombPrefab;
+    [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject explosionRadiusIndicator;
 
     private GameObject instantiatedBomb;
     private GameObject instantiatedRadiusIndicator;
 
-    public float explosionRadius = 10;
-    public int explosionDamange = 10;
+    [SerializeField] private float explosionRadius = 10;
+    [SerializeField] private int explosionDamange = 10;
 
     [SerializeField] private LayerMask whatAreDestructable;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUpsAndBuffs/SpeedBoost")]
 public class SuperSpeed : TimedPowerUp
 {
-    public float boostAmount = 20f;
+    [SerializeField] private float boostAmount = 20f;
     
     public override void ApplyPowerUp(PlayerController player)
     {

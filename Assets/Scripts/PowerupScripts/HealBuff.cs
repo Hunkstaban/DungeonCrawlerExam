@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "PowerUpsAndBuffs/Healing")]
 public class HealBuff : PowerUp
 {
-    public int healAmount = 30; // Adjust as needed
+    [SerializeField] private int healAmount = 30; // Adjust as needed
     public override void ApplyPowerUp(PlayerController player)
     {
         if (player != null)

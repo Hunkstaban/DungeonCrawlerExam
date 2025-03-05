@@ -9,14 +9,14 @@ using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour
 {
-    public Outline[] powerUpSlots;
-    public Image[] powerUpIcons;
-    public TextMeshProUGUI[] powerUpAmountOverlay;
-    public Image[] powerUpCountdownBg;
-    public TextMeshProUGUI[] powerUpCountdownText;
+    [SerializeField] private Outline[] powerUpSlots;
+    [SerializeField] private Image[] powerUpIcons;
+    [SerializeField] private TextMeshProUGUI[] powerUpAmountOverlay;
+    [SerializeField] private Image[] powerUpCountdownBg;
+    [SerializeField] private TextMeshProUGUI[] powerUpCountdownText;
 
-    public TextMeshProUGUI powerUpOverlayText;
-    public TextMeshProUGUI powerUpSelected;
+    [SerializeField] private TextMeshProUGUI powerUpOverlayText;
+    [SerializeField] private TextMeshProUGUI powerUpSelected;
     
     private PowerUp[] powerUpInventory = new PowerUp[4];
     private int[] powerUpCounts = new int[4];

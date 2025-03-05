@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: New Bullet Buff Variants V2
   m_EditorClassIdentifier: 
   powerUpIcon: {fileID: 21300000, guid: de62faee31802b84aa18371b3845334b, type: 3}
-  durationInSeconds: 30
-  damageAmount: 20
-  fireRate: 5
+  durationInSeconds: 10
+  additionalDamageAmount: 40
+  fireRate: 200

@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUpsAndBuffs/JumpBoost")]
 public class SuperJump : TimedPowerUp
 {
-    public float jumpMultiplier = 2f;
+    [SerializeField] private float jumpMultiplier = 2f;
 
     public override void ApplyPowerUp(PlayerController player)
     {

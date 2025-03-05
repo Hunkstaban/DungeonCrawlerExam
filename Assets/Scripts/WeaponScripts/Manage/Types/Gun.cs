@@ -3,13 +3,13 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour, IWeapon
 {
-    public GameObject projectile;
+    [SerializeField] private GameObject projectile;
 
-    public Transform muzzle;
+    [SerializeField] private Transform muzzle;
 
-    public float speed = 20f;
+    [SerializeField] private float speed = 20f;
 
-    public bool multiShotEnable = false;
+    [SerializeField] private bool multiShotEnable = false;
     
     
     public void Attack()
@@ -34,7 +34,6 @@ public class Gun : MonoBehaviour, IWeapon
         GameObject bulletInstance = Instantiate(projectile, muzzle.position, muzzle.rotation);
         bulletInstance.GetComponent<Rigidbody>().AddForce(muzzle.forward * speed, ForceMode.Impulse);
         
-
         Destroy(bulletInstance, 3);
     }
 
@@ -66,9 +65,14 @@ public class Gun : MonoBehaviour, IWeapon
         this.projectile = projectile;
     }
 
-    public GameObject GetProjectile()
+    public GameObject GetProjectileObject()
     {
-        return this.projectile;
+        return projectile;
+    }
+    
+    public IProjectile GetProjectile()
+    {
+        return projectile?.GetComponent<IProjectile>();
     }
     
     public Transform GetMuzzle()

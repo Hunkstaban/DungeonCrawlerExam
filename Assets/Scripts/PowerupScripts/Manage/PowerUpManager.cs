@@ -9,7 +9,8 @@ using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour
 {
-    public Image[] powerUpSlots;
+    public Outline[] powerUpSlots;
+    public Image[] powerUpIcons;
     public TextMeshProUGUI[] powerUpAmountOverlay;
     public Image[] powerUpCountdownBg;
     public TextMeshProUGUI[] powerUpCountdownText;
@@ -125,21 +126,24 @@ public class PowerUpManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        for (int i = 0; i < powerUpSlots.Length; i++)
+        for (int i = 0; i < powerUpIcons.Length; i++)
         {
-            powerUpSlots[i].color = (i == selectedIndex) ? Color.white : new Color(0.8f, 0.8f, 0.8f);
+            Color inactive = new Color(0.8f, 0.8f, 0.8f);
+            Color active = new Color(1f, 1f, 1f);
+            powerUpIcons[i].color = (i == selectedIndex) ? active : inactive;
+            powerUpSlots[i].enabled = i == selectedIndex;
             if (powerUpInventory[i] != null)
             {
                 PowerUp currentPowerUp = powerUpInventory[i];
                 if (!currentPowerUp.powerUpIcon) Debug.LogError($"No Powerup Icon Added to {currentPowerUp}");
                 
-                powerUpSlots[i].sprite = currentPowerUp.powerUpIcon;
+                powerUpIcons[i].sprite = currentPowerUp.powerUpIcon;
                 powerUpAmountOverlay[i].text = powerUpCounts[i].ToString();
                 // powerUpAmountOverlay[i].gameObject.SetActive(true);
             }
             else
             {
-                powerUpSlots[i].sprite = null;
+                powerUpIcons[i].sprite = null;
                 powerUpAmountOverlay[i].text = "0";
                 // powerUpAmountOverlay[i].gameObject.SetActive(false);
             }

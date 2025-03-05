@@ -41,7 +41,7 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    public void CollectItem(PowerUp powerUpScript)
+    public bool CollectItem(PowerUp powerUpScript)
     {
         for (int i = 0; i < powerUpInventory.Length; i++)
         {
@@ -51,10 +51,11 @@ public class PowerUpManager : MonoBehaviour
                 powerUpCounts[i]++;
                 UpdateUI();
                 Debug.Log($"Player collected {powerUpScript}!");
-                return;
+                return true;
             }
         }
         Debug.Log("Inventory Full!");
+        return false;
     }
 
     public void UseSelectedItem()

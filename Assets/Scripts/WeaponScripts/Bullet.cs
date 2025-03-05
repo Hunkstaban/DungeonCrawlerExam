@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IBullet
+public class Bullet : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public int Damage { get; set; } = 10;
+    public int damage = 10;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour, IBullet
 
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(Damage);
+                    enemy.TakeDamage(damage);
                 }
             }
 

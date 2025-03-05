@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour, IWeapon
 {
-    public IBullet projectile;
+    public GameObject projectile;
 
     public Transform muzzle;
 
@@ -66,7 +66,7 @@ public class Gun : MonoBehaviour, IWeapon
         this.projectile = projectile;
     }
 
-    public IBullet GetProjectile()
+    public GameObject GetProjectile()
     {
         return this.projectile;
     }

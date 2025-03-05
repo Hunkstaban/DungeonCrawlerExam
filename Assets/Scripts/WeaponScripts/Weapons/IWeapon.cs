@@ -7,7 +7,7 @@ public interface IWeapon
     void AimAtTarget(Vector3 target);
     
     void SetProjectile(GameObject projectile);
-    IBullet GetProjectile();
+    GameObject GetProjectile();
     
     void SetSpeed(float speed);
     

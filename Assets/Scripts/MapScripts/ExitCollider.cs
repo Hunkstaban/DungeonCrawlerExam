@@ -3,8 +3,7 @@ using UnityEngine;
 public class ExitCollider : MonoBehaviour
 {
     public RoomGenerator roomGenerator;
-    private PowerUpSpawner powerUpSpawner;
-
+    
     private void Awake()
     {
         roomGenerator = FindFirstObjectByType<RoomGenerator>();
@@ -12,8 +11,6 @@ public class ExitCollider : MonoBehaviour
         {
             Debug.LogError("ExitCollider: No RoomGenerator found in the scene!");
         }
-
-        powerUpSpawner = FindFirstObjectByType<PowerUpSpawner>();
     }
 
     private void OnTriggerEnter(Collider collider)

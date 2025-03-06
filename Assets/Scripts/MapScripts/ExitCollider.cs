@@ -12,19 +12,20 @@ public class ExitCollider : MonoBehaviour
             Debug.LogError("ExitCollider: No RoomGenerator found in the scene!");
         }
     }
-    
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
             var frontRoom = roomGenerator.GetFrontRoom();
             var middleRoom = roomGenerator.GetMiddleRoom();
-        
+
             if (frontRoom == null)
             {
                 Transform exitTransform = middleRoom.exitPlane.transform;
-                Vector3 spawnPosition = exitTransform.position + exitTransform.forward * (roomGenerator.GetSegmentLength(middleRoom) / 2);
-            
+                Vector3 spawnPosition = exitTransform.position +
+                                        exitTransform.forward * (roomGenerator.GetSegmentLength(middleRoom) / 2);
+
                 frontRoom = roomGenerator.GetRandomRoom();
                 frontRoom = Instantiate(frontRoom, spawnPosition, Quaternion.identity);
             }
@@ -34,9 +35,12 @@ public class ExitCollider : MonoBehaviour
                 GameObject backRoom = roomGenerator.GetBackRoom()?.gameObject;
                 if (backRoom != null)
                 {
+                    PowerUpSpawner spawner = backRoom.GetComponent<PowerUpSpawner>();
+                    if (spawner != null) spawner.RemovePowerUps();
                     Destroy(backRoom);
                     Debug.Log("Destroying back room: " + backRoom.name);
                 }
+
                 roomGenerator.SetBackRoom(null); // Clear reference
 
                 // 2. Move room references forward
@@ -45,8 +49,10 @@ public class ExitCollider : MonoBehaviour
 
                 // 3. Generate the new front room
                 middleRoom = roomGenerator.GetMiddleRoom();
-                Vector3 spawnPosition = middleRoom.exitPlane.transform.position + middleRoom.exitPlane.transform.forward * (roomGenerator.GetSegmentLength(middleRoom) / 2);
-            
+                Vector3 spawnPosition = middleRoom.exitPlane.transform.position +
+                                        middleRoom.exitPlane.transform.forward *
+                                        (roomGenerator.GetSegmentLength(middleRoom) / 2);
+
                 frontRoom = roomGenerator.GetRandomRoom();
                 frontRoom = Instantiate(frontRoom, spawnPosition, Quaternion.identity);
             }

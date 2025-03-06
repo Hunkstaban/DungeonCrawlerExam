@@ -3,16 +3,14 @@ using TMPro;
 using UnityEngine;
 
 public class FireBulletPowerUp : MonoBehaviour
-
-
 {
-   [SerializeField] public float countDownPowerUps = 7.0f;
+    [SerializeField] public float countDownPowerUps = 7.0f;
 
     public bool fireballActive = false;
 
-    public GameObject bullet;
+    [SerializeField] private GameObject bullet;
 
-    public TMP_Text powerUpText;
+    [SerializeField] private TMP_Text powerUpText;
 
     void Start()
     {
@@ -32,8 +30,7 @@ public class FireBulletPowerUp : MonoBehaviour
             PlayerController player = onCollideWithSphere.GetComponent<PlayerController>();
             if (player != null) // if capsulePlayer is NOT null
             {
-              ActivateFireball();
-              
+                ActivateFireball();
             }
         }
     }
@@ -42,8 +39,6 @@ public class FireBulletPowerUp : MonoBehaviour
 
     public void ActivateFireball()
     {
-      
-
         PlayerController player = FindObjectOfType<PlayerController>();
         if (player == null)
         {
@@ -64,8 +59,8 @@ public class FireBulletPowerUp : MonoBehaviour
 
         GetComponent<Renderer>().enabled = false; // to hide the Object before the destroy 
         GetComponent<Collider>().enabled = false; // to hide the Object before the destroy 
-        
-        GameObject baseBullets = player.equippedWeapon.GetProjectile(); // save the original bullets 
+
+        GameObject baseBullets = player.equippedWeapon.GetProjectileObject(); // save the original bullets 
 
 
         player.equippedWeapon.SetProjectile(bullet);
@@ -88,6 +83,5 @@ public class FireBulletPowerUp : MonoBehaviour
         Debug.Log("FireBullet no more active. back to regular bullets!!!!");
         player.equippedWeapon.SetProjectile(baseBullets); // back to the original bullets after the seconds are over.
         Destroy(gameObject);
-      
     }
 }

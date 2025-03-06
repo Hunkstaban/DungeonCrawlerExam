@@ -82,11 +82,13 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = health;
     }
+    
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
         if (currentHealth <= 0) Destroy(gameObject);
     }
+    
     public void Heal(int amount)
     {
         CurrentHealth += amount;

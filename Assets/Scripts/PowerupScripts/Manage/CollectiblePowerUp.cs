@@ -11,8 +11,8 @@ public class CollectiblePowerUp : MonoBehaviour
             PowerUpManager powerUpManager = collider.GetComponent<PowerUpManager>();
             if (powerUpManager != null)
             {
-                powerUpManager.CollectItem(powerUpScript);
-                Destroy(gameObject);
+                bool pickedUp = powerUpManager.CollectItem(powerUpScript);
+                if (pickedUp) Destroy(gameObject);
             }
         }
     }

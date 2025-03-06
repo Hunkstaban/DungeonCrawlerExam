@@ -1,65 +1,27 @@
-using System.Collections;
-using TMPro;
+﻿using System.Collections;
 using UnityEngine;
 
-public class SuperJump : MonoBehaviour
+[CreateAssetMenu(menuName = "PowerUpsAndBuffs/JumpBoost")]
+public class SuperJump : TimedPowerUp
 {
-    
-    [SerializeField] public float countDownPowerUps = 7.0f;
-    [SerializeField] public float multiplierSuperJump = 20.0f;
-    public TMP_Text powerUpText;
+    [SerializeField] private float jumpMultiplier = 2f;
 
-    void Start()
+    public override void ApplyPowerUp(PlayerController player)
     {
-        TextOnTop();
-    }
-
-    public void TextOnTop()
-    {
-        powerUpText.text = "SuperJump";
-    }
-
-
-    void OnTriggerEnter(Collider onCollideWithSphere)
-    {
-        if (onCollideWithSphere.CompareTag("Player"))
-        {
-            PlayerController player = onCollideWithSphere.GetComponent<PlayerController>();
-            if (player != null) // if PlayerMoment is NOT null
-            {
-                ActivateSuperJump();
-                Debug.Log("PowerUpSuperJump activated ");
-            }
-        }
-    }
-
-    // ---------------- Super Jump Power Up -----------------------------
-
-    // IEnumerator → Defines a coroutine (enables pausing executions without. pausing the actual game. (must return a yield)).
-    // StartCoroutine → Starts the coroutine.
-
-    public void ActivateSuperJump()
-    {
-        PlayerController player = FindObjectOfType<PlayerController>();
-        StartCoroutine(SuperJumpPower(player));
-    }
-
-    public IEnumerator SuperJumpPower(PlayerController player)
-    {
-    
-      
         if (player != null)
         {
-            
-            GetComponent<Renderer>().enabled = false; // to hide the Object before the destroy 
-            GetComponent<Collider>().enabled = false; // to hide the Object before the destroy 
-            
-            player.jumpForce *= multiplierSuperJump;
-            Debug.Log("Jump Power activated for" + countDownPowerUps + " seconds");
-            yield return new WaitForSeconds(countDownPowerUps);
-            player.jumpForce /= multiplierSuperJump; //  devides - resets the jumpjumpHeight 
-            Debug.Log("Jump Power disabled ");
-            Destroy(gameObject);
+            player.jumpForce *= jumpMultiplier; // Increase jump force
+            Debug.Log($"Jump boost activated! New jump force: {player.jumpForce}");
         }
+        else
+        {
+            Debug.LogError("PlayerController is null!");
+        }
+    }
+
+    public override void DeactivatePowerup(PlayerController player)
+    {
+        player.jumpForce /= jumpMultiplier; // Reset to original
+        Debug.Log("Jump boost ended, jump force restored.");
     }
 }

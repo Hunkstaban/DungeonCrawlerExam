@@ -9,13 +9,14 @@ using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour
 {
-    public Image[] powerUpSlots;
-    public TextMeshProUGUI[] powerUpAmountOverlay;
-    public Image[] powerUpCountdownBg;
-    public TextMeshProUGUI[] powerUpCountdownText;
+    [SerializeField] private Outline[] powerUpSlots;
+    [SerializeField] private Image[] powerUpIcons;
+    [SerializeField] private TextMeshProUGUI[] powerUpAmountOverlay;
+    [SerializeField] private Image[] powerUpCountdownBg;
+    [SerializeField] private TextMeshProUGUI[] powerUpCountdownText;
 
-    public TextMeshProUGUI powerUpOverlayText;
-    public TextMeshProUGUI powerUpSelected;
+    [SerializeField] private TextMeshProUGUI powerUpOverlayText;
+    [SerializeField] private TextMeshProUGUI powerUpSelected;
     
     private PowerUp[] powerUpInventory = new PowerUp[4];
     private int[] powerUpCounts = new int[4];
@@ -40,7 +41,7 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    public void CollectItem(PowerUp powerUpScript)
+    public bool CollectItem(PowerUp powerUpScript)
     {
         for (int i = 0; i < powerUpInventory.Length; i++)
         {
@@ -50,10 +51,11 @@ public class PowerUpManager : MonoBehaviour
                 powerUpCounts[i]++;
                 UpdateUI();
                 Debug.Log($"Player collected {powerUpScript}!");
-                return;
+                return true;
             }
         }
         Debug.Log("Inventory Full!");
+        return false;
     }
 
     public void UseSelectedItem()
@@ -110,6 +112,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (powerUpInventory[index] != null)
         {
+            activePowerups.Remove(powerUpInventory[index]);
             powerUpCounts[index]--;
             if (powerUpCounts[index] <= 0)
             {
@@ -117,29 +120,30 @@ public class PowerUpManager : MonoBehaviour
                 powerUpCounts[index] = 0;
             }
         }
-        
-        activePowerups.Remove(powerUpInventory[index]);
-        
+
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        for (int i = 0; i < powerUpSlots.Length; i++)
+        for (int i = 0; i < powerUpIcons.Length; i++)
         {
-            powerUpSlots[i].color = (i == selectedIndex) ? Color.white : new Color(0.8f, 0.8f, 0.8f);
+            Color inactive = new Color(0.8f, 0.8f, 0.8f);
+            Color active = new Color(1f, 1f, 1f);
+            powerUpIcons[i].color = (i == selectedIndex) ? active : inactive;
+            powerUpSlots[i].enabled = i == selectedIndex;
             if (powerUpInventory[i] != null)
             {
                 PowerUp currentPowerUp = powerUpInventory[i];
                 if (!currentPowerUp.powerUpIcon) Debug.LogError($"No Powerup Icon Added to {currentPowerUp}");
                 
-                powerUpSlots[i].sprite = currentPowerUp.powerUpIcon;
+                powerUpIcons[i].sprite = currentPowerUp.powerUpIcon;
                 powerUpAmountOverlay[i].text = powerUpCounts[i].ToString();
                 // powerUpAmountOverlay[i].gameObject.SetActive(true);
             }
             else
             {
-                powerUpSlots[i].sprite = null;
+                powerUpIcons[i].sprite = null;
                 powerUpAmountOverlay[i].text = "0";
                 // powerUpAmountOverlay[i].gameObject.SetActive(false);
             }

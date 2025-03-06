@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b92b3d18149b604099844f3d8b54485, type: 3}
-  m_Name: MinorBulletDmgBuff
+  m_Script: {fileID: 11500000, guid: dcb7ef93474d4ea3821a200f3adb31f2, type: 3}
+  m_Name: Healing
   m_EditorClassIdentifier: 
-  amount: 10
+  powerUpIcon: {fileID: 21300000, guid: 0375fd932e8595d47b9f559778e3179e, type: 3}
+  healAmount: 30

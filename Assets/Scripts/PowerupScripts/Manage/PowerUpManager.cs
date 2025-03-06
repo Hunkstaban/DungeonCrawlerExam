@@ -112,6 +112,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (powerUpInventory[index] != null)
         {
+            activePowerups.Remove(powerUpInventory[index]);
             powerUpCounts[index]--;
             if (powerUpCounts[index] <= 0)
             {
@@ -119,9 +120,7 @@ public class PowerUpManager : MonoBehaviour
                 powerUpCounts[index] = 0;
             }
         }
-        
-        activePowerups.Remove(powerUpInventory[index]);
-        
+
         UpdateUI();
     }
 

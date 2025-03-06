@@ -3876,7 +3876,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1389130105}
   - component: {fileID: 1389130108}
-  - component: {fileID: 1389130107}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -3899,23 +3898,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1389130107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389130104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c0287a43d3d17c41a8c6c6120ab0e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToSpawn:
-  - {fileID: 7130378694428292415, guid: 6e93d77536d8feb48958361da4c8efc0, type: 3}
-  - {fileID: 1303536894079378498, guid: 46695993132a36b4a9735e24cb86f943, type: 3}
-  - {fileID: 6683949824173261262, guid: 249e5367d835b6d4792bfaa2a9425c87, type: 3}
-  groundTag: Ground
 --- !u!114 &1389130108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3923,7 +3905,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389130104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 668da1b3477303142a334d5d758257b6, type: 3}
   m_Name: 
@@ -4145,12 +4127,12 @@ GameObject:
   - component: {fileID: 1467585102}
   - component: {fileID: 1467585101}
   m_Layer: 0
-  m_Name: ground
+  m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1467585101
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4234,12 +4216,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467585100}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1930092034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1525297527
 GameObject:
@@ -5313,6 +5295,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 0}
   walkThreshold: 0.3
+--- !u!1 &1930092032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930092034}
+  - component: {fileID: 1930092033}
+  m_Layer: 0
+  m_Name: map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1930092033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930092032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0287a43d3d17c41a8c6c6120ab0e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSpawn:
+  - {fileID: 7130378694428292415, guid: 6e93d77536d8feb48958361da4c8efc0, type: 3}
+  - {fileID: 1303536894079378498, guid: 46695993132a36b4a9735e24cb86f943, type: 3}
+  - {fileID: 6683949824173261262, guid: 249e5367d835b6d4792bfaa2a9425c87, type: 3}
+  groundTag: Ground
+--- !u!4 &1930092034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930092032}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1467585104}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1993376052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,7 +6112,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 37116847}
-  - {fileID: 1467585104}
+  - {fileID: 1930092034}
   - {fileID: 910495511}
   - {fileID: 641386021}
   - {fileID: 974978114}

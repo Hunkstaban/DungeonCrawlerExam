@@ -8,6 +8,7 @@ public class Skeleton : Enemy
     public override float attackRange { get; set; } = 2f;
     public override float attackCooldown { get; set; } = 1.5f;
     
+
     [SerializeField] private Collider swordCollider;
 
     public float walkThreshold = 0.3f;

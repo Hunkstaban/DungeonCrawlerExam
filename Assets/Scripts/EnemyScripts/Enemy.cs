@@ -10,6 +10,9 @@ public abstract class Enemy : MonoBehaviour
     public abstract int health { get; set; }
     public abstract float attackRange { get; set; }
     public abstract float attackCooldown { get; set; }
+
+    [SerializeField] protected GameObject coinPrefab;
+    
     
     // virtual keyword allows for overriding in derived classes
     // but defaults to the base class implementation
@@ -39,6 +42,13 @@ public abstract class Enemy : MonoBehaviour
 
         if (health <= 0 )
         {
+            
+            for (int i = 0; i < 5; i++)
+            {
+                
+                Vector3 spawnPosition = transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 0.5f; // Slightly spread out coins
+                Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
 

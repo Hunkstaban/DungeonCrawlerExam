@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60da5075f8a6e3e45ba62ce0fd690b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 5532855984775251045, guid: 650a9e8349bb67e4c89bbd4ea5a23f6f, type: 3}
   rock: {fileID: 5298590762127773683, guid: cad9f745870d9f448bf225d2a253d382, type: 3}
   throwPoint: {fileID: 5203163760518770274}
   throwForce: 20

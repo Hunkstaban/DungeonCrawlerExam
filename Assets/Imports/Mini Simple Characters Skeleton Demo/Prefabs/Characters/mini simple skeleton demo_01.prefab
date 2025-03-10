@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae6bdb9780e4254e99a5d28cf9cd9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 5532855984775251045, guid: 650a9e8349bb67e4c89bbd4ea5a23f6f, type: 3}
   swordCollider: {fileID: 4435354004189646940}
   walkThreshold: 0.2
 --- !u!54 &8804092294116483225

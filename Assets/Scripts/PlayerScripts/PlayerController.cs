@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        currentHealth = 50;
+        currentHealth = 100;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         Debug.Log("Current Health: " + CurrentHealth);

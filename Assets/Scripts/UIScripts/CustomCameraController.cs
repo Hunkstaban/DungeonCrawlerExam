@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class CustomCameraController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class CustomCameraController : MonoBehaviour
     private Quaternion targetRotation; 
     private bool isMoving = false; 
 
+    public event Action OnMovementComplete;
+    
     void Start()
     {
         // Set the initial target position and rotation to the camera's current state
@@ -32,6 +35,8 @@ public class CustomCameraController : MonoBehaviour
                 transform.position = targetPosition;
                 transform.rotation = targetRotation;
                 isMoving = false;
+                
+                OnMovementComplete?.Invoke();
             }
         }
     }

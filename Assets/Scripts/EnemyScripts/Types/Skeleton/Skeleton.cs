@@ -8,6 +8,7 @@ public class Skeleton : Enemy
     public override float attackRange { get; set; } = 2f;
     public override float attackCooldown { get; set; } = 1.5f;
     
+
     [SerializeField] private Collider swordCollider;
 
     public float walkThreshold = 0.3f;
@@ -17,10 +18,11 @@ public class Skeleton : Enemy
     protected override void Update()
     {
         
-        float speed = agent.velocity.magnitude;
+        // float speed = agent.velocity.magnitude;
         // animator.SetFloat("Speed", speed);
         
-        animator.SetBool("IsWalking", speed > walkThreshold);
+        // animator.SetBool("IsWalking", speed > walkThreshold);
+        animator.SetFloat("Speed", agent.velocity.magnitude);
         HandleMovementAndAttack();
         
     }

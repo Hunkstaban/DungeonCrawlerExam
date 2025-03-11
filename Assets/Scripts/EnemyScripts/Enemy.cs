@@ -42,15 +42,53 @@ public abstract class Enemy : MonoBehaviour
 
         if (health <= 0 )
         {
-            
-            for (int i = 0; i < 5; i++)
-            {
-                
-                Vector3 spawnPosition = transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 0.5f; // Slightly spread out coins
-                Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
-            }
-            Destroy(gameObject);
+            Die();
+            // for (int i = 0; i < 5; i++)
+            // {
+            //     
+            //     Vector3 spawnPosition = transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 0.5f; // Slightly spread out coins
+            //     Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
+            // }
+            // animator.SetBool("Dead", true);
+            // animator.SetFloat("Speed", 0);
+            // Destroy(gameObject);
         }
 
+    }
+    
+    private void Die()
+    {
+        
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+
+        // Disable collisions if needed
+        GetComponent<Collider>().enabled = false;
+
+        
+        this.enabled = false; 
+    
+        // Play death animation
+        animator.SetFloat("Speed", 0);
+        animator.SetBool("Dead", true);
+
+        // Drop loot (if needed)
+        for (int i = 0; i < 5; i++)
+        {
+            Vector3 spawnPosition = transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 0.5f;
+            Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
+        }
+
+        // Destroy after animation
+        StartCoroutine(DestroyAfterDelay(10f)); // Adjust time based on animation length
+    }
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 }

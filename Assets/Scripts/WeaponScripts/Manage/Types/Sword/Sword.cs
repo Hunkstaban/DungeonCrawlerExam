@@ -52,12 +52,37 @@ public class Sword : MonoBehaviour, IWeapon
         throw new System.NotImplementedException();
     }
 
+    public GameObject GetProjectileObject()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    IProjectile IWeapon.GetProjectile()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SetSpeed(float speed)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public float GetSpeed()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public GameObject GetProjectile()
     {
         throw new System.NotImplementedException();
     }
 
     public float SetSpeed(GameObject speed)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public Transform GetMuzzle()
     {
         throw new System.NotImplementedException();
     }

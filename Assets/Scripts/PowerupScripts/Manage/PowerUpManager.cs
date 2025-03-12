@@ -17,9 +17,10 @@ public class PowerUpManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI powerUpOverlayText;
     [SerializeField] private TextMeshProUGUI powerUpSelected;
-    
-    private PowerUp[] powerUpInventory = new PowerUp[4];
-    private int[] powerUpCounts = new int[4];
+
+    private static int inventorySize = 4;
+    private PowerUp[] powerUpInventory = new PowerUp[inventorySize];
+    private int[] powerUpCounts = new int[inventorySize];
     
     private List<PowerUp> activePowerups = new();
     
@@ -43,14 +44,32 @@ public class PowerUpManager : MonoBehaviour
 
     public bool CollectItem(PowerUp powerUpScript)
     {
+        int powerupIndex = Array.IndexOf(powerUpInventory, powerUpScript);
+        int itemLimit = 4;
+        
+        if (powerUpInventory.Contains(powerUpScript))
+        {
+            if (powerUpCounts[powerupIndex] < itemLimit)
+            {
+                powerUpInventory[powerupIndex] = powerUpScript;
+                powerUpCounts[powerupIndex]++;
+                UpdateUI();
+                Debug.Log($"Player collected {powerUpScript}!");
+                return true;
+            }
+            return false;
+        }
+        
         for (int i = 0; i < powerUpInventory.Length; i++)
         {
-            if (powerUpInventory[i] == null || powerUpInventory[i] == powerUpScript)
+            if (powerUpInventory[i] == null)
             {
                 powerUpInventory[i] = powerUpScript;
                 powerUpCounts[i]++;
                 UpdateUI();
                 Debug.Log($"Player collected {powerUpScript}!");
+                // Array.ForEach(powerUpInventory, i => Debug.Log(i));
+                // Debug.Log(string.Join(", ", powerUpCounts));
                 return true;
             }
         }
@@ -163,6 +182,8 @@ public class PowerUpManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) SelectPowerUp(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectPowerUp(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectPowerUp(3);
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f) SelectPowerUp((selectedIndex + 1) % inventorySize);
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f) SelectPowerUp((selectedIndex + (inventorySize - 1)) % inventorySize);
     }
     
     private void SelectPowerUp(int index)

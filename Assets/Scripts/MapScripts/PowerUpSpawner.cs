@@ -21,7 +21,6 @@ public class PowerUpSpawner : MonoBehaviour
 
     void FindGround()
     {
-        // Find ground GameObject by tag
         GameObject ground = transform.Find(groundTag)?.gameObject;
         if (ground == null)
         {
@@ -44,7 +43,8 @@ public class PowerUpSpawner : MonoBehaviour
     {
         if (groundBounds.size == Vector3.zero) return;
 
-        for (int i = 0; i < 10; i++)
+        int maxAttempts = 20;
+        for (int i = 0; i < maxAttempts; i++)
         {
             Vector3 spawnPos = GetRandomPointOnGround();
 
@@ -73,17 +73,25 @@ public class PowerUpSpawner : MonoBehaviour
     bool IsValidSpawnPosition(Vector3 position)
     {
         RaycastHit hit;
-        if (Physics.Raycast(position, Vector3.down, out hit, Mathf.Infinity))
+        if (Physics.Raycast(position,Vector3.down, out hit, Mathf.Infinity))
         {
-            // Ensure we are hitting the ground
             if (hit.collider.CompareTag(groundTag))
             {
-                // Adjust position to be on the surface
                 position.y = hit.point.y;
+                float checkRadius = 1f;
+                
+                Collider[] colliders = Physics.OverlapSphere(position, checkRadius);
+                foreach (var col in colliders)
+                {
+                    if (col.GetComponent<CollectiblePowerUp>())
+                    {
+                        return false;
+                    }
+                }
+                
                 return true;
             }
         }
-
         return false;
     }
     

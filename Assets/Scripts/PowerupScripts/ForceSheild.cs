@@ -9,6 +9,7 @@ public class ForceSheild : TimedPowerUp
     [SerializeField] private GameObject forceSheildPrefab;
     private GameObject forceSheildInstantiate;
     public float forceSheildSize = 1.5f;
+    public float sheildPushForce = 10f;
 
     // The distance the shield should be from the player
     public Vector3 shieldOffset = new Vector3(0, 0, 0); //Spawn slightly behind the player
@@ -41,18 +42,19 @@ public class ForceSheild : TimedPowerUp
        //  }
        // 
        
-       // ---------------Set the Collider--------------------------- 
-       // SphereCollider collider = forceSheildInstantiate.GetComponent<SphereCollider>();
-       //
-       // if (collider == null)
-       // {
-       //     forceSheildInstantiate.AddComponent<SphereCollider>();
-       // }
-       //
-       // collider.isTrigger = true;
-       // collider.radius = forceSheildSize; // so the the collider is the same a the actually sphere/forceField
-       //  
-       //
+       //---------------Set the Collider--------------------------- 
+       
+       SphereCollider collider = forceSheildInstantiate.GetComponent<SphereCollider>();
+       
+       if (collider == null)
+       {
+           collider = forceSheildInstantiate.AddComponent<SphereCollider>();
+       }
+       
+       // set the collider to the same radius as the forceSheild. 
+       collider.radius = forceSheildSize;
+        
+       
        
        
        forceSheildInstantiate.AddComponent<ForceSheildFollow>().Initialize(player);

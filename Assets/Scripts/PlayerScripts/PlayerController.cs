@@ -1,8 +1,10 @@
+using System;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+    public ForceSheild forceSheild;
     private Rigidbody rb;
     public float speed = 5f;
     public float jumpForce = 5f;
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
         Debug.Log("Current Health: " + CurrentHealth);
     }
+
+
 
     void OnMove(InputValue value)
     {

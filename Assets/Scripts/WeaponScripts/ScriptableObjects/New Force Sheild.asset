@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: New Force Sheild
   m_EditorClassIdentifier: 
   powerUpIcon: {fileID: 0}
-  durationInSeconds: 7
-  forceSheild: {fileID: 4252864910151903391, guid: 726728971e6161e4981934910316a289, type: 3}
-  forceSheildInstantiate: {fileID: 0}
-  forceSheildSize: 3
-  shieldOffset: {x: 0, y: 2, z: 2}
+  durationInSeconds: 10
+  forceSheildPrefab: {fileID: 4252864910151903391, guid: 726728971e6161e4981934910316a289, type: 3}
+  forceSheildSize: 1.5
+  shieldOffset: {x: 0, y: 0, z: 0}

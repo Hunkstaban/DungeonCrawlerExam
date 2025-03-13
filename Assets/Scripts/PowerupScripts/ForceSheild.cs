@@ -31,32 +31,35 @@ public class ForceSheild : TimedPowerUp
             Vector3.one * forceSheildSize; // Vector.One means all "sides" x,y,z
 
 
-        // //----------------Set the Rigidbody---------------------------
-        // Rigidbody rb = forceSheildInstantiate.GetComponent<Rigidbody>();
-        
+       //  //----------------Set the Rigidbody---------------------------
+       //  Rigidbody rb = forceSheildInstantiate.GetComponent<Rigidbody>();
+       //  
        // if (rb == null) // if the sheild doesnt allready have a RB
-        // {
-        //     rb = forceSheildInstantiate.AddComponent<Rigidbody>();
-        //     rb.isKinematic = true; // to make the sphere interact with other colinders but it not effected by physics
-        // }
-        //
-        // // ---------------Set the Collider--------------------------- 
-        // SphereCollider collider = forceSheildInstantiate.GetComponent<SphereCollider>();
-        //
-        // if (collider == null)
-        // {
-        //     forceSheildInstantiate.AddComponent<SphereCollider>();
-        // }
-        //
-        // collider.radius = forceSheildSize; // so the the collider is the same a the actually sphere/forceField
-        
-        
-        forceSheildInstantiate.AddComponent<ForceSheildFollow>().Initialize(player);
-        
-        
+       //  {
+       //      rb = forceSheildInstantiate.AddComponent<Rigidbody>();
+       //      rb.isKinematic = true; // to make the sphere interact with other colinders but it not effected by physics
+       //  }
+       // 
+       
+       // ---------------Set the Collider--------------------------- 
+       // SphereCollider collider = forceSheildInstantiate.GetComponent<SphereCollider>();
+       //
+       // if (collider == null)
+       // {
+       //     forceSheildInstantiate.AddComponent<SphereCollider>();
+       // }
+       //
+       // collider.isTrigger = true;
+       // collider.radius = forceSheildSize; // so the the collider is the same a the actually sphere/forceField
+       //  
+       //
+       
+       
+       forceSheildInstantiate.AddComponent<ForceSheildFollow>().Initialize(player);
+       
     }
 
-
+  
     // public void UpdateShieldPosition(PlayerController player)
     // {
     //     if (forceSheildInstantiate != null)

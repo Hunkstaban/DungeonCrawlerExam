@@ -15,5 +15,6 @@ MonoBehaviour:
   powerUpIcon: {fileID: 0}
   durationInSeconds: 10
   forceSheildPrefab: {fileID: 4252864910151903391, guid: 726728971e6161e4981934910316a289, type: 3}
-  forceSheildSize: 1.5
+  forceSheildSize: 1.3
+  sheildPushForce: 1000
   shieldOffset: {x: 0, y: 0, z: 0}

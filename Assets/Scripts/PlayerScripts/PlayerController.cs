@@ -19,6 +19,13 @@ public class PlayerController : MonoBehaviour
     public IWeapon equippedWeapon;
     
     private int currentHealth;
+    
+    public void SetMaxHealth(int value)
+    {
+        maxHealth = value;
+        // Ensure current health doesn't exceed the new max
+        CurrentHealth = Mathf.Min(CurrentHealth, maxHealth);
+    }
 
     public int CurrentHealth
     {
@@ -28,10 +35,36 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        // Apply upgrades from saved data
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ApplyUpgradesToPlayer(this);
+            
+            // Load equipped weapon
+            LoadEquippedWeapon();
+        }
         currentHealth = 100;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         Debug.Log("Current Health: " + CurrentHealth);
+    }
+
+    private void LoadEquippedWeapon()
+    {
+        if (GameManager.Instance == null) return;
+        
+        string weaponName = GameManager.Instance.playerData.equippedWeapon;
+        
+        foreach (var weaponInfo in GameManager.Instance.availableWeapons)
+        {
+            if (weaponInfo.weaponName == weaponName)
+            {
+                // Instantiate and setup weapon
+                GameObject weaponObj = Instantiate(weaponInfo.weaponPrefab, transform);
+                equippedWeapon = weaponObj.GetComponent<IWeapon>();
+                break;
+            }
+        }
     }
 
     void OnMove(InputValue value)

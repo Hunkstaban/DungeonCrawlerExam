@@ -4,18 +4,20 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "PowerUpsAndBuffs/ForceSheild")]
+
+
 public class ForceSheild : TimedPowerUp
 {
-    [SerializeField] private GameObject forceSheildPrefab;
+    [SerializeField][Header("Force Shield Prefab")] private GameObject forceSheildPrefab;
     private GameObject forceSheildInstantiate;
-    public float forceSheildSize = 1.5f;
-    public float sheildPushForce = 10f;
+    [Header("Force Shield Size")] public float forceSheildSize = 1.3f;
+    [Header("Push Strength")]public float sheildPushForce = 10f;
 
     // The distance the shield should be from the player
-    public Vector3 shieldOffset = new Vector3(0, 0, 0); //Spawn slightly behind the player
+   [SerializeField] [Header("Placement")] public Vector3 shieldOffset = new Vector3(0, 0, 0); 
     
     
-    [SerializeField]private AudioClip forceSheildActivateSound;
+    [SerializeField] [Header("Sound Clip")]private AudioClip forceSheildActivateSound;
     private AudioSource audioSource;
     
     
@@ -27,7 +29,7 @@ public class ForceSheild : TimedPowerUp
             return;
         } 
 
-        // --------- so the forcefield spawns in the same rotation as the player --------------
+        //so the forcefield spawns in the same rotation as the player 
         Quaternion spawnRotation = player.transform.rotation;
 
         forceSheildInstantiate = Instantiate(forceSheildPrefab, player.transform.position + shieldOffset, spawnRotation);
@@ -46,15 +48,17 @@ public class ForceSheild : TimedPowerUp
            collider = forceSheildInstantiate.AddComponent<SphereCollider>();
        }
        
-       // set the collider to the same radius as the forceSheild. 
+       // ----- set the collider to the same radius as the forceSheild. ------
        collider.radius = forceSheildSize;
        
        // instantiate and call the "Initialize" method thats on the ForceSheildFollow class. so the sheild follows the player
        forceSheildInstantiate.AddComponent<ForceSheildFollow>().Initialize(player);
 
+       // ---------------- add the sound effect ---------------
+       
        if (forceSheildActivateSound != null)
        {
-           audioSource = player.gameObject.AddComponent<AudioSource>(); // add the sound to the player 
+           audioSource = player.gameObject.AddComponent<AudioSource>(); // add the Audio Source component to the player 
            audioSource.PlayOneShot(forceSheildActivateSound); // plays the sound in the audioSource (PlayOneShot = only plays once and doesnt interrup others sound that may be playing.)
        }
 

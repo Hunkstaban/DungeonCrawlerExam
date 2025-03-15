@@ -14,6 +14,11 @@ public class ForceSheild : TimedPowerUp
     // The distance the shield should be from the player
     public Vector3 shieldOffset = new Vector3(0, 0, 0); //Spawn slightly behind the player
     
+    
+    [SerializeField]private AudioClip forceSheildActivateSound;
+    private AudioSource audioSource;
+    
+    
     public override void ApplyPowerUp(PlayerController player)
     {
         // so we only instancitiate one forceSheild at a time
@@ -30,17 +35,7 @@ public class ForceSheild : TimedPowerUp
         //--------------Set the size---------------------------
         forceSheildInstantiate.transform.localScale =
             Vector3.one * forceSheildSize; // Vector.One means all "sides" x,y,z
-
-
-       //  //----------------Set the Rigidbody---------------------------
-       //  Rigidbody rb = forceSheildInstantiate.GetComponent<Rigidbody>();
-       //  
-       // if (rb == null) // if the sheild doesnt allready have a RB
-       //  {
-       //      rb = forceSheildInstantiate.AddComponent<Rigidbody>();
-       //      rb.isKinematic = true; // to make the sphere interact with other colinders but it not effected by physics
-       //  }
-       // 
+        
        
        //---------------Set the Collider--------------------------- 
        
@@ -53,26 +48,20 @@ public class ForceSheild : TimedPowerUp
        
        // set the collider to the same radius as the forceSheild. 
        collider.radius = forceSheildSize;
-        
        
-       
-       
+       // instantiate and call the "Initialize" method thats on the ForceSheildFollow class. so the sheild follows the player
        forceSheildInstantiate.AddComponent<ForceSheildFollow>().Initialize(player);
-       
+
+       if (forceSheildActivateSound != null)
+       {
+           audioSource = player.gameObject.AddComponent<AudioSource>(); // add the sound to the player 
+           audioSource.PlayOneShot(forceSheildActivateSound); // plays the sound in the audioSource (PlayOneShot = only plays once and doesnt interrup others sound that may be playing.)
+       }
+
     }
 
   
-    // public void UpdateShieldPosition(PlayerController player)
-    // {
-    //     if (forceSheildInstantiate != null)
-    //     {
-    //         // Follow the player's position (you can add an offset if you need)
-    //         forceSheildInstantiate.transform.position = player.transform.position + shieldOffset ;
-    //
-    //         // Make the shield rotate with the player
-    //         forceSheildInstantiate.transform.rotation = Quaternion.Euler(0, player.transform.rotation.eulerAngles.y, 0);
-    //     }
-    // }
+
 
     public override void DeactivatePowerup(PlayerController player)
     {

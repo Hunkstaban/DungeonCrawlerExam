@@ -23,42 +23,43 @@ public class ForceSheildFollow : MonoBehaviour
 
     void Update()
     {
+        // Sets the position of the current object to match the target player's position.
         transform.position = new Vector3(targetPlayer.transform.position.x, targetPlayer.transform.position.y, targetPlayer.transform.position.z);
     }
 
-    // OnTriggerStay is every frame
-    private void OnTriggerStay(Collider collider)
+    // using OnCollisionStay instead of OnTriggerStay ( both works in every frame) because OnCollosionStay works on non-trigger colliders
+    private void OnCollisionStay(Collision collision)
     {
-        if (collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
             return;
         }
         
-        if (collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy"))
         {
-            Rigidbody enemyRb = collider.GetComponent<Rigidbody>();
+            Rigidbody enemyRb = collision.collider.GetComponent<Rigidbody>();
             if (enemyRb != null)
             {
-                Vector3 pushDirection = collider.transform.position - transform.position; // Direction away from shield
+                Vector3 pushDirection = collision.transform.position - transform.position; // Direction away from shield
                 enemyRb.AddForce(pushDirection.normalized * forceSheild.sheildPushForce, ForceMode.Impulse); // Adjust strength as needed
             }
         }
     }
     
     // OnTriggerEnter is just the frame some1 enters
-    private void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
             return;
         }
         
-        if (collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy"))
         {
-            Rigidbody enemyRb = collider.GetComponent<Rigidbody>();
+            Rigidbody enemyRb = collision.collider.GetComponent<Rigidbody>();
             if (enemyRb != null)
             {
-                Vector3 pushDirection = collider.transform.position - transform.position; // Direction away from shield
+                Vector3 pushDirection = collision.transform.position - transform.position; // Direction away from shield
                 enemyRb.AddForce(pushDirection.normalized * forceSheild.sheildPushForce, ForceMode.Impulse); // Adjust strength as needed
             }
         }

@@ -59,6 +59,7 @@ public class ForceSheild : TimedPowerUp
        if (forceSheildActivateSound != null)
        {
            audioSource = player.gameObject.AddComponent<AudioSource>(); // add the Audio Source component to the player 
+           audioSource.volume = 0.226f;
            audioSource.PlayOneShot(forceSheildActivateSound); // plays the sound in the audioSource (PlayOneShot = only plays once and doesnt interrup others sound that may be playing.)
        }
 
@@ -71,6 +72,7 @@ public class ForceSheild : TimedPowerUp
     {
         if (forceSheildInstantiate != null)
         {
+            audioSource.Stop();
             Destroy(forceSheildInstantiate); // Destroy the shield when deactivating the power-up
             Debug.Log("Force Sheild Deactivated");
         }

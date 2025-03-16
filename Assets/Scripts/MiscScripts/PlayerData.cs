@@ -25,11 +25,11 @@ public class PlayerData
     public PlayerData()
     {
         selectedCosmetic = "None";
-        healthLevel = 0;
-        speedLevel = 0;
+        healthLevel = 1;
+        speedLevel = 1;
         equippedWeapon = "Sword";
         roomRecord = 0;
-        coinBalance = 0;
+        coinBalance = 1000;
 
         equippedWeapon = "Sword"; // Default starting weapon
         unlockedWeapons = new List<string> { "Sword" }; // Start with just the sword

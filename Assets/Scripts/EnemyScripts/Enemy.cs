@@ -44,6 +44,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void TakeDamage(int damge)
     {
         health -= damge;
+        Debug.Log(health);
         
         healthbar.UpdateHealthBar(health, maxHealth);
 

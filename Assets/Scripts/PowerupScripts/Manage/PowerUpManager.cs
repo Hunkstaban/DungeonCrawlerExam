@@ -182,8 +182,8 @@ public class PowerUpManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) SelectPowerUp(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectPowerUp(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectPowerUp(3);
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f) SelectPowerUp((selectedIndex + 1) % inventorySize);
-        if(Input.GetAxis("Mouse ScrollWheel") < 0f) SelectPowerUp((selectedIndex + (inventorySize - 1)) % inventorySize);
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f) SelectPowerUp((selectedIndex + 1) % inventorySize);
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f) SelectPowerUp((selectedIndex + (inventorySize - 1)) % inventorySize);
     }
     
     private void SelectPowerUp(int index)

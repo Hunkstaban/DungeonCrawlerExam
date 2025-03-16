@@ -37,6 +37,7 @@ public class PowerUpSpawner : MonoBehaviour
 
         groundBounds = renderer.bounds;
         spawnAmount = (int)(Mathf.Ceil(groundBounds.size.x+groundBounds.size.z) / 16);
+        // spawnAmount = (int)(groundBounds.size.x+groundBounds.size.z) * 20;
     }
 
     void SpawnObjects()

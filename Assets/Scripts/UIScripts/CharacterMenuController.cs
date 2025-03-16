@@ -1,100 +1,64 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class CharacterMenuController : MonoBehaviour
 {
     [System.Serializable]
-    public class CosmeticItem
+    public class Cosmetic
     {
-        public string name;
-        public Button selectButton;
-        public GameObject prefab;
-        public string attachPoint; // "Head" or "Face"
+        public string name; // Name of the cosmetic (e.g., "Cowboy", "Crown")
+        public GameObject prefab; // The prefab to attach to the player
+        public Transform attachPoint; // The point on the player where the cosmetic will be attached
     }
-    
-    public CosmeticItem[] cosmeticItems;
-    public GameObject playerPreview; // Reference to player model in menu
-    
-    private GameObject currentHeadCosmetic;
-    private GameObject currentFaceCosmetic;
-    
+
+    public List<Cosmetic> cosmetics; // List of all available cosmetics
+    private string selectedCosmetic; // The currently selected cosmetic
+
     private void Start()
     {
-        InitializeButtons();
-        LoadSelectedCosmetic();
+        // Load the selected cosmetic from PlayerData
+        selectedCosmetic = GameManager.Instance.playerData.selectedCosmetic;
+
+        // Apply the saved cosmetic to the player
+        ApplyCosmetic(selectedCosmetic);
     }
-    
-    private void InitializeButtons()
+
+    // Called when a cosmetic is selected from the UI
+    public void SelectCosmetic(string cosmeticName)
     {
-        foreach (var item in cosmeticItems)
-        {
-            // Create a local copy of the item for the closure
-            var localItem = item;
-            
-            item.selectButton.onClick.AddListener(() => {
-                SelectCosmetic(localItem);
-            });
-        }
+        // Save the selected cosmetic
+        selectedCosmetic = cosmeticName;
+        GameManager.Instance.playerData.selectedCosmetic = selectedCosmetic;
+        GameManager.Instance.SaveData();
+
+        // Apply the cosmetic to the player
+        ApplyCosmetic(selectedCosmetic);
     }
-    
-    private void LoadSelectedCosmetic()
+
+    private void ApplyCosmetic(string cosmeticName)
     {
-        string savedCosmetic = GameManager.Instance.playerData.selectedCosmetic;
-        
-        if (!string.IsNullOrEmpty(savedCosmetic))
+        // Deactivate all cosmetics
+        foreach (var cosmetic in cosmetics)
         {
-            foreach (var item in cosmeticItems)
+            if (cosmetic.prefab != null)
             {
-                if (item.name == savedCosmetic)
-                {
-                    ApplyCosmetic(item);
-                    break;
-                }
+                cosmetic.prefab.SetActive(false);
             }
         }
-    }
-    
-    private void SelectCosmetic(CosmeticItem item)
-    {
-        // Apply to preview
-        ApplyCosmetic(item);
-        
-        // Save selection
-        GameManager.Instance.playerData.selectedCosmetic = item.name;
-        GameManager.Instance.SaveGame();
-    }
-    
-    private void ApplyCosmetic(CosmeticItem item)
-    {
-        // Find attach point in player preview
-        Transform attachPoint = playerPreview.transform.Find(item.attachPoint);
-        if (attachPoint == null)
+
+        // Find and activate the selected cosmetic
+        foreach (var cosmetic in cosmetics)
         {
-            Debug.LogError($"Attach point {item.attachPoint} not found on player preview");
-            return;
+            if (cosmetic.name == cosmeticName)
+            {
+                if (cosmetic.prefab != null)
+                {
+                    cosmetic.prefab.SetActive(true);
+                }
+                return;
+            }
         }
-        
-        // Remove existing cosmetics from this attach point
-        if (item.attachPoint == "Head")
-        {
-            if (currentHeadCosmetic != null)
-                Destroy(currentHeadCosmetic);
-                
-            // Instantiate new cosmetic
-            currentHeadCosmetic = Instantiate(item.prefab, attachPoint);
-            currentHeadCosmetic.transform.localPosition = Vector3.zero;
-            currentHeadCosmetic.transform.localRotation = Quaternion.identity;
-        }
-        else if (item.attachPoint == "Face")
-        {
-            if (currentFaceCosmetic != null)
-                Destroy(currentFaceCosmetic);
-                
-            // Instantiate new cosmetic
-            currentFaceCosmetic = Instantiate(item.prefab, attachPoint);
-            currentFaceCosmetic.transform.localPosition = Vector3.zero;
-            currentFaceCosmetic.transform.localRotation = Quaternion.identity;
-        }
+
+        Debug.LogWarning($"Cosmetic '{cosmeticName}' not found!");
     }
 }

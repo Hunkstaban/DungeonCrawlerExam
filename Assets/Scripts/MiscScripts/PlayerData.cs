@@ -1,25 +1,39 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 
 [Serializable]
 public class PlayerData
 {
-    // Character cosmetics
-    public string selectedCosmetic = "";
-    
+    // Cosmetics
+    public string selectedCosmetic;
+
     // Upgrades
-    public int healthLevel = 0;
-    public int speedLevel = 0;
-    
-    // Weapons
-    public string equippedWeapon = "Sword"; // Default weapon
-    public List<string> purchasedWeapons = new List<string>() { "Sword" }; // Start with one basic weapon
-    
-    // Game progress
-    public int coins = 0;
-    public int maxRoomsCleared = 0;
+    public int healthLevel;
+    public int speedLevel;
+
+    // Misc
+    public string equippedWeapon;
+
+    // Progress
+    public int roomRecord;
+    public int coinBalance;
+    public List<string> unlockedWeapons = new List<string>();
+
+    // Default constructor
+    public PlayerData()
+    {
+        selectedCosmetic = "None";
+        healthLevel = 0;
+        speedLevel = 0;
+        equippedWeapon = "Sword";
+        roomRecord = 0;
+        coinBalance = 0;
+
+        equippedWeapon = "Sword"; // Default starting weapon
+        unlockedWeapons = new List<string> { "Sword" }; // Start with just the sword
+    }
 }
 
 public static class SaveSystem
@@ -49,3 +63,4 @@ public static class SaveSystem
         }
     }
 }
+

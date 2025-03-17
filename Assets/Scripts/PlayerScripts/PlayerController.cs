@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-    public ForceSheild forceSheild;
+    
     private Rigidbody rb;
     public float speed = 5f;
     public float jumpForce = 5f;

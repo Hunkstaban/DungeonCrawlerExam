@@ -28,6 +28,15 @@ public class FireBullet : MonoBehaviour, IProjectile
                 Destroy(gameObject);
             }
             
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+                if (player != null)
+                {
+                    player.TakeDamage(damage);
+                    Destroy(gameObject);
+                }
+            }
         }
     }
     

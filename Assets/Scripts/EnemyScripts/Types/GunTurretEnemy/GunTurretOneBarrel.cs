@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class GunTurretEnemy : Enemy
+public class GunTurretOneBarrel : Enemy
 {
     public override int health { get; set; } = 300;
     public override float attackRange { get; set; } = 5f;
@@ -11,8 +11,7 @@ public class GunTurretEnemy : Enemy
     
 
     [Header("Bullet")] [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePointRight;
-    [SerializeField] private Transform firePointLeft;
+    [SerializeField] private Transform firePointMiddle;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int bulletDamage = 10;
@@ -62,20 +61,22 @@ public class GunTurretEnemy : Enemy
         lastTimeAttacked = Time.time; // Record the time of attack to handle cooldown
 
         // instantiate the bulletPrefab where the firepointPrefab is
-        GameObject bulletRight = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
-        Debug.Log("Instantiate the right bullet");
-        GameObject bulletLeft = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
-        Debug.Log("Instantiate the right bullet");
-        
-        Vector3 direction = firePointRight.forward;
-        
-        Rigidbody rigidBodyBulletRight = bulletRight.GetComponent<Rigidbody>();
-        Rigidbody rigidBodyBulletLeft = bulletLeft.GetComponent<Rigidbody>();
-
-        if (rigidBodyBulletLeft && rigidBodyBulletRight != null)
+        if (firePointMiddle != null)
         {
-            rigidBodyBulletLeft.AddForce(direction * bulletSpeed, ForceMode.Impulse);
-            rigidBodyBulletRight.AddForce(direction * bulletSpeed, ForceMode.Impulse);
+        }
+
+        GameObject bulletMiddle = Instantiate(bulletPrefab, firePointMiddle.position, firePointMiddle.rotation);
+        Debug.Log("Instantiate the middle bullet");
+     
+        
+        Vector3 direction = firePointMiddle.forward;
+        
+        Rigidbody rigidBodyBulletMiddle = bulletMiddle.GetComponent<Rigidbody>();
+        
+
+        if ( rigidBodyBulletMiddle != null)
+        {
+            rigidBodyBulletMiddle.AddForce(direction * bulletSpeed, ForceMode.Impulse);
         }
 
         yield return null;

@@ -277,6 +277,7 @@ MonoBehaviour:
   bulletSpeed: 15
   bulletSize: 0.8
   bulletDamage: 10
+  bulletPool: {fileID: 2341502964327511024, guid: 71d49694b6274ea42a010424005ef841, type: 3}
 --- !u!195 &1677206930278319512
 NavMeshAgent:
   m_ObjectHideFlags: 0

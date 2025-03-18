@@ -15,6 +15,7 @@ public class GunTurretOneBarrel : Enemy
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int bulletDamage = 10;
+    [SerializeField]private BulletPool bulletPool;
 
     private float lastTimeAttacked; // a variable for seconds for last time the turret attacked 
 
@@ -65,7 +66,7 @@ public class GunTurretOneBarrel : Enemy
         {
         }
 
-        GameObject bulletMiddle = Instantiate(bulletPrefab, firePointMiddle.position, firePointMiddle.rotation);
+        GameObject bulletMiddle = bulletPool.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
         Debug.Log("Instantiate the middle bullet");
      
         

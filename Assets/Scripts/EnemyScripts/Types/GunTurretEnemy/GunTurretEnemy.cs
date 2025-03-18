@@ -7,16 +7,44 @@ public class GunTurretEnemy : Enemy
     public override int health { get; set; } = 300;
     public override float attackRange { get; set; } = 5f;
     public override float attackCooldown { get; set; } = 2f;
+    
+    
 
     [Header("Bullet")] [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePointRight;
     [SerializeField] private Transform firePointLeft;
     [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private float bulletSize = 1f;
+    [SerializeField] private int bulletDamage = 10;
 
     private float lastTimeAttacked; // a variable for seconds for last time the turret attacked 
 
+
+
+    private void SetNewBulletDmg(GameObject bullet)
+    {
+        // Get the TurretBullet component on the bullet and set its damage
+        TurretBullet turretBullet = bullet.GetComponent<TurretBullet>();
+        if (turretBullet != null)
+        {
+            turretBullet.SetDamage(bulletDamage);
+        }
+        else
+        {
+            Debug.LogError("No TurretBullet component found on the instantiated bullet.");
+        }
+    }
+
+    private void SetNewBulletTransform()
+    {
+        bulletPrefab.gameObject.transform.localScale = transform.localScale * bulletSize;
+    }
     protected override void Update()
     {
+        
+        // set the new size on the Bullet 
+        SetNewBulletTransform();
+        SetNewBulletDmg(bulletPrefab);
         // Time.time: This is a Unity function that returns the time (in seconds)
         // Time.time is all the seconds that have passed since the game started. 
         if (Time.time - lastTimeAttacked >= attackCooldown)

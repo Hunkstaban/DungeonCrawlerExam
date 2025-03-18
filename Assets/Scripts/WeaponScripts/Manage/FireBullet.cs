@@ -1,11 +1,23 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FireBullet : MonoBehaviour, IProjectile
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    [SerializeField] private int damage = 20;
+    [SerializeField] private int damage = 10;
+    // [SerializeField] private float bulletSize = 5f;
+
+    // private void Update()
+    // {
+    //     SetNewTransform();
+    // }
+
+    // private void SetNewTransform()
+    // {
+    //     this.gameObject.transform.localScale = transform.localScale * bulletSize;
+    // }
 
     private void OnCollisionEnter(Collision collision)
     {

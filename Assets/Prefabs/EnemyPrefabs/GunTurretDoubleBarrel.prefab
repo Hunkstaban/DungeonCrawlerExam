@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 695815201276701584}
   - component: {fileID: 1677206930278319512}
   m_Layer: 0
-  m_Name: GunTurret (1) 1
+  m_Name: GunTurretDoubleBarrel
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,10 +271,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 0}
-  bulletPrefab: {fileID: 2379382211746896052, guid: 5ed4f110322ced64d80a2c70206efc5d, type: 3}
+  bulletPrefab: {fileID: 24950769658111907, guid: d14a46123b39662479d8e942fe9821ef, type: 3}
   firePointRight: {fileID: 6131452378453420830}
   firePointLeft: {fileID: 1544077899663819774}
   bulletSpeed: 15
+  bulletSize: 0.8
+  bulletDamage: 10
 --- !u!195 &1677206930278319512
 NavMeshAgent:
   m_ObjectHideFlags: 0

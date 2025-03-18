@@ -666,8 +666,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae6bdb9780e4254e99a5d28cf9cd9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 0}
   swordCollider: {fileID: 0}
   walkThreshold: 0.3
+  wanderZone: {fileID: 0}
 --- !u!95 &321822695
 Animator:
   serializedVersion: 7
@@ -5302,8 +5304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae6bdb9780e4254e99a5d28cf9cd9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 0}
   swordCollider: {fileID: 0}
   walkThreshold: 0.3
+  wanderZone: {fileID: 0}
 --- !u!1 &1930092032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5546,8 +5550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae6bdb9780e4254e99a5d28cf9cd9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 0}
   swordCollider: {fileID: 0}
   walkThreshold: 0.3
+  wanderZone: {fileID: 0}
 --- !u!95 &2037451752
 Animator:
   serializedVersion: 7

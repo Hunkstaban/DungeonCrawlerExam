@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce83320e536efc4fb2c922ca9912a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpEffect: {fileID: 11400000, guid: b256b84bff81afc48bf1b49bd04791d6, type: 2}
+  pickUpEffect: {fileID: 0}
 --- !u!135 &679628029
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce83320e536efc4fb2c922ca9912a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpEffect: {fileID: 11400000, guid: f9e64a878e531bd41aa513e074b0d082, type: 2}
+  pickUpEffect: {fileID: 0}
 --- !u!135 &977647923
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2462,7 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce83320e536efc4fb2c922ca9912a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpEffect: {fileID: 11400000, guid: d5cc638393ffea642baeafc7bf8ad36c, type: 2}
+  pickUpEffect: {fileID: 0}
 --- !u!135 &1179688265
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2812,7 +2812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce83320e536efc4fb2c922ca9912a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpEffect: {fileID: 11400000, guid: e49bd95540bb8064fb8e200ce2d49e01, type: 2}
+  pickUpEffect: {fileID: 0}
 --- !u!135 &1596406371
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2934,7 +2934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce83320e536efc4fb2c922ca9912a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpEffect: {fileID: 11400000, guid: 88cff0413653bdb418a2dcd24a0175c8, type: 2}
+  pickUpEffect: {fileID: 0}
 --- !u!135 &1641162533
 SphereCollider:
   m_ObjectHideFlags: 0

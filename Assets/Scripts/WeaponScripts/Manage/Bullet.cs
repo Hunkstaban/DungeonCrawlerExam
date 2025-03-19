@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour, IProjectile
             // Debug.Log(collision.gameObject.name);
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy Hit");
+                Debug.Log("Enemy Hit: " + collision.gameObject.name);
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
                 if (enemy != null)

@@ -1,4 +1,5 @@
 using TMPro;
+using System;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    
     private Rigidbody rb;
     public float speed = 5f;
     public float jumpForce = 5f;
@@ -49,6 +51,9 @@ public class PlayerController : MonoBehaviour
         volume.weight = 0;
     }
     
+
+
+
     void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();

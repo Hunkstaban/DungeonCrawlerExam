@@ -729,9 +729,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6183225502940299214}
-  - component: {fileID: -724775599856301903}
+  - component: {fileID: -5296219420169298495}
+  - component: {fileID: 770398699139997465}
   m_Layer: 0
-  m_Name: ShotGun_D
+  m_Name: ShotGun_D Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -746,7 +747,7 @@ Transform:
   m_GameObject: {fileID: 6810826342680241524}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -763,7 +764,28 @@ Transform:
   - {fileID: 2402016182587644757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-724775599856301903
+--- !u!65 &-5296219420169298495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810826342680241524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.18, y: 0.32, z: 1.22}
+  m_Center: {x: 0, y: -0.03, z: 0.19}
+--- !u!114 &770398699139997465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -772,14 +794,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6810826342680241524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe57eaa8e0a1b904dab0efb4c7196007, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d2f51be7e304cd48962e475af59499d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 3553461909585978849, guid: f74d7ec8b8e10404a8004dd5c2133cee, type: 3}
-  muzzle: {fileID: 9210497066426500067}
-  speed: 20
-  multiShotEnable: 0
-  shotgun: 0
+  weapon: {fileID: -724775599856301903, guid: 0b981673e3286e04787b9cb64d638b20, type: 3}
 --- !u!1 &6921539997277899181
 GameObject:
   m_ObjectHideFlags: 0

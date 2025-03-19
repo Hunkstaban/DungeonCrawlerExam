@@ -2519,8 +2519,9 @@ MonoBehaviour:
   rooms:
   - {fileID: 2892458942893947320, guid: 838317ef031f8d340badf5a9d594a90d, type: 3}
   - {fileID: 7013939996709846540, guid: 7d92b74cbc751c14289548f66054fd82, type: 3}
+  - {fileID: 4277295891600576131, guid: 28a1e21a33fc4194e991abe5ca60a3cc, type: 3}
   startRoom: {fileID: 2892458942893947320, guid: 838317ef031f8d340badf5a9d594a90d, type: 3}
-  backRoom: {fileID: 4277295891600576131, guid: 28a1e21a33fc4194e991abe5ca60a3cc, type: 3}
+  backRoom: {fileID: 0}
   middleRoom: {fileID: 0}
   frontRoom: {fileID: 0}
 --- !u!4 &1207984552

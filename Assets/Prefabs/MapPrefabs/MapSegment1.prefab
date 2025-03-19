@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7692291880125220641}
   - {fileID: 4236630991071306280}
   - {fileID: 5045320226307747007}
   - {fileID: 1296990515606549163}
@@ -6623,6 +6624,7 @@ GameObject:
   - component: {fileID: 7467335440150107870}
   - component: {fileID: 1023305291392718705}
   - component: {fileID: 5440696742773432468}
+  - component: {fileID: 980104129705484873}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Ground
@@ -6720,6 +6722,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &980104129705484873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134524341941151617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 42d61aae58ed97e49b2def80ff812999, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &9178741100938804287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7427,6 +7461,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3854269363171675655, guid: 62dcba975a0bdfe47bef48ea43049412, type: 3}
   m_PrefabInstance: {fileID: 1784392007144299473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2181334057874323253
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5244507145047466804}
+    m_Modifications:
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9625914
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.27095723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -31.443
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209568620739521198, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+      propertyPath: m_Name
+      value: ShotGun_E Pickup
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+--- !u!4 &7692291880125220641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8396158248225550356, guid: db752306ef9745645bc091ec94eb22f5, type: 3}
+  m_PrefabInstance: {fileID: 2181334057874323253}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3164424569317047051
 PrefabInstance:

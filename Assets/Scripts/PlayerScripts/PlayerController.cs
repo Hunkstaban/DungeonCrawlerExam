@@ -1,5 +1,6 @@
 using TMPro;
 using System;
+using System.Collections;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public IWeapon equippedWeapon;
+    [SerializeField] private Transform weaponPos;
+    public Transform GetWeaponPos => weaponPos;
 
     [SerializeField] private Volume volume;
 
@@ -88,7 +91,7 @@ public class PlayerController : MonoBehaviour
         // Rotate using Rigidbody's MoveRotation for smooth physics-based rotation.
         rb.MoveRotation(targetRotation);
 
-        if (CurrentHealth <= 20)
+        if (CurrentHealth <= 30)
         {
             Vignette vignette;
             float pulse = Mathf.Sin(Time.time * 4f) * 0.05f;
@@ -105,7 +108,23 @@ public class PlayerController : MonoBehaviour
     {
         CurrentHealth -= damage;
         if (currentHealth <= 0) Destroy(gameObject);
+        
+        // Vignette vignette;
+        // volume.profile.TryGet(out vignette);
+        //
+        // vignette.intensity.value = 0.75f;
+        // volume.weight = 1f;
+        // vignette.intensity.value = 0.75f;
+        // volume.weight = 1f;
+        // StartCoroutine(ResetVignette(vignette));
     }
+    
+    // private IEnumerator ResetVignette(Vignette vignette)
+    // {
+    //     yield return new WaitForSeconds(0.2f); // Adjust delay as needed
+    //     vignette.intensity.value = 0.25f;
+    //     volume.weight = 0f;
+    // }
     
     public void Heal(int amount)
     {

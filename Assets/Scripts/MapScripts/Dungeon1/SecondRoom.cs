@@ -7,6 +7,7 @@ public class SecondRoom : MonoBehaviour
     public Animator summoningCircleAnimator;
     public RockGolem rockGolem; // Reference to the pre-placed Golem
     public GameObject summoningCircle;
+    public Animator exitAnimator;
 
     private int currentEnemies = 0;
 
@@ -42,5 +43,12 @@ public class SecondRoom : MonoBehaviour
             rockGolem.gameObject.SetActive(true); // Activate the pre-placed Golem
             rockGolem.StartSpawning(); // Play spawn animation
         }
+
+        if (currentEnemies == 0 && rockGolem == null)
+        {
+            exitAnimator.SetTrigger("Finished");
+            
+        }
+        
     }
 }

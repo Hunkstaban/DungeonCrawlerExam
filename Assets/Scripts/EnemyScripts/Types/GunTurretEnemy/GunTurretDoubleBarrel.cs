@@ -16,7 +16,7 @@ public class GunTurretDoubleBarrel : Enemy
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int bulletDamage = 10;
-    [SerializeField]private BulletPool bulletPool;
+    [SerializeField] private BulletPoolForTurrets bulletPoolForTurrets;
 
     private float lastTimeAttacked; // a variable for seconds for last time the turret attacked 
 
@@ -64,10 +64,10 @@ public class GunTurretDoubleBarrel : Enemy
         
         // Get bullets from the pool instead of instantiating directly
         // instantiate the bulletPrefab where the firepointPrefab is
-        GameObject bulletRight = bulletPool.GetBullet(firePointRight.position, firePointRight.rotation);
+        GameObject bulletRight = bulletPoolForTurrets.GetBullet(firePointRight.position, firePointRight.rotation);
         // GameObject bulletRight1 = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
         Debug.Log("Instantiate the right bullet");
-        GameObject bulletLeft = bulletPool.GetBullet(firePointLeft.position, firePointLeft.rotation);
+        GameObject bulletLeft = bulletPoolForTurrets.GetBullet(firePointLeft.position, firePointLeft.rotation);
         // GameObject bulletLeft = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
         Debug.Log("Instantiate the right bullet");
 

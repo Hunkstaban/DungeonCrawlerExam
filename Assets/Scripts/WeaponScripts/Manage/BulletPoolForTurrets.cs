@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPool : MonoBehaviour
+public class BulletPoolForTurrets : MonoBehaviour
 {
     public GameObject bulletPrefab;  // Bullet prefab to be pooled
     public int initialPoolSize = 10;  // Initial pool size
@@ -10,6 +10,11 @@ public class BulletPool : MonoBehaviour
 
     private void Awake()
     {
+        if (bulletPool == null)
+        {
+            Debug.LogError("Bullet Pool is empty!");
+        }
+
         bulletPool = new Queue<GameObject>();
 
         // Fill the pool with bullets

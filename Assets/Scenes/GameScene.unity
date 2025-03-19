@@ -2519,7 +2519,7 @@ MonoBehaviour:
   rooms:
   - {fileID: 2892458942893947320, guid: 838317ef031f8d340badf5a9d594a90d, type: 3}
   - {fileID: 7013939996709846540, guid: 7d92b74cbc751c14289548f66054fd82, type: 3}
-  startRoom: {fileID: 2892458942893947320, guid: 838317ef031f8d340badf5a9d594a90d, type: 3}
+  startRoom: {fileID: 2892458942893947320, guid: e29b7deaf9910bd439ac071b2f630d6c, type: 3}
   backRoom: {fileID: 0}
   middleRoom: {fileID: 0}
   frontRoom: {fileID: 0}
@@ -2925,6 +2925,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1454894861634557571, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454894861634557571, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2183886290193471957, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}

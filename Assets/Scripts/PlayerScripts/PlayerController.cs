@@ -41,15 +41,12 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        CurrentHealth = 22f;
+        CurrentHealth = 100f;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         Debug.Log("Current Health: " + CurrentHealth);
         volume.weight = 0;
     }
-    
-
-
 
     void OnMove(InputValue value)
     {

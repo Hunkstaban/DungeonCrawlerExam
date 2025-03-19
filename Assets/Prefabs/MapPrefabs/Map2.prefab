@@ -2810,7 +2810,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 695815201276701584, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
       propertyPath: bulletSize
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 695815201276701584, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
       propertyPath: bulletPrefab
@@ -2819,7 +2819,7 @@ PrefabInstance:
     - target: {fileID: 695815201276701584, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
       propertyPath: bulletPoolForTurrets
       value: 
-      objectReference: {fileID: 2341502964327511024, guid: 71d49694b6274ea42a010424005ef841, type: 3}
+      objectReference: {fileID: 7815662121746330859}
     - target: {fileID: 4532977548641812477, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -4212,6 +4212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunTurretDoubleBarrel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4831926130037403736, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4297,6 +4301,10 @@ PrefabInstance:
     - target: {fileID: 4831926130037403736, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
       propertyPath: m_Name
       value: GunTurretDoubleBarrel (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831926130037403736, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5504,6 +5512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunTurretDoubleBarrel (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4831926130037403736, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5848,7 +5860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617002623087778995, guid: 8ee9cb75cfe261244b7483821d82c823, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8731075696711443790, guid: 8ee9cb75cfe261244b7483821d82c823, type: 3}
       propertyPath: bulletPrefab
@@ -8587,6 +8599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunTurretDoubleBarrel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4831926130037403736, guid: 66a557cbad02d42418331ebc51dcd99f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9147,7 +9163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617002623087778995, guid: 8ee9cb75cfe261244b7483821d82c823, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8731075696711443790, guid: 8ee9cb75cfe261244b7483821d82c823, type: 3}
       propertyPath: bulletPrefab

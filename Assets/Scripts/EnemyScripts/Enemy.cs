@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public abstract class Enemy : MonoBehaviour
 
 {
+    public System.Action<Enemy> OnDeath;
     // abstract keyword forces derived classes to implement these properties
     public abstract int health { get; set; }
     public abstract float attackRange { get; set; }
@@ -25,8 +26,10 @@ public abstract class Enemy : MonoBehaviour
     protected Transform player { get; set; } 
     protected NavMeshAgent agent;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
+        animator = GetComponent<Animator>();
+        
         agent = GetComponent<NavMeshAgent>();
         speed = agent.speed;
         animator = GetComponent<Animator>();
@@ -51,21 +54,15 @@ public abstract class Enemy : MonoBehaviour
         if (health <= 0 )
         {
             Die();
-            // for (int i = 0; i < 5; i++)
-            // {
-            //     
-            //     Vector3 spawnPosition = transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 0.5f; // Slightly spread out coins
-            //     Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
-            // }
-            // animator.SetBool("Dead", true);
-            // animator.SetFloat("Speed", 0);
-            // Destroy(gameObject);
+            
         }
 
     }
     
     private void Die()
     {
+        Debug.Log(name + " is invoking OnDeath!");
+        OnDeath?.Invoke(this);
         
         if (agent != null)
         {
@@ -89,9 +86,9 @@ public abstract class Enemy : MonoBehaviour
             Vector3 spawnPosition = transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 0.5f;
             Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
         }
-
+        
         // Destroy after animation
-        StartCoroutine(DestroyAfterDelay(10f)); // Adjust time based on animation length
+        StartCoroutine(DestroyAfterDelay(3f)); // Adjust time based on animation length
     }
 
     private IEnumerator DestroyAfterDelay(float delay)

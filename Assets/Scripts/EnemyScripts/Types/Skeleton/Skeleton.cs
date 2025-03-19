@@ -15,9 +15,19 @@ public class Skeleton : Enemy
     
     private bool isAttacking = false;
     private bool hasDealtDamage = false;
+    
+    private bool isChasing = false;
+
+    public Collider wanderZone;
     protected override void Update()
     {
-        
+        if (!isChasing)
+        {
+            if (wanderZone)
+            {
+                Wander();
+            }
+        }
         // float speed = agent.velocity.magnitude;
         // animator.SetFloat("Speed", speed);
         
@@ -26,7 +36,6 @@ public class Skeleton : Enemy
         HandleMovementAndAttack();
         
     }
-
     protected override IEnumerator Attack()
     {
         isAttacking = true;
@@ -58,10 +67,35 @@ public class Skeleton : Enemy
         }
         else if (distance < 15)
         {
-            
+            agent.speed = 8f;
             agent.SetDestination(player.position);
         }
     }
+
+    // a method to randomize the wandering of the enemy
+    void Wander()
+    {
+        if (!agent.hasPath || agent.remainingDistance < 0.5f)
+        {
+            agent.speed = 1.5f;
+            Vector3 randomPoint = GetRandomPointInWanderZone();
+
+            // Set destination directly (no NavMeshHit needed)
+            agent.SetDestination(randomPoint);
+        }
+    }
+    
+    private Vector3 GetRandomPointInWanderZone()
+    {
+        Vector3 center = wanderZone.bounds.center;
+        Vector3 size = wanderZone.bounds.size;
+
+        float randomX = Random.Range(center.x - size.x / 2, center.x + size.x / 2);
+        float randomZ = Random.Range(center.z - size.z / 2, center.z + size.z / 2);
+
+        return new Vector3(randomX, transform.position.y, randomZ);
+    }
+
     
     private void OnTriggerEnter(Collider collider)
     {

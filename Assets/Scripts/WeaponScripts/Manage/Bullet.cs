@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour, IProjectile
     {
         if (collision != null)
         {
+            // Debug.Log(collision.gameObject.name);
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy Hit");
@@ -24,6 +25,7 @@ public class Bullet : MonoBehaviour, IProjectile
 
             Destroy(gameObject);
         }
+        Destroy(gameObject, 5);
     }
 
     public int GetDamage()

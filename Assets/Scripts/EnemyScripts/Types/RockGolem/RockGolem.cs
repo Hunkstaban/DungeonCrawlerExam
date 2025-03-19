@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RockGolem : Enemy
 {
-   
+    private bool isSpawning = true;
     public override int health { get; set; } = 300;
     public override float attackRange { get; set; } = 20f;
     public override float attackCooldown { get; set; }
@@ -17,8 +17,18 @@ public class RockGolem : Enemy
     
     private bool canAttack = true;
     private bool isAttacking = false;
+    
+    
+    protected void Start()
+    {
+        
+        gameObject.SetActive(false); // Ensure it's disabled initially
+    }
     protected override void Update()
     {
+        
+        if (isSpawning) return;
+        
         HandleMovementAndAttack();
         animator.SetFloat("Speed", agent.velocity.magnitude);
     }
@@ -106,6 +116,23 @@ public class RockGolem : Enemy
         }
     }
 
+    public void StartSpawning()
+    {
+        transform.position -= new Vector3(0, -1.5f, 0); // Start slightly underground
+        animator.SetTrigger("Spawn"); // Play the "emerging" animation
+
+        StartCoroutine(EnableAfterAnimation());
+    }
+
+    private IEnumerator EnableAfterAnimation()
+    {
+        agent.enabled = false; // Disable movement while spawning
+        yield return new WaitForSeconds(7);
+        
+        agent.enabled = true;  // Enable movement
+        this.enabled = true;   // Enable AI logic
+        isSpawning = false;
+    }
     
 
     

@@ -15,9 +15,6 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public Transform camContainer; // Follows camera's horizontal rotation
     
-    [SerializeField]
-    public int maxHealth = 100;
-
     public GameObject targetPoint;
     
     private Vector2 movementInput;

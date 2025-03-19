@@ -26,15 +26,22 @@ public class SecondRoom : MonoBehaviour
             Debug.Log("Subscribing to enemy: " + enemy.name);
             enemy.OnDeath += HandleDeath;
         }
-
+        rockGolem.OnDeath += HandleDeath;
         currentEnemies = enemies.Count;
     }
 
     private void HandleDeath(Enemy deadEnemy)
     {
-        
         enemies.Remove(deadEnemy);
         currentEnemies--;
+
+        if (deadEnemy == rockGolem) // Check if the RockGolem is the one who died
+        {
+            Debug.Log("RockGolem died! Triggering exit animation.");
+            exitAnimator.SetTrigger("Open");
+            Debug.Log("Exit animation triggered.");
+            return;
+        }
 
         if (currentEnemies == 0)
         {
@@ -43,12 +50,5 @@ public class SecondRoom : MonoBehaviour
             rockGolem.gameObject.SetActive(true); // Activate the pre-placed Golem
             rockGolem.StartSpawning(); // Play spawn animation
         }
-
-        if (currentEnemies == 0 && rockGolem == null)
-        {
-            exitAnimator.SetTrigger("Finished");
-            
-        }
-        
     }
 }

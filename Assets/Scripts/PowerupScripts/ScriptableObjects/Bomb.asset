@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bomb
   m_EditorClassIdentifier: 
   powerUpIcon: {fileID: 21300000, guid: c5bb75970a82977408938246f3e16386, type: 3}
-  durationInSeconds: 5
+  durationInSeconds: 2
   bombPrefab: {fileID: 4864405555844477519, guid: 040adb3901944f948bcc602814af71a0, type: 3}
   explosion: {fileID: 1007127540951276732, guid: 3ace37360f306cb4aac03640550fa9ef, type: 3}
   explosionRadiusIndicator: {fileID: 2622724817056081646, guid: e38bf53993168ac45bd06b229a1738a9, type: 3}

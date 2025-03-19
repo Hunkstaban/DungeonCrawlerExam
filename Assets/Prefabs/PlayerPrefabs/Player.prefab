@@ -34,6 +34,37 @@ Transform:
   - {fileID: 387548400888743158}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2055568332293354292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5957087251503423732}
+  m_Layer: 0
+  m_Name: WeaponPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5957087251503423732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055568332293354292}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.513, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6139634530459258998}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2334234910764496594
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +312,7 @@ GameObject:
   - component: {fileID: 4377571241313729778}
   - component: {fileID: 7052987067583621701}
   - component: {fileID: 2183886290193471957}
+  - component: {fileID: 4302679952437075535}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -302,6 +334,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5223643422549703087}
+  - {fileID: 5957087251503423732}
   m_Father: {fileID: 4794748179937951708}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2212696544536331305
@@ -453,6 +486,50 @@ MonoBehaviour:
   jumpForce: 5
   camContainer: {fileID: 5223643422549703087}
   targetPoint: {fileID: 2334234910764496594}
+  weaponPos: {fileID: 0}
+  volume: {fileID: 0}
+  slider: {fileID: 0}
+  healthHUDNumber: {fileID: 0}
+  maxHealth: 100
+--- !u!114 &4302679952437075535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8547200871159492982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f13096bdb4919941894dd2082de4d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  powerUpIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  powerUpAmountOverlay:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  powerUpCountdownBg:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  powerUpCountdownText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  powerUpOverlayText: {fileID: 0}
+  powerUpSelected: {fileID: 0}
 --- !u!1 &9134296011870893193
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpIcon: {fileID: 21300000, guid: f884a5de472d1f94fade64e47cf2871c, type: 3}
   durationInSeconds: 5
-  boostAmount: 20
+  boostAmount: 8

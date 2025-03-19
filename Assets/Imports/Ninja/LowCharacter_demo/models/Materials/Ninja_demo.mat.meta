@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1c6a1a7adaf94c44a83af9c4a87fbe8f
+timeCreated: 1520446031
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192954
+  packageName: 'Low Character Pack: Free Sample'
+  packageVersion: 1.0
+  assetPath: Assets/LowCharacterPack/LowCharacter_demo/models/Materials/Ninja_demo.mat
+  uploadId: 435567

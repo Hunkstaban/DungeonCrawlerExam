@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4f364019ba9360f4580a8b3cb3c78a29
+timeCreated: 1506388821
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 89418
+  packageName: Shuriken pack
+  packageVersion: 2.0
+  assetPath: Assets/Shurikens pack/Prefabs/Shuriken2.prefab
+  uploadId: 202987

@@ -12,6 +12,9 @@ public abstract class Enemy : MonoBehaviour
     public abstract float attackCooldown { get; set; }
 
     [SerializeField] protected GameObject coinPrefab;
+
+    [SerializeField] private FloatingHealthbar healthbar;
+    private int maxHealth;
     
     
     // virtual keyword allows for overriding in derived classes
@@ -27,6 +30,8 @@ public abstract class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         speed = agent.speed;
         animator = GetComponent<Animator>();
+        healthbar = GetComponentInChildren<FloatingHealthbar>();
+        maxHealth = health;
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -39,6 +44,9 @@ public abstract class Enemy : MonoBehaviour
     public virtual void TakeDamage(int damge)
     {
         health -= damge;
+        Debug.Log(health);
+        
+        healthbar.UpdateHealthBar(health, maxHealth);
 
         if (health <= 0 )
         {

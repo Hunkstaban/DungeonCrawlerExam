@@ -1,6 +1,11 @@
+using TMPro;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
@@ -17,22 +22,31 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public IWeapon equippedWeapon;
-    
-    private int currentHealth;
 
-    public int CurrentHealth
+    [SerializeField] private Volume volume;
+
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI healthHUDNumber;
+    [SerializeField] private float maxHealth = 100f;
+    private float currentHealth;
+    public float CurrentHealth
     {
         get => currentHealth;
-        private set => currentHealth = Mathf.Clamp(value, 0, maxHealth);
+        private set
+        {
+            currentHealth = Mathf.Clamp(value, 0, maxHealth);
+            slider.value = currentHealth / maxHealth;
+            healthHUDNumber.SetText(CurrentHealth.ToString());
+        }
     }
     
     void Start()
     {
-        
-        currentHealth = 100;
+        CurrentHealth = 22f;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         Debug.Log("Current Health: " + CurrentHealth);
+        volume.weight = 0;
     }
     
     void OnMove(InputValue value)
@@ -74,14 +88,18 @@ public class PlayerController : MonoBehaviour
 
         // Rotate using Rigidbody's MoveRotation for smooth physics-based rotation.
         rb.MoveRotation(targetRotation);
-    }
-    public int getHealth()
-    {
-        return currentHealth;
-    }
-    public void setHealth(int health)
-    {
-        currentHealth = health;
+
+        if (CurrentHealth <= 20)
+        {
+            Vignette vignette;
+            float pulse = Mathf.Sin(Time.time * 4f) * 0.05f;
+            float volumeValue = (1 - (CurrentHealth / 20)) + pulse;
+            float vignetteValue = Mathf.Lerp(0.25f, 1f, CurrentHealth / 20);
+            
+            volume.profile.TryGet(out vignette);
+            vignette.intensity.value = vignetteValue;
+            volume.weight = volumeValue;
+        }
     }
     
     public void TakeDamage(int damage)

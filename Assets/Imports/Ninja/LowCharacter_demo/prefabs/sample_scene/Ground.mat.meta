@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb14cb2ac9a0a3e4eb0480f747b585fb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192954
+  packageName: 'Low Character Pack: Free Sample'
+  packageVersion: 1.0
+  assetPath: Assets/LowCharacterPack/LowCharacter_demo/prefabs/sample_scene/Ground.mat
+  uploadId: 435567

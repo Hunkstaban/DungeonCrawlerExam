@@ -7,5 +7,5 @@ When killing enemies they will drop currency, which can be used to buy new weapo
 
 ## Instructions
 - Use WASD to move and your mouse to aim - that's it!
-
 - Press Escape to pause the game.
+- Use scroll wheel or 1, 2, 3, 4 to select desired Power Up, and press G to use. 

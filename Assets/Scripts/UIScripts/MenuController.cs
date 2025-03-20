@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -79,5 +80,10 @@ public class MenuController : MonoBehaviour
     public void AnimEventHideAllPanels()
     {
         uiManager.HideAllPanels();
+    }
+    
+    public void StartGameScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }

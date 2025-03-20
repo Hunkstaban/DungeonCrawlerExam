@@ -1228,10 +1228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 2892458942893947320, guid: 838317ef031f8d340badf5a9d594a90d, type: 3}
-  - {fileID: 7013939996709846540, guid: 7d92b74cbc751c14289548f66054fd82, type: 3}
-  - {fileID: 4277295891600576131, guid: 28a1e21a33fc4194e991abe5ca60a3cc, type: 3}
-  - {fileID: 8232134118521706173, guid: 9aecd64dcbbf59f4b9352659cd5cf8f9, type: 3}
   - {fileID: 2892458942893947320, guid: e29b7deaf9910bd439ac071b2f630d6c, type: 3}
   startRoom: {fileID: 8232134118521706173, guid: 9aecd64dcbbf59f4b9352659cd5cf8f9, type: 3}
   backRoom: {fileID: 0}

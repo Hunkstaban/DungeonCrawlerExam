@@ -1339,7 +1339,7 @@ GameObject:
   - component: {fileID: 178370063}
   - component: {fileID: 178370062}
   m_Layer: 0
-  m_Name: Cowboy
+  m_Name: CowboyHat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3252,7 +3252,7 @@ GameObject:
   - component: {fileID: 429602872}
   - component: {fileID: 429602871}
   m_Layer: 0
-  m_Name: Magician
+  m_Name: MagicianHat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6902,7 +6902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7052987067583621701, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7059769605609553998, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
       propertyPath: m_SizeDelta.x
@@ -7185,7 +7185,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Magician
+          m_StringArgument: MagicianHat
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1153726116
@@ -8470,6 +8470,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44e723b3d5b0e8c478e3b502b94369d5, type: 3}
+--- !u!1 &1322193855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1322193857}
+  - component: {fileID: 1322193856}
+  m_Layer: 0
+  m_Name: GameInitializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1322193856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322193855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb184aaf180dee47a65fc638a986365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1363226112}
+  swordPrefab: {fileID: 788435970795298864, guid: 36c84d620b6f2944daf6283bcb67c9da, type: 3}
+  gunPrefab: {fileID: 427293531203243494, guid: 977b33e630750154985c38c09eeaa7ba, type: 3}
+  shotgunPrefab: {fileID: 9209568620739521198, guid: 106d42a182d825e4ead3c727dfaacd2b, type: 3}
+  arPrefab: {fileID: 6810826342680241524, guid: 0b981673e3286e04787b9cb64d638b20, type: 3}
+--- !u!4 &1322193857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322193855}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 576.7455, y: 324.53, z: 684.4215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337226562
 GameObject:
   m_ObjectHideFlags: 0
@@ -8586,6 +8635,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5859313293803644140, guid: 92d4430c1aabefa4691079bac409cbf9, type: 3}
   m_PrefabInstance: {fileID: 156809102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1363226112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1454894861634557571, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+  m_PrefabInstance: {fileID: 1128770817}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1373588081
 GameObject:
@@ -13206,7 +13260,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Cowboy
+          m_StringArgument: CowboyHat
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1979605990
@@ -13937,7 +13991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cosmetics:
-  - name: Cowboy
+  - name: CowboyHat
     prefab: {fileID: 1526350307}
     attachPoint: {fileID: 883403447}
   - name: Mustache
@@ -13946,7 +14000,7 @@ MonoBehaviour:
   - name: VikingHelmet
     prefab: {fileID: 1025919680}
     attachPoint: {fileID: 883403447}
-  - name: Magician
+  - name: MagicianHat
     prefab: {fileID: 465346654}
     attachPoint: {fileID: 883403447}
   - name: Sombrero
@@ -15108,6 +15162,7 @@ SceneRoots:
   - {fileID: 1905086557}
   - {fileID: 2089040539}
   - {fileID: 1034656941}
+  - {fileID: 1322193857}
   - {fileID: 108652807}
   - {fileID: 1521675603}
   - {fileID: 1337226563}

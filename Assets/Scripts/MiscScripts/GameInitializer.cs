@@ -84,9 +84,6 @@ public class GameInitializer : MonoBehaviour
             // Instantiate the weapon prefab
             GameObject weaponInstance = Instantiate(weaponPrefab, player.GetWeaponPos);
 
-            // Parent the weapon to the player's WeaponPos transform
-            // weaponInstance.transform.SetParent(player.GetWeaponPos);
-
             // Optionally, set the equipped weapon in the PlayerController
             player.equippedWeapon = weaponInstance.GetComponent<IWeapon>();
 

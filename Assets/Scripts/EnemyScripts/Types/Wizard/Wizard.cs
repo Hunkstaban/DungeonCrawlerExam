@@ -12,6 +12,7 @@ public class Wizard : Enemy
     public Transform staffPoint;
     protected override void Update()
     {
+        if (player == null) return;
         
         float distance = Vector3.Distance(player.position, transform.position);
         if (distance <= attackRange)

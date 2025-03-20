@@ -22,8 +22,7 @@ public class Bullet : MonoBehaviour, IProjectile
                     enemy.TakeDamage(damage);
                 }
             }
-
-            if (collision.gameObject.GetComponent<Enemy>())
+            else if (collision.gameObject.GetComponent<Enemy>())
             {
                 Debug.LogError("Add Enemy tag to enemy");
             }

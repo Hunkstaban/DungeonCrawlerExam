@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: speed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2183886290193471957, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1781818961}
     - target: {fileID: 3152477551441085760, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

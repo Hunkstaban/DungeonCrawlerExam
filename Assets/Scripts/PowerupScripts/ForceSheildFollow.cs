@@ -40,6 +40,7 @@ public class ForceSheildFollow : MonoBehaviour
             Rigidbody enemyRb = collision.collider.GetComponent<Rigidbody>();
             if (enemyRb != null)
             {
+               
                 Vector3 pushDirection = collision.transform.position - transform.position; // Direction away from shield
                 enemyRb.AddForce(pushDirection.normalized * forceSheild.sheildPushForce, ForceMode.Impulse); // Adjust strength as needed
             }

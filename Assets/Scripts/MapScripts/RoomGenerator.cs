@@ -15,7 +15,7 @@ public class RoomGenerator : MonoBehaviour
 
     // [HideInInspector]
 
-    private static bool hasStarted = false;
+    private bool hasStarted = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

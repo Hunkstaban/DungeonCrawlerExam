@@ -51,45 +51,19 @@ public class GunTurretOneBarrel : Enemy
     protected override void Update()
     {
         if (player == null) return;
-    
+
         if (player != null)
         {
-            float distance = Vector3.Distance(player.position, transform.position);
-            if (distance <= attackRange)
+            RotateTowardsPlayer();
+            
+            SetNewBulletDmg(bulletPrefab);
+            // Time.time: This is a Unity function that returns the time (in seconds)
+            // Time.time is all the seconds that have passed since the game started. 
+            if (Time.time - lastTimeAttacked >= attackCooldown)
             {
-                // set the new size on the Bullet 
-                SetNewBulletTransform();
-
-                // the directions from the turret to the player. (Where should the turret look for the player. )
-                Vector3 direction =
-                    player.position - transform.position; // transform. refere to this.object (GunTurretOneBarrel)
-
-                direction.y = 0; // Keep the turret from rotating vertically
-
-                direction = -direction; // because the direction on the turret/OneTurretBarrel Prefabb is facing the oppisite way of the barrel
-
-                //make the rotation point towards the player
-                transform.rotation = Quaternion.LookRotation(direction);
-
-                //// Rotate the turret smoothly towards the player. .Slept = makes a smooth rotation. 
-               // // Time.deltatime = the time that has passed in seconds since last frame
-                // transform.rotation =
-                //     Quaternion.Slerp(transform.rotation, lookRotation,
-                //         Time.deltaTime * rotationAndTurnSpeed); // Adjust speed as needed
-
-
-                // RotateTowardsPlayer();
-
-
-                SetNewBulletDmg(bulletPrefab);
-                // Time.time: This is a Unity function that returns the time (in seconds)
-                // Time.time is all the seconds that have passed since the game started. 
-                if (Time.time - lastTimeAttacked >= attackCooldown)
-                {
-                    // Coroutines in Unity allow asynchronous execution of code over time without blocking the main thread
-                    StartCoroutine(Attack());
-                    Debug.Log("StartCouroutine is calling Attack");
-                }
+                // Coroutines in Unity allow asynchronous execution of code over time without blocking the main thread
+                StartCoroutine(Attack());
+                Debug.Log("StartCouroutine is calling Attack");
             }
         }
     }
@@ -128,22 +102,30 @@ public class GunTurretOneBarrel : Enemy
 
     private void RotateTowardsPlayer()
     {
-        if (player != null)
+        float distance = Vector3.Distance(player.position, transform.position);
+        if (distance <= attackRange)
         {
+            if (player != null)
+
+                // set the new size on the Bullet 
+                SetNewBulletTransform();
+
             // the directions from the turret to the player. (Where should the turret look for the player. )
-            Vector3 directionOfThePlayer =
+            Vector3 direction =
                 player.position - transform.position; // transform. refere to this.object (GunTurretOneBarrel)
 
-            directionOfThePlayer.y = 0; // Keep the turret from rotating vertically
+            direction.y = 0; // Keep the turret from rotating vertically
+
+            direction = -direction; // because the direction on the turret/OneTurretBarrel Prefabb is facing the oppisite way of the barrel
 
             //make the rotation point towards the player
-            Quaternion lookRotation = Quaternion.LookRotation(directionOfThePlayer);
+            Quaternion lookRotation = transform.rotation = Quaternion.LookRotation(direction);
 
             // Rotate the turret smoothly towards the player. .Slept = makes a smooth rotation. 
-            // Time.deltatime = the time that has passed in seconds since last frame
-            transform.rotation =
-                Quaternion.Slerp(transform.rotation, lookRotation,
-                    Time.deltaTime * rotationAndTurnSpeed); // Adjust speed as needed
+             // Time.deltatime = the time that has passed in seconds since last frame
+             transform.rotation =
+                 Quaternion.Slerp(transform.rotation, lookRotation,
+                     Time.deltaTime * rotationAndTurnSpeed); // Adjust speed as needed
         }
     }
 }

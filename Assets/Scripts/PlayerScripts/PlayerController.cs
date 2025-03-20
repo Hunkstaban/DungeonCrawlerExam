@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        volume.weight = 0;
+        if (volume) volume.weight = 0;
     }
 
     // comment

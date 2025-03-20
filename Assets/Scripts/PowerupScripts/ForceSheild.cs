@@ -72,7 +72,7 @@ public class ForceSheild : TimedPowerUp
     {
         if (forceSheildInstantiate != null)
         {
-            audioSource.Stop();
+            // audioSource.Stop();
             Destroy(forceSheildInstantiate); // Destroy the shield when deactivating the power-up
             Debug.Log("Force Sheild Deactivated");
         }

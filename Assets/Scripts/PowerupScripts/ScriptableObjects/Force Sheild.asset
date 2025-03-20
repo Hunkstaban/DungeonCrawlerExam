@@ -18,4 +18,4 @@ MonoBehaviour:
   forceSheildSize: 1.3
   sheildPushForce: 1000
   shieldOffset: {x: 0, y: 0, z: 0}
-  forceSheildActivateSound: {fileID: 8300000, guid: 35664b9b5bf2d2c499acacb7aa3ac4fd, type: 3}
+  forceSheildActivateSound: {fileID: 0}

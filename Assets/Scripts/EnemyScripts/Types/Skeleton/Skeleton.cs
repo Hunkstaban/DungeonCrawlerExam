@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Skeleton : Enemy
 {
@@ -19,6 +21,15 @@ public class Skeleton : Enemy
     private bool isChasing = false;
 
     public Collider wanderZone;
+
+    private void Start()
+    {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        }
+    }
+
     protected override void Update()
     {
         if (!isChasing)
@@ -56,6 +67,8 @@ public class Skeleton : Enemy
     
     void HandleMovementAndAttack()
     {
+        if (player == null) return;
+        
         float distance = Vector3.Distance(player.position, transform.position);
 
         if (distance < attackRange)

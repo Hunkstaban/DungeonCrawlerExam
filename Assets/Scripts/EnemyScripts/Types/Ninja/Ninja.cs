@@ -37,6 +37,12 @@ public class Ninja : Enemy
 
     void HandleMovementAndAttack()
     {
+        if (player == null) // 🔹 Prevents the error if the player is destroyed
+        {
+            agent.isStopped = true;
+            return;
+        }
+        
         float distance = Vector3.Distance(player.position, transform.position);
         Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
 

@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 4377571241313729778}
   - component: {fileID: 7052987067583621701}
   - component: {fileID: 2183886290193471957}
-  - component: {fileID: 4302679952437075535}
+  - component: {fileID: 7470575237523412556}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -482,16 +482,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0d3877d908fb549b46ae1362c17c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   jumpForce: 5
   camContainer: {fileID: 5223643422549703087}
   targetPoint: {fileID: 2334234910764496594}
-  weaponPos: {fileID: 0}
+  weaponPos: {fileID: 5957087251503423732}
   volume: {fileID: 0}
   slider: {fileID: 0}
   healthHUDNumber: {fileID: 0}
   maxHealth: 100
---- !u!114 &4302679952437075535
+--- !u!114 &7470575237523412556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

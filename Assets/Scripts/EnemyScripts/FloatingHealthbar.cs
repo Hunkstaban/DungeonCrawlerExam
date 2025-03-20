@@ -36,6 +36,11 @@ public class FloatingHealthbar : MonoBehaviour
         transform.position = target.position + offset;
     }
 
+    public void DestroyHealthbar()
+    {
+        Destroy(this);
+    }
+
     private void OnDrawGizmos()
     {
         if (target == null) return;

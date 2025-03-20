@@ -2929,10 +2929,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2183886290193471957, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2183886290193471957, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
       propertyPath: slider
       value: 
       objectReference: {fileID: 1267204120}
@@ -3000,6 +2996,94 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: powerUpSelected
+      value: 
+      objectReference: {fileID: 646999841}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: powerUpOverlayText
+      value: 
+      objectReference: {fileID: 799389140}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpIcons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1346994297}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpIcons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1162937246}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpIcons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 74098810}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpIcons.Array.data[3]'
+      value: 
+      objectReference: {fileID: 202099271}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpSlots.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2132279106}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpSlots.Array.data[1]'
+      value: 
+      objectReference: {fileID: 717903964}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpSlots.Array.data[2]'
+      value: 
+      objectReference: {fileID: 506544155}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpSlots.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1584034966}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownBg.Array.data[0]'
+      value: 
+      objectReference: {fileID: 428990711}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownBg.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1429106246}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownBg.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1141887779}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownBg.Array.data[3]'
+      value: 
+      objectReference: {fileID: 420486940}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpAmountOverlay.Array.data[0]'
+      value: 
+      objectReference: {fileID: 212891448}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpAmountOverlay.Array.data[1]'
+      value: 
+      objectReference: {fileID: 614270502}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpAmountOverlay.Array.data[2]'
+      value: 
+      objectReference: {fileID: 216128757}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpAmountOverlay.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2056294247}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownText.Array.data[0]'
+      value: 
+      objectReference: {fileID: 370621657}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownText.Array.data[1]'
+      value: 
+      objectReference: {fileID: 424593250}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownText.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1175161160}
+    - target: {fileID: 7470575237523412556, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+      propertyPath: 'powerUpCountdownText.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1736797985}
     - target: {fileID: 8831467473166231172, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3019,55 +3103,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8547200871159492982, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1511134460}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
---- !u!1 &1511134459 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8547200871159492982, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
-  m_PrefabInstance: {fileID: 1511134458}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1511134460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511134459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f13096bdb4919941894dd2082de4d0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpSlots:
-  - {fileID: 2132279106}
-  - {fileID: 717903964}
-  - {fileID: 506544155}
-  - {fileID: 1584034966}
-  powerUpIcons:
-  - {fileID: 1346994297}
-  - {fileID: 1162937246}
-  - {fileID: 74098810}
-  - {fileID: 202099271}
-  powerUpAmountOverlay:
-  - {fileID: 212891448}
-  - {fileID: 614270502}
-  - {fileID: 216128757}
-  - {fileID: 2056294247}
-  powerUpCountdownBg:
-  - {fileID: 428990711}
-  - {fileID: 1429106246}
-  - {fileID: 1141887779}
-  - {fileID: 420486940}
-  powerUpCountdownText:
-  - {fileID: 370621657}
-  - {fileID: 424593250}
-  - {fileID: 1175161160}
-  - {fileID: 1736797985}
-  powerUpOverlayText: {fileID: 799389140}
-  powerUpSelected: {fileID: 646999841}
 --- !u!1 &1553153529
 GameObject:
   m_ObjectHideFlags: 0

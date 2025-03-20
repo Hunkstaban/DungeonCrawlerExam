@@ -116,7 +116,7 @@ public class GunTurretOneBarrel : Enemy
 
             direction.y = 0; // Keep the turret from rotating vertically
 
-            direction = -direction; // because the direction on the turret/OneTurretBarrel Prefabb is facing the oppisite way of the barrel
+            direction = -direction; // because the direction on the turret/OneTurretBarrel Prefabb is facing the opposite way of the barrel
 
             //make the rotation point towards the player
             Quaternion lookRotation = transform.rotation = Quaternion.LookRotation(direction);

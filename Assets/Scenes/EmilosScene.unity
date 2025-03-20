@@ -5467,7 +5467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rooms:
   - {fileID: 2892458942893947320, guid: e29b7deaf9910bd439ac071b2f630d6c, type: 3}
-  - {fileID: 0}
+  - {fileID: 2892458942893947320, guid: 838317ef031f8d340badf5a9d594a90d, type: 3}
   startRoom: {fileID: 2892458942893947320, guid: e29b7deaf9910bd439ac071b2f630d6c, type: 3}
   backRoom: {fileID: 0}
   middleRoom: {fileID: 0}

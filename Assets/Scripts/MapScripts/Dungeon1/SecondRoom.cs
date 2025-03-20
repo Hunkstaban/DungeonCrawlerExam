@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,11 @@ public class SecondRoom : MonoBehaviour
     public Animator summoningCircleAnimator;
     public RockGolem rockGolem; // Reference to the pre-placed Golem
     public GameObject summoningCircle;
-    public Animator exitAnimator;
+    
+    public Animator exitDoorAnimator;
+
+    [SerializeField] private GameObject leftLight;
+    [SerializeField] private GameObject rightLight;
 
     private int currentEnemies = 0;
 
@@ -35,11 +40,12 @@ public class SecondRoom : MonoBehaviour
         enemies.Remove(deadEnemy);
         currentEnemies--;
 
-        if (deadEnemy == rockGolem) // Check if the RockGolem is the one who died
+        if (deadEnemy == rockGolem) 
         {
-            Debug.Log("RockGolem died! Triggering exit animation.");
-            exitAnimator.SetTrigger("Open");
-            Debug.Log("Exit animation triggered.");
+            
+            exitDoorAnimator.SetTrigger("Open");
+            leftLight.SetActive(true);
+            rightLight.SetActive(true);
             return;
         }
 
@@ -51,4 +57,24 @@ public class SecondRoom : MonoBehaviour
             rockGolem.StartSpawning(); // Play spawn animation
         }
     }
+    
+    // private IEnumerator SlideExitDoor()
+    // {
+    //     Vector3 startPosition = exitDoor.transform.position;
+    //     Vector3 targetPosition = startPosition + new Vector3(0, 0, 5); // Adjust the Z-axis movement
+    //
+    //     float duration = 2f; 
+    //     float elapsedTime = 0f;
+    //
+    //     while (elapsedTime < duration)
+    //     {
+    //         float t = elapsedTime / duration;
+    //         exitDoor.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+    //         elapsedTime += Time.deltaTime;
+    //         yield return null;
+    //     }
+    //
+    //     exitDoor.transform.position = targetPosition; 
+    //     Debug.Log("Door has moved to: " + exitDoor.transform.position);
+    // }
 }

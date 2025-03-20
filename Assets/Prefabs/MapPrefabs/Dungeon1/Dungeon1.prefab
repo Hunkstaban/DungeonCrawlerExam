@@ -430,6 +430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7207219138645403686}
+  - component: {fileID: 814151695960253935}
   m_Layer: 0
   m_Name: Room1
   m_TagString: Untagged
@@ -461,6 +462,24 @@ Transform:
   - {fileID: 6583892639346940458}
   m_Father: {fileID: 974790445209640326}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &814151695960253935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2490136572916750948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0287a43d3d17c41a8c6c6120ab0e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSpawn:
+  - {fileID: 7840440204409974469, guid: 8b508faf306e64d4d8ee080d82f9e7a1, type: 3}
+  - {fileID: 1303536894079378498, guid: 46695993132a36b4a9735e24cb86f943, type: 3}
+  - {fileID: 7130378694428292415, guid: 6e93d77536d8feb48958361da4c8efc0, type: 3}
+  - {fileID: 7840440204409974469, guid: a34d7ce5c82d8e244b16e7b4a56d7aa6, type: 3}
+  groundTag: Ground
 --- !u!1 &3454339492660419400
 GameObject:
   m_ObjectHideFlags: 0
@@ -6272,6 +6291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9213452220757312465}
+  - component: {fileID: 1918029249517954357}
   m_Layer: 0
   m_Name: Room2
   m_TagString: Untagged
@@ -6310,6 +6330,24 @@ Transform:
   - {fileID: 5872575675180509102}
   m_Father: {fileID: 974790445209640326}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1918029249517954357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521427434153889576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0287a43d3d17c41a8c6c6120ab0e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSpawn:
+  - {fileID: 7028143353387510826, guid: 6801369cbd0bd8f41bb5244a3db5bdd1, type: 3}
+  - {fileID: 519974796596659617, guid: 996928e6bd7f53b4c922c5099f203847, type: 3}
+  - {fileID: 7840440204409974469, guid: 8b508faf306e64d4d8ee080d82f9e7a1, type: 3}
+  - {fileID: 1303536894079378498, guid: 46695993132a36b4a9735e24cb86f943, type: 3}
+  groundTag: Ground
 --- !u!1 &8130520540978722572
 GameObject:
   m_ObjectHideFlags: 0
@@ -11784,7 +11822,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7564636611156017616, guid: e7a79a14190d3d34f93236ba7164d734, type: 3}
       propertyPath: m_Name
-      value: Floor_Flat (1)
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564636611156017616, guid: e7a79a14190d3d34f93236ba7164d734, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8378305016021551963, guid: e7a79a14190d3d34f93236ba7164d734, type: 3}
       propertyPath: m_LocalScale.x
@@ -12274,7 +12316,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7564636611156017616, guid: e7a79a14190d3d34f93236ba7164d734, type: 3}
       propertyPath: m_Name
-      value: Floor_Flat
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564636611156017616, guid: e7a79a14190d3d34f93236ba7164d734, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 8328509268577167364, guid: e7a79a14190d3d34f93236ba7164d734, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8378305016021551963, guid: e7a79a14190d3d34f93236ba7164d734, type: 3}
       propertyPath: m_LocalScale.x

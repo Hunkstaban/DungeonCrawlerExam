@@ -38,8 +38,9 @@ public class UpgradeMenuController : MonoBehaviour
 
     private void UpdateUI()
     {
-        // Update the total coins display
+        // Update the total coins and room record display
         totalCoinsText.text = $"{GameManager.Instance.playerData.coinBalance}";
+        roomRecordText.text = $"{GameManager.Instance.playerData.roomRecord}";
 
         // Update the current levels
         healthCurrentLevelText.text = $"{GameManager.Instance.playerData.healthLevel}";

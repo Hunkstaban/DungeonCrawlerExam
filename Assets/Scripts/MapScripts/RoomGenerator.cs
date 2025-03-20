@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
-
     public List<MapSegment> rooms;
 
     public MapSegment startRoom;
-    
-     public MapSegment backRoom;
-     public MapSegment middleRoom;
-     public MapSegment frontRoom;
-     
-     // [HideInInspector]
+
+    public MapSegment backRoom;
+    public MapSegment middleRoom;
+    public MapSegment frontRoom;
+
+    // [HideInInspector]
 
     private static bool hasStarted = false;
     
@@ -50,6 +49,7 @@ public class RoomGenerator : MonoBehaviour
                 return renderer.bounds.size.z; // Use bounds instead of localScale
             }
         }
+        
         return 0f;
     }
     

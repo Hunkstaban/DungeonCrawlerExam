@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     
     public PlayerData playerData;
     
+    private int roomsCleared = 0;
+    private PlayerController player;
+    
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -17,6 +20,7 @@ public class GameManager : MonoBehaviour
         
         _instance = this;
         DontDestroyOnLoad(gameObject);
+        player = FindFirstObjectByType<PlayerController>();
         
         // Load data immediately when the GameManager initializes
         LoadData();
@@ -52,8 +56,13 @@ public class GameManager : MonoBehaviour
     }
     
     // Update room record if current is higher
-    public void UpdateRoomRecord(int roomsCleared)
+    public void UpdateRoomRecord()
     {
+        if (player == null) player = FindFirstObjectByType<PlayerController>();
+
+        roomsCleared++;
+        player.SetRoomsClearedText(roomsCleared);
+        
         if (roomsCleared > playerData.roomRecord)
         {
             playerData.roomRecord = roomsCleared;

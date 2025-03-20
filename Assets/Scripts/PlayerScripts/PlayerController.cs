@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI healthHUDNumber;
     [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private TextMeshProUGUI roomsCleared;
     private float currentHealth;
     
     public float CurrentHealth
@@ -136,4 +137,9 @@ public class PlayerController : MonoBehaviour
     public void SetMaxHealth(float newMaxHealth) => maxHealth = newMaxHealth;
     
     public void SetCurrentHealth(float health) => CurrentHealth = health;
+
+    public void SetRoomsClearedText(int level)
+    {
+        roomsCleared.SetText(level.ToString());
+    }
 }

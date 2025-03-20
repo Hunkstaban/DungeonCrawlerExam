@@ -17,6 +17,8 @@ public class ExitCollider : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            GameManager.Instance.UpdateRoomRecord();
+            
             var frontRoom = roomGenerator.GetFrontRoom();
             var middleRoom = roomGenerator.GetMiddleRoom();
 

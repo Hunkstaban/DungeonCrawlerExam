@@ -14,7 +14,7 @@ public abstract class Enemy : MonoBehaviour
 
     [SerializeField] protected GameObject coinPrefab;
 
-    [SerializeField] private FloatingHealthbar healthbar;
+    private FloatingHealthbar healthbar;
     private int maxHealth;
     
     
@@ -61,10 +61,11 @@ public abstract class Enemy : MonoBehaviour
     
     private void Die()
     {
+        healthbar.DestroyHealthbar();
         Debug.Log(name + " is invoking OnDeath!");
         OnDeath?.Invoke(this);
         
-        if (agent != null)
+        if (agent != null && agent.isOnNavMesh)
         {
             agent.isStopped = true;
             agent.enabled = false;

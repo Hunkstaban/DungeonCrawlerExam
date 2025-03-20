@@ -23,7 +23,10 @@ public class CinemaCam : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        if (player == null)
+        {
+            return;
+        }
         
         lookInput = Mouse.current.delta.ReadValue() * sensitivity * Time.deltaTime;
        

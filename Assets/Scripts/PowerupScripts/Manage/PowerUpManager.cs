@@ -14,10 +14,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] powerUpAmountOverlay;
     [SerializeField] private Image[] powerUpCountdownBg;
     [SerializeField] private TextMeshProUGUI[] powerUpCountdownText;
-
-    [SerializeField] private TextMeshProUGUI powerUpOverlayText;
-    [SerializeField] private TextMeshProUGUI powerUpSelected;
-
+    
     private static int inventorySize = 4;
     private PowerUp[] powerUpInventory = new PowerUp[inventorySize];
     private int[] powerUpCounts = new int[inventorySize];
@@ -32,8 +29,6 @@ public class PowerUpManager : MonoBehaviour
         UpdateUI();
         player = GetComponent<PlayerController>();
         if (player == null) Debug.LogError("PlayerController reference missing on the player!");
-        powerUpOverlayText.SetText("Collected: ");
-        powerUpSelected.SetText("Selected: " + selectedIndex);
 
         for (int i = 0; i < powerUpCountdownText.Length; i++)
         {
@@ -173,7 +168,6 @@ public class PowerUpManager : MonoBehaviour
     {
         HandleSelectedInput();
         if (Input.GetKeyDown(KeyCode.G)) UseSelectedItem();
-        powerUpSelected.SetText("Selected: " + selectedIndex);
     }
 
     private void HandleSelectedInput()

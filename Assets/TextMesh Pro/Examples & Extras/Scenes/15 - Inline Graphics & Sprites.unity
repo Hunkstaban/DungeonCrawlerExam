@@ -166,7 +166,6 @@ MonoBehaviour:
   m_sharedMaterial: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
   m_fontSharedMaterials:
   - {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
-  - {fileID: 2102322, guid: fbef3c704dce48f08a44612d6c856c8d, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:

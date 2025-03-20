@@ -29,7 +29,7 @@ public class PlayerData
         speedLevel = 1;
         equippedWeapon = "Sword";
         roomRecord = 0;
-        coinBalance = 1000;
+        coinBalance = 100;
 
         equippedWeapon = "Sword"; // Default starting weapon
         unlockedWeapons = new List<string> { "Sword" }; // Start with just the sword

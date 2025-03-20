@@ -77,7 +77,7 @@ public class GunTurretOneBarrel : Enemy
         }
 
         GameObject bulletMiddle = _bulletPoolForBigTurrets.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
-        Debug.Log("Instantiate the middle bullet");
+        Debug.Log("Instantiate a bullet the middle barrel from the big turret");
      
         
         Vector3 direction = firePointMiddle.forward.normalized; // .normalized makes the direction from the turret to the player become vector 1. no matter the distance between them. more easy to use in the furture 
@@ -96,8 +96,15 @@ public class GunTurretOneBarrel : Enemy
 
     private void RotateTowardsPlayer()
     {
+
+        if (player != null)
+        {
+       
+
         // the directions from the turret to the player. (Where should the turret look for the player. )
        Vector3 directionOfThePlayer = player.position - transform.position; // transform. refere to this.object (GunTurretOneBarrel)
+       
+       directionOfThePlayer.y = 0;  // Keep the turret from rotating vertically
        
        //make the rotation point towards the player
        Quaternion lookRotation = Quaternion.LookRotation(directionOfThePlayer);
@@ -106,5 +113,7 @@ public class GunTurretOneBarrel : Enemy
        // Time.deltatime = the time that has passed in seconds since last frame
        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationAndTurnSpeed); // Adjust speed as needed
        
+    }
+        
     }
 }

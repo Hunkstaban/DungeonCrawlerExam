@@ -387,6 +387,8 @@ MonoBehaviour:
   rockGolem: {fileID: 991811091481124095}
   summoningCircle: {fileID: 2130380935779204023}
   exitDoorAnimator: {fileID: 0}
+  leftLight: {fileID: 0}
+  rightLight: {fileID: 0}
 --- !u!1 &1826724053665424668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,7 +5793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1504654248029572109
 Transform:
   m_ObjectHideFlags: 0
@@ -6029,7 +6031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &297637255721254733
 Transform:
   m_ObjectHideFlags: 0
@@ -6108,6 +6110,8 @@ MonoBehaviour:
   rockGolem: {fileID: 991811091481124095}
   summoningCircle: {fileID: 2130380935779204023}
   exitDoorAnimator: {fileID: 1170803623925201157}
+  leftLight: {fileID: 5585229149732661960}
+  rightLight: {fileID: 5099444971183292680}
 --- !u!1 &6265281818921835102
 GameObject:
   m_ObjectHideFlags: 0

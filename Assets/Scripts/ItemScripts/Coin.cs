@@ -5,9 +5,11 @@ public class Coin : MonoBehaviour
 {
 
     private PlayerController player;
+    
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        
     }
     
     private void Update()
@@ -29,6 +31,7 @@ public class Coin : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < 1)
         {
             // 6. Destroy the coin
+            GameManager.Instance.AddCoins(1);
             Destroy(gameObject);
         }
         

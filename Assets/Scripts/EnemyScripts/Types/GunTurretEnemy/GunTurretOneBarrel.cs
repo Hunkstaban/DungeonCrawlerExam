@@ -14,7 +14,7 @@ public class GunTurretOneBarrel : Enemy
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int bulletDamage = 10;
-    [FormerlySerializedAs("bulletPool")] [SerializeField]private BulletPoolForTurrets bulletPoolForTurrets;
+    [SerializeField] private BulletPoolForBigTurrets _bulletPoolForBigTurrets;
     
     [Header("Player Tracking")]
     [SerializeField] private float rotationAndTurnSpeed = 5f;
@@ -32,7 +32,7 @@ public class GunTurretOneBarrel : Enemy
     private void SetNewBulletDmg(GameObject bullet)
     {
         // Get the TurretBullet component on the bullet and set its damage
-        TurretBullet turretBullet = bullet.GetComponent<TurretBullet>();
+        TurretBulletForBigTurret turretBullet = bullet.GetComponent<TurretBulletForBigTurret>();
         if (turretBullet != null)
         {
             turretBullet.SetDamage(bulletDamage);
@@ -76,7 +76,7 @@ public class GunTurretOneBarrel : Enemy
         {
         }
 
-        GameObject bulletMiddle = bulletPoolForTurrets.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
+        GameObject bulletMiddle = _bulletPoolForBigTurrets.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
         Debug.Log("Instantiate the middle bullet");
      
         

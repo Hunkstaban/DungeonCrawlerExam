@@ -368,12 +368,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 0}
-  bulletPrefab: {fileID: 24950769658111907, guid: d14a46123b39662479d8e942fe9821ef, type: 3}
+  healthbar: {fileID: 0}
+  bulletPrefab: {fileID: 24950769658111907, guid: e623eec372fdb6444b9757cc3cbbd917, type: 3}
   firePointMiddle: {fileID: 1523201215257356926}
   bulletSpeed: 5
   bulletSize: 2
   bulletDamage: 30
-  bulletPool: {fileID: 2341502964327511024, guid: 71d49694b6274ea42a010424005ef841, type: 3}
+  _bulletPoolForBigTurrets: {fileID: 7515521705964438930, guid: 223c5a23d3f67b048a191500956c26f0, type: 3}
+  rotationAndTurnSpeed: 5
 --- !u!1001 &2273281299328885332
 PrefabInstance:
   m_ObjectHideFlags: 0

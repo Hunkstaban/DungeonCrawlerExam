@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class GunTurretOneBarrel : Enemy
 {
     public override int health { get; set; } = 300;
-    public override float attackRange { get; set; } = 5f;
+    public override float attackRange { get; set; } = 20f;
     public override float attackCooldown { get; set; } = 2f;
 
 
@@ -15,9 +15,9 @@ public class GunTurretOneBarrel : Enemy
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int bulletDamage = 10;
     [SerializeField] private BulletPoolForBigTurrets _bulletPoolForBigTurrets;
-    
-    [Header("Player Tracking")]
-    [SerializeField] private float rotationAndTurnSpeed = 5f;
+
+    [Header("Player Tracking")] [SerializeField]
+    private float rotationAndTurnSpeed = 5f;
 
     private float lastTimeAttacked; // a variable for seconds for last time the turret attacked 
 
@@ -47,21 +47,24 @@ public class GunTurretOneBarrel : Enemy
     {
         bulletPrefab.gameObject.transform.localScale = transform.localScale * bulletSize;
     }
+
     protected override void Update()
     {
-        
-        RotateTowardsPlayer();
-        
-        // set the new size on the Bullet 
-        SetNewBulletTransform();
-        SetNewBulletDmg(bulletPrefab);
-        // Time.time: This is a Unity function that returns the time (in seconds)
-        // Time.time is all the seconds that have passed since the game started. 
-        if (Time.time - lastTimeAttacked >= attackCooldown)
+        if (player == null) return;
+
+        if (player != null)
         {
-            // Coroutines in Unity allow asynchronous execution of code over time without blocking the main thread
-            StartCoroutine(Attack());
-            Debug.Log("StartCouroutine is calling Attack");
+            RotateTowardsPlayer();
+            
+            SetNewBulletDmg(bulletPrefab);
+            // Time.time: This is a Unity function that returns the time (in seconds)
+            // Time.time is all the seconds that have passed since the game started. 
+            if (Time.time - lastTimeAttacked >= attackCooldown)
+            {
+                // Coroutines in Unity allow asynchronous execution of code over time without blocking the main thread
+                StartCoroutine(Attack());
+                Debug.Log("StartCouroutine is calling Attack");
+            }
         }
     }
 
@@ -76,16 +79,19 @@ public class GunTurretOneBarrel : Enemy
         {
         }
 
-        GameObject bulletMiddle = _bulletPoolForBigTurrets.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
+        GameObject bulletMiddle =
+            _bulletPoolForBigTurrets.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
         Debug.Log("Instantiate a bullet the middle barrel from the big turret");
-     
-        
-        Vector3 direction = firePointMiddle.forward.normalized; // .normalized makes the direction from the turret to the player become vector 1. no matter the distance between them. more easy to use in the furture 
-        
-        Rigidbody rigidBodyBulletMiddle = bulletMiddle.GetComponent<Rigidbody>();
-        
 
-        if ( rigidBodyBulletMiddle != null)
+
+        Vector3
+            direction = firePointMiddle.forward
+                .normalized; // .normalized makes the direction from the turret to the player become vector 1. no matter the distance between them. more easy to use in the furture 
+
+        Rigidbody rigidBodyBulletMiddle = bulletMiddle.GetComponent<Rigidbody>();
+
+
+        if (rigidBodyBulletMiddle != null)
         {
             rigidBodyBulletMiddle.AddForce(direction * bulletSpeed, ForceMode.Impulse);
         }
@@ -96,24 +102,30 @@ public class GunTurretOneBarrel : Enemy
 
     private void RotateTowardsPlayer()
     {
-
-        if (player != null)
+        float distance = Vector3.Distance(player.position, transform.position);
+        if (distance <= attackRange)
         {
-       
+            if (player != null)
 
-        // the directions from the turret to the player. (Where should the turret look for the player. )
-       Vector3 directionOfThePlayer = player.position - transform.position; // transform. refere to this.object (GunTurretOneBarrel)
-       
-       directionOfThePlayer.y = 0;  // Keep the turret from rotating vertically
-       
-       //make the rotation point towards the player
-       Quaternion lookRotation = Quaternion.LookRotation(directionOfThePlayer);
-       
-       // Rotate the turret smoothly towards the player. .Slept = makes a smooth rotation. 
-       // Time.deltatime = the time that has passed in seconds since last frame
-       transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationAndTurnSpeed); // Adjust speed as needed
-       
-    }
-        
+                // set the new size on the Bullet 
+                SetNewBulletTransform();
+
+            // the directions from the turret to the player. (Where should the turret look for the player. )
+            Vector3 direction =
+                player.position - transform.position; // transform. refere to this.object (GunTurretOneBarrel)
+
+            direction.y = 0; // Keep the turret from rotating vertically
+
+            direction = -direction; // because the direction on the turret/OneTurretBarrel Prefabb is facing the opposite way of the barrel
+
+            //make the rotation point towards the player
+            Quaternion lookRotation = transform.rotation = Quaternion.LookRotation(direction);
+
+            // Rotate the turret smoothly towards the player. .Slept = makes a smooth rotation. 
+             // Time.deltatime = the time that has passed in seconds since last frame
+             transform.rotation =
+                 Quaternion.Slerp(transform.rotation, lookRotation,
+                     Time.deltaTime * rotationAndTurnSpeed); // Adjust speed as needed
+        }
     }
 }

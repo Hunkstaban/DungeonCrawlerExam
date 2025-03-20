@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 {
     
     private Rigidbody rb;
-    public float speed = 5f;
+    public float speed = 7f;
     public float jumpForce = 5f;
     public Transform camContainer; // Follows camera's horizontal rotation
     
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public IWeapon equippedWeapon;
+    public string selectedCosmetic;
     [SerializeField] private Transform weaponPos;
     public Transform GetWeaponPos => weaponPos;
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthHUDNumber;
     [SerializeField] private float maxHealth = 100f;
     private float currentHealth;
+    
     public float CurrentHealth
     {
         get => currentHealth;
@@ -44,10 +46,8 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        CurrentHealth = 100f;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        Debug.Log("Current Health: " + CurrentHealth);
         volume.weight = 0;
     }
 
@@ -132,4 +132,8 @@ public class PlayerController : MonoBehaviour
         CurrentHealth += amount;
         Debug.Log(CurrentHealth);
     }
+    
+    public void SetMaxHealth(float newMaxHealth) => maxHealth = newMaxHealth;
+    
+    public void SetCurrentHealth(float health) => CurrentHealth = health;
 }

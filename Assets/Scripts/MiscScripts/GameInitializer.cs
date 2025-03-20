@@ -63,7 +63,7 @@ public class GameInitializer : MonoBehaviour
         int speedLevel = GameManager.Instance.playerData.speedLevel;
         if (speedLevel > 1)
         {
-            player.speed += (speedLevel * 5f); // Assuming 0.5 speed per level
+            player.speed += (speedLevel * 0.5f); // Assuming 0.5 speed per level
         }
         Debug.Log("Speed is " + player.speed);
         

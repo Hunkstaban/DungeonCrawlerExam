@@ -7,24 +7,32 @@ public class GunTurretOneBarrel : Enemy
     public override int health { get; set; } = 300;
     public override float attackRange { get; set; } = 5f;
     public override float attackCooldown { get; set; } = 2f;
-    
-    
+
 
     [Header("Bullet")] [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePointMiddle;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int bulletDamage = 10;
-    [SerializeField]private BulletPool bulletPool;
+    [SerializeField] private BulletPoolForBigTurrets _bulletPoolForBigTurrets;
+    
+    [Header("Player Tracking")]
+    [SerializeField] private float rotationAndTurnSpeed = 5f;
 
     private float lastTimeAttacked; // a variable for seconds for last time the turret attacked 
 
+    private Transform player; // reference to the player. so we can shoot with the tag "Player" is 
 
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    }
 
     private void SetNewBulletDmg(GameObject bullet)
     {
         // Get the TurretBullet component on the bullet and set its damage
-        TurretBullet turretBullet = bullet.GetComponent<TurretBullet>();
+        TurretBulletForBigTurret turretBullet = bullet.GetComponent<TurretBulletForBigTurret>();
         if (turretBullet != null)
         {
             turretBullet.SetDamage(bulletDamage);
@@ -41,6 +49,8 @@ public class GunTurretOneBarrel : Enemy
     }
     protected override void Update()
     {
+        
+        RotateTowardsPlayer();
         
         // set the new size on the Bullet 
         SetNewBulletTransform();
@@ -66,11 +76,11 @@ public class GunTurretOneBarrel : Enemy
         {
         }
 
-        GameObject bulletMiddle = bulletPool.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
-        Debug.Log("Instantiate the middle bullet");
+        GameObject bulletMiddle = _bulletPoolForBigTurrets.GetBullet(firePointMiddle.position, firePointMiddle.rotation);
+        Debug.Log("Instantiate a bullet the middle barrel from the big turret");
      
         
-        Vector3 direction = firePointMiddle.forward;
+        Vector3 direction = firePointMiddle.forward.normalized; // .normalized makes the direction from the turret to the player become vector 1. no matter the distance between them. more easy to use in the furture 
         
         Rigidbody rigidBodyBulletMiddle = bulletMiddle.GetComponent<Rigidbody>();
         
@@ -81,5 +91,29 @@ public class GunTurretOneBarrel : Enemy
         }
 
         yield return null;
+    }
+
+
+    private void RotateTowardsPlayer()
+    {
+
+        if (player != null)
+        {
+       
+
+        // the directions from the turret to the player. (Where should the turret look for the player. )
+       Vector3 directionOfThePlayer = player.position - transform.position; // transform. refere to this.object (GunTurretOneBarrel)
+       
+       directionOfThePlayer.y = 0;  // Keep the turret from rotating vertically
+       
+       //make the rotation point towards the player
+       Quaternion lookRotation = Quaternion.LookRotation(directionOfThePlayer);
+       
+       // Rotate the turret smoothly towards the player. .Slept = makes a smooth rotation. 
+       // Time.deltatime = the time that has passed in seconds since last frame
+       transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationAndTurnSpeed); // Adjust speed as needed
+       
+    }
+        
     }
 }

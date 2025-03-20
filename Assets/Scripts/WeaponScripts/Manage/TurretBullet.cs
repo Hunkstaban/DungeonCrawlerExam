@@ -10,7 +10,8 @@ public class TurretBullet : MonoBehaviour, IProjectile
 
     [SerializeField] private int damage = 10;
     
-    private BulletPool bulletPool;
+    private BulletPoolForTurrets _bulletPoolForTurrets;
+  
  
 
     private void OnCollisionEnter(Collision collision)
@@ -36,21 +37,21 @@ public class TurretBullet : MonoBehaviour, IProjectile
                 {
                     player.TakeDamage(damage);
                     
-                    bulletPool.ReturnBullet(gameObject); // instead of destroy. we return the bullet to the pool
+                    _bulletPoolForTurrets.ReturnBullet(gameObject); // instead of destroy. we return the bullet to the pool
                 }
             }
         }
     }
 
 
-    public void SetBulletPool(BulletPool pool)
+    public void SetBulletPool(BulletPoolForTurrets poolForTurrets)
     {
-        bulletPool = pool;
+        _bulletPoolForTurrets = poolForTurrets;
     }
 
     private void Deactivate()
     {
-        bulletPool.ReturnBullet(gameObject); // returns the bullet to the pool
+        _bulletPoolForTurrets.ReturnBullet(gameObject); // returns the bullet to the pool
     }
 
     // Coroutine that waits for 5 seconds and then returns the bullet to the pool
@@ -66,9 +67,9 @@ public class TurretBullet : MonoBehaviour, IProjectile
     // return the bullet to the pool
     private void ReturnBulletToPool()
     {
-        if (bulletPool != null)
+        if (_bulletPoolForTurrets != null)
         {
-            bulletPool.ReturnBullet(gameObject); // Deactivate and return to the pool
+            _bulletPoolForTurrets.ReturnBullet(gameObject); // Deactivate and return to the pool
         }
     }
 

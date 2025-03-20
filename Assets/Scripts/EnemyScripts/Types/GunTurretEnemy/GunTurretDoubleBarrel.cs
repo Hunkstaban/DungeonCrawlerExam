@@ -16,7 +16,10 @@ public class GunTurretDoubleBarrel : Enemy
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int bulletDamage = 10;
-    [SerializeField]private BulletPool bulletPool;
+    [SerializeField] private BulletPoolForTurrets bulletPoolForTurrets;
+
+    private GameObject bulletRight;
+    private GameObject bulletLeft;
 
     private float lastTimeAttacked; // a variable for seconds for last time the turret attacked 
 
@@ -37,7 +40,8 @@ public class GunTurretDoubleBarrel : Enemy
 
     private void SetNewBulletTransform()
     {
-        bulletPrefab.gameObject.transform.localScale = transform.localScale * bulletSize;
+        // bulletPrefab.gameObject.transform.localScale = transform.localScale * bulletSize; // (Forkert) Transform er transform a dette objekt (GunTurret)
+        bulletPrefab.transform.localScale *= bulletSize; // Nu ganger den bulletSize til bullet prefab.
     }
 
     protected override void Update()
@@ -64,10 +68,10 @@ public class GunTurretDoubleBarrel : Enemy
         
         // Get bullets from the pool instead of instantiating directly
         // instantiate the bulletPrefab where the firepointPrefab is
-        GameObject bulletRight = bulletPool.GetBullet(firePointRight.position, firePointRight.rotation);
+        bulletRight = bulletPoolForTurrets.GetBullet(firePointRight.position, firePointRight.rotation);
         // GameObject bulletRight1 = Instantiate(bulletPrefab, firePointRight.position, firePointRight.rotation);
         Debug.Log("Instantiate the right bullet");
-        GameObject bulletLeft = bulletPool.GetBullet(firePointLeft.position, firePointLeft.rotation);
+        bulletLeft = bulletPoolForTurrets.GetBullet(firePointLeft.position, firePointLeft.rotation);
         // GameObject bulletLeft = Instantiate(bulletPrefab, firePointLeft.position, firePointLeft.rotation);
         Debug.Log("Instantiate the right bullet");
 

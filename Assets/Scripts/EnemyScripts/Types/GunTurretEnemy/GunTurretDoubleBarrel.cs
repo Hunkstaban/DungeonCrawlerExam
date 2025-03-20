@@ -23,6 +23,10 @@ public class GunTurretDoubleBarrel : Enemy
 
     private float lastTimeAttacked; // a variable for seconds for last time the turret attacked 
 
+    private void Awake()
+    {
+        SetNewBulletDmg(bulletPrefab);
+    }
 
     private void SetNewBulletDmg(GameObject bullet)
     {
@@ -38,17 +42,17 @@ public class GunTurretDoubleBarrel : Enemy
         }
     }
 
-    private void SetNewBulletTransform()
-    {
-        // bulletPrefab.gameObject.transform.localScale = transform.localScale * bulletSize; // (Forkert) Transform er transform a dette objekt (GunTurret)
-        bulletPrefab.transform.localScale *= bulletSize; // Nu ganger den bulletSize til bullet prefab.
-    }
+    // private void SetNewBulletTransform()
+    // {
+    //     // bulletPrefab.gameObject.transform.localScale = transform.localScale * bulletSize; // (Forkert) Transform er transform a dette objekt (GunTurret)
+    //     // bulletPrefab.transform.localScale *= bulletSize; // Nu ganger den bulletSize til bullet prefab.
+    // }
 
     protected override void Update()
     {
         // set the new size on the Bullet 
-        SetNewBulletTransform();
-        SetNewBulletDmg(bulletPrefab);
+        // SetNewBulletTransform();
+        
         // Time.time: This is a Unity function that returns the time (in seconds)
         // Time.time is all the seconds that have passed since the game started. 
         if (Time.time - lastTimeAttacked >= attackCooldown)

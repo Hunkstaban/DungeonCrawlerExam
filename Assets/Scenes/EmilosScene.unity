@@ -7782,6 +7782,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1307408349}
+    - target: {fileID: 4251847283337311148, guid: e29b7deaf9910bd439ac071b2f630d6c, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 24950769658111907, guid: e623eec372fdb6444b9757cc3cbbd917, type: 3}
     - target: {fileID: 5244507145047466804, guid: e29b7deaf9910bd439ac071b2f630d6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -7850,6 +7854,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1307408349}
+    - target: {fileID: 9195479234642342316, guid: e29b7deaf9910bd439ac071b2f630d6c, type: 3}
+      propertyPath: m_VersionIndex
+      value: 2940
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

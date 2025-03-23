@@ -9,6 +9,7 @@ public class TurretBullet : MonoBehaviour, IProjectile
 {
 
     [SerializeField] private int damage = 10;
+    [SerializeField] private float _lifeTime = 5f;
     
     private BulletPoolForTurrets _bulletPoolForTurrets;
   
@@ -58,7 +59,7 @@ public class TurretBullet : MonoBehaviour, IProjectile
     private IEnumerator ReturnToPoolAfterDelay()
     {
         // Wait for 5 seconds
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(_lifeTime);
 
         // After 5 seconds, return the bullet to the pool
         ReturnBulletToPool();

@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class GunTurretOneBarrel : Enemy
 {
     public override int health { get; set; } = 300;
-    public override float attackRange { get; set; } = 20f;
+    public override float attackRange { get; set; } = 50f;
     public override float attackCooldown { get; set; } = 2f;
 
 

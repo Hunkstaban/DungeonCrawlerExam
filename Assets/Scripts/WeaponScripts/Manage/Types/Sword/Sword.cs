@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour, IWeapon
 {
+    
+    [SerializeField] private AudioClip swordSound;
     public int damage = 50;
 
     public Animator animator;
@@ -36,6 +38,8 @@ public class Sword : MonoBehaviour, IWeapon
     {
         if (canAttack)
         { 
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.PlayOneShot(swordSound);
             collider.enabled = true;
             animator.SetTrigger("Attack");
         }

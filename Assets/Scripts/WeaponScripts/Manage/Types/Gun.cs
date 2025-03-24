@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour, IWeapon
 
     [SerializeField] private bool multiShotEnable = false;
     [SerializeField] private bool shotgun = false;
+    [SerializeField] private AudioClip gunshotSound;
 
     private bool shotgunAllowedToShot = true;
     
@@ -39,6 +40,8 @@ public class Gun : MonoBehaviour, IWeapon
 
     public void singleShotFire()
     {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.PlayOneShot(gunshotSound);
         GameObject bulletInstance = Instantiate(projectile, muzzle.position, muzzle.rotation);
         bulletInstance.GetComponent<Rigidbody>().AddForce(muzzle.forward * speed, ForceMode.Impulse);
         
@@ -47,8 +50,10 @@ public class Gun : MonoBehaviour, IWeapon
 
     private IEnumerator ShotgunFire()
     {
+        AudioSource audio = GetComponent<AudioSource>();
         if (shotgunAllowedToShot)
         {
+            audio.PlayOneShot(gunshotSound);
             shotgunAllowedToShot = false;
             
             Animator animator = GetComponent<Animator>();
@@ -67,6 +72,14 @@ public class Gun : MonoBehaviour, IWeapon
             {
                 GameObject bulletInstance = Instantiate(projectile, offset, muzzle.rotation);
                 bulletInstance.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
+                
+                // Set higher damage for shotgun bullets
+                Bullet bulletScript = bulletInstance.GetComponent<Bullet>();
+                if (bulletScript != null)
+                {
+                    bulletScript.SetDamage(bulletScript.GetDamage() * 5); 
+                }
+                
                 Destroy(bulletInstance, 5);
             }
 
@@ -80,6 +93,8 @@ public class Gun : MonoBehaviour, IWeapon
     
     public void multiShotFire()
     {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.PlayOneShot(gunshotSound);
         Vector3[] bulletOffsets = new Vector3[]
         {
             muzzle.position + transform.forward + transform.right * 1.0f, // Right

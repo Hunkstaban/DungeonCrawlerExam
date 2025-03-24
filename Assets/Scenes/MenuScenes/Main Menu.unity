@@ -3065,7 +3065,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 421039792}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149858847}
+        m_TargetAssemblyTypeName: UpgradeMenuController, Assembly-CSharp
+        m_MethodName: SelectWeapon
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Sword
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &421039792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3913,7 +3925,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 596853922}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149858847}
+        m_TargetAssemblyTypeName: UpgradeMenuController, Assembly-CSharp
+        m_MethodName: SelectWeapon
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Gun
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &596853922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6924,6 +6948,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5484803101989034091, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
     - {fileID: 9134296011870893193, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+    - {fileID: 8602236401826097352, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
+    - {fileID: 5289552744561146873, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6139634530459258998, guid: 668bee967ff043c42a782cb37f8ee261, type: 3}
       insertIndex: -1
@@ -7480,7 +7506,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187594347}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149858847}
+        m_TargetAssemblyTypeName: UpgradeMenuController, Assembly-CSharp
+        m_MethodName: SelectWeapon
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shotgun
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1187594347
 MonoBehaviour:
   m_ObjectHideFlags: 0

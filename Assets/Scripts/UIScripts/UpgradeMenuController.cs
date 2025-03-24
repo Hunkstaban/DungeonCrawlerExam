@@ -23,6 +23,8 @@ public class UpgradeMenuController : MonoBehaviour
     private Color defaultHealthCostColor; // Stores the initial color of the health cost text
     private Color defaultSpeedCostColor; // Stores the initial color of the speed cost text
 
+    private string selectedWeapon;
+
     private void Start()
     {
         defaultHealthCostColor = healthUpgradeCostText.color;
@@ -111,5 +113,15 @@ public class UpgradeMenuController : MonoBehaviour
                 UpdateUI();
             }
         }
+    }
+
+    // Called when a weapon is selected from the UI
+    public void SelectWeapon(string weaponName)
+    {
+        // Save the selected weapon
+        selectedWeapon = weaponName;
+        GameManager.Instance.playerData.equippedWeapon = selectedWeapon;
+        GameManager.Instance.SaveData();
+        
     }
 }

@@ -28596,17 +28596,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1430606158667133670, guid: 8bbeb0a0d9ebd42428c17c4f62cd2fb2, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1430606158667133671, guid: 8bbeb0a0d9ebd42428c17c4f62cd2fb2, type: 3}
       propertyPath: m_Name
       value: Boss Golem Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430606158667133671, guid: 8bbeb0a0d9ebd42428c17c4f62cd2fb2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1996189145748023000, guid: 8bbeb0a0d9ebd42428c17c4f62cd2fb2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -28615,10 +28607,6 @@ PrefabInstance:
     - target: {fileID: 1996189145748023000, guid: 8bbeb0a0d9ebd42428c17c4f62cd2fb2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9143541922880157096, guid: 8bbeb0a0d9ebd42428c17c4f62cd2fb2, type: 3}
-      propertyPath: offset.y
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

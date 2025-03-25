@@ -25,11 +25,10 @@ public class ExitCollider : MonoBehaviour
             if (frontRoom == null)
             {
                 Transform exitTransform = middleRoom.exitPlane.transform;
-                Vector3 spawnPosition = exitTransform.position +
-                                        exitTransform.forward * (roomGenerator.GetSegmentLength(middleRoom) / 2);
-
+                Vector3 spawnPosition = exitTransform.position + exitTransform.forward * (roomGenerator.GetSegmentLength(exitTransform) / 2);
+                Quaternion spawnRotation = Quaternion.LookRotation(exitTransform.forward, Vector3.up);
                 frontRoom = roomGenerator.GetRandomRoom();
-                frontRoom = Instantiate(frontRoom, spawnPosition, Quaternion.identity);
+                frontRoom = Instantiate(frontRoom, spawnPosition, spawnRotation);
             }
             else
             {
@@ -50,13 +49,13 @@ public class ExitCollider : MonoBehaviour
                 roomGenerator.SetMiddleRoom(frontRoom);
 
                 // 3. Generate the new front room
-                middleRoom = roomGenerator.GetMiddleRoom();
-                Vector3 spawnPosition = middleRoom.exitPlane.transform.position +
-                                        middleRoom.exitPlane.transform.forward *
-                                        (roomGenerator.GetSegmentLength(middleRoom) / 2);
+                Transform exitTransform = roomGenerator.GetMiddleRoom().exitPlane.transform;
 
+                Vector3 spawnPosition = exitTransform.position + exitTransform.forward * (roomGenerator.GetSegmentLength(exitTransform) / 2);
+                Quaternion spawnRotation = Quaternion.LookRotation(exitTransform.forward, Vector3.up);
+                
                 frontRoom = roomGenerator.GetRandomRoom();
-                frontRoom = Instantiate(frontRoom, spawnPosition, Quaternion.identity);
+                frontRoom = Instantiate(frontRoom, spawnPosition, spawnRotation);
             }
 
             roomGenerator.SetFrontRoom(frontRoom);

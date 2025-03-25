@@ -27,20 +27,29 @@ public class RoomGenerator : MonoBehaviour
             // Get the exit plane of the first room
             Transform exitTransform = backRoom.exitPlane.transform;
 
-            // Calculate the correct spawn position at the end of the exitPlane
-            Vector3 spawnPosition = exitTransform.position + exitTransform.forward * (GetSegmentLength(backRoom) / 2);
+            // Get segment length for proper positioning
+            float segmentLength = GetSegmentLength(exitTransform);
 
-            // Instantiate the next room at the correct position
-            middleRoom = Instantiate(GetRandomRoom(), spawnPosition, Quaternion.identity);
+            // Calculate spawn position
+            Vector3 spawnPosition = exitTransform.position + exitTransform.forward * (segmentLength / 2);
+
+            // Get a random room to instantiate
+            MapSegment nextRoom = GetRandomRoom();
+
+            // Rotate the new room to match the exit plane's forward direction
+            Quaternion spawnRotation = Quaternion.LookRotation(exitTransform.forward, Vector3.up);
+
+            // Instantiate the room with correct position and rotation
+            middleRoom = Instantiate(nextRoom, spawnPosition, spawnRotation);
 
             hasStarted = true;
         }
     }
 
 // Corrected GetSegmentLength method
-    public float GetSegmentLength(MapSegment segment)
+    public float GetSegmentLength(Transform exitTransform)
     {
-        Transform planeTransform = segment.exitPlane.transform;
+        Transform planeTransform = exitTransform.transform;
         if (planeTransform != null)
         {
             MeshRenderer renderer = planeTransform.GetComponent<MeshRenderer>();

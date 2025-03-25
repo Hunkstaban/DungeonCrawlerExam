@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData;
     
     private int roomsCleared = 0;
+    private int coinsCollected = 0;
     private PlayerController player;
     
     private void Awake()
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     // Add coins
     public void AddCoins(int amount)
     {
+        if (player == null) player = FindFirstObjectByType<PlayerController>();
+        coinsCollected++;
+        player.SetCoinsCollectedText(coinsCollected);
+        
         playerData.coinBalance += amount;
         SaveData();
     }

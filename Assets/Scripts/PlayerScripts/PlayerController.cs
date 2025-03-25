@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthHUDNumber;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private TextMeshProUGUI roomsCleared;
+    [SerializeField] private TextMeshProUGUI coinsCollected;
     private float currentHealth;
     
     public float CurrentHealth
@@ -137,6 +138,11 @@ public class PlayerController : MonoBehaviour
     public void SetMaxHealth(float newMaxHealth) => maxHealth = newMaxHealth;
     
     public void SetCurrentHealth(float health) => CurrentHealth = health;
+    
+    public void SetCoinsCollectedText (int amount)
+    {
+        coinsCollected.SetText(amount.ToString());
+    }
 
     public void SetRoomsClearedText(int level)
     {

@@ -3322,7 +3322,9 @@ PrefabInstance:
       value: 0.1539453
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1417022421546647160, guid: 9aecd64dcbbf59f4b9352659cd5cf8f9, type: 3}
+    - {fileID: 3771562238916677786, guid: 9aecd64dcbbf59f4b9352659cd5cf8f9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7001491254916652008, guid: 9aecd64dcbbf59f4b9352659cd5cf8f9, type: 3}
@@ -3440,9 +3442,9 @@ SceneRoots:
   - {fileID: 1736095664}
   - {fileID: 718702352}
   - {fileID: 1616275224}
-  - {fileID: 5965867314505177867}
   - {fileID: 1781818962}
   - {fileID: 467017053}
   - {fileID: 1786435296}
   - {fileID: 951086242}
   - {fileID: 1156620562}
+  - {fileID: 5965867314505177867}

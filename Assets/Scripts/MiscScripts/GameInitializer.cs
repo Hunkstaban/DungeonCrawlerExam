@@ -27,12 +27,7 @@ public class GameInitializer : MonoBehaviour
             { "AR", arPrefab }
         };
         
-        // Check if we're in the game scene (not the menu scene)
-        // This assumes your menu scene has a different name than your gameplay scenes
-        if (SceneManager.GetActiveScene().name != "MainMenu")
-        {
-            InitializePlayer();
-        }
+        InitializePlayer();
     }
     
     void InitializePlayer()
@@ -51,7 +46,7 @@ public class GameInitializer : MonoBehaviour
         float maxHealth = 100f;
         if (healthLevel > 1)
         { 
-            maxHealth = 80 + (healthLevel * 20); // Assuming 20 health per level
+            maxHealth = 80 + (healthLevel * 20); 
         }
         player.SetMaxHealth(maxHealth);
         
@@ -63,7 +58,7 @@ public class GameInitializer : MonoBehaviour
         int speedLevel = GameManager.Instance.playerData.speedLevel;
         if (speedLevel > 1)
         {
-            player.speed += (speedLevel * 0.5f); // Assuming 0.5 speed per level
+            player.speed += (speedLevel * 0.5f); 
         }
         Debug.Log("Speed is " + player.speed);
         

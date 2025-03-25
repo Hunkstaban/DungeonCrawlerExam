@@ -3,12 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    
-    // Make them serializable to dynamically change them in Unity inspector
     private Animator menuAnimator;
     private CustomCameraController cameraController;
     private UIManager uiManager;
     
+    // Inner class and an array to use in connection with UIManager and CustomCameraController
     [System.Serializable]
     public class MenuDestination
     {
@@ -21,16 +20,12 @@ public class MenuController : MonoBehaviour
     
     private void Awake()
     {
-        // Remove these if using serializable instead
         menuAnimator = GetComponent<Animator>();
         cameraController = GetComponent<CustomCameraController>();
         uiManager = GetComponent<UIManager>();
         
         if (cameraController == null)
             cameraController = Camera.main.GetComponent<CustomCameraController>();
-            
-        if (menuAnimator == null)
-            menuAnimator = GetComponent<Animator>();
     }
     
     // This will be called by button clicks

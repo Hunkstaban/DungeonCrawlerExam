@@ -5,6 +5,7 @@ public class Coin : MonoBehaviour
 {
 
     private PlayerController player;
+    private int coinsCollected = 0;
     
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Coin : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < 1)
         {
             // 6. Destroy the coin
+            
             GameManager.Instance.AddCoins(1);
             Destroy(gameObject);
         }

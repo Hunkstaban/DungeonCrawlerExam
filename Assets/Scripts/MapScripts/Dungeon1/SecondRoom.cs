@@ -18,45 +18,64 @@ public class SecondRoom : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("SecondRoom Awake: enemies count = " + enemies.Count);
+        Debug.Log("SecondRoom Awake: Initial enemies count = " + enemies.Count);
 
         foreach (Enemy enemy in enemies)
         {
             if (enemy == null)
             {
-                Debug.LogError("Enemy reference is null!");
+                Debug.LogError("Enemy reference is null in enemies list!");
                 continue;
             }
 
             Debug.Log("Subscribing to enemy: " + enemy.name);
             enemy.OnDeath += HandleDeath;
         }
-        rockGolem.OnDeath += HandleDeath;
+    
+        if (rockGolem == null)
+        {
+            Debug.LogError("RockGolem reference is missing!");
+        }
+        else
+        {
+            rockGolem.OnDeath += HandleDeath;
+        }
+
         currentEnemies = enemies.Count;
+        Debug.Log("Enemies count after Awake: " + currentEnemies);
     }
 
     private void HandleDeath(Enemy deadEnemy)
     {
+        if (!enemies.Contains(deadEnemy) && deadEnemy != rockGolem) return; // Prevent duplicate calls
+
         enemies.Remove(deadEnemy);
         currentEnemies--;
 
+        Debug.Log($"Enemy {deadEnemy.name} died. Remaining: {currentEnemies}");
+
+        // Check if the boss (rockGolem) died first
         if (deadEnemy == rockGolem) 
         {
-            
+            Debug.Log("Boss defeated, opening exit.");
             exitDoorAnimator.SetTrigger("Open");
             leftLight.SetActive(true);
             rightLight.SetActive(true);
-            return;
+            return; // Exit early so we don't check summoning logic
         }
 
-        if (currentEnemies == 0)
+        // Check if all normal enemies are dead, then summon the boss
+        if (currentEnemies <= 0) 
         {
+            Debug.Log("All enemies defeated, spawning the boss.");
             summoningCircle.SetActive(true);
             summoningCircleAnimator.SetTrigger("Summon");
-            rockGolem.gameObject.SetActive(true); // Activate the pre-placed Golem
-            rockGolem.StartSpawning(); // Play spawn animation
+            rockGolem.gameObject.SetActive(true);
+            rockGolem.StartSpawning();
         }
     }
+
+
     
     // private IEnumerator SlideExitDoor()
     // {

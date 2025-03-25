@@ -8,8 +8,6 @@ public class CustomCameraController : MonoBehaviour
     private Vector3 targetPosition; 
     private Quaternion targetRotation; 
     private bool isMoving = false; 
-
-    public event Action OnMovementComplete;
     
     void Start()
     {
@@ -35,8 +33,6 @@ public class CustomCameraController : MonoBehaviour
                 transform.position = targetPosition;
                 transform.rotation = targetRotation;
                 isMoving = false;
-                
-                OnMovementComplete?.Invoke();
             }
         }
     }

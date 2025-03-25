@@ -6,12 +6,15 @@ public class UpgradeMenuController : MonoBehaviour
 {
     [Header("UI Elements")]
     public TextMeshProUGUI totalCoinsText;
-    public TextMeshProUGUI roomRecordText; // Displays the player's total coins
-    public TextMeshProUGUI healthCurrentLevelText; // Displays the current health level
-    public TextMeshProUGUI speedCurrentLevelText; // Displays the current speed level
-    public TextMeshProUGUI healthUpgradeCostText; // Displays the cost of the next health upgrade
-    public TextMeshProUGUI speedUpgradeCostText; // Displays the cost of the next speed upgrade
-
+    public TextMeshProUGUI roomRecordText; 
+    public TextMeshProUGUI healthCurrentLevelText; 
+    public TextMeshProUGUI speedCurrentLevelText; 
+    public TextMeshProUGUI healthUpgradeCostText; 
+    public TextMeshProUGUI speedUpgradeCostText; 
+    public TextMeshProUGUI swordText;
+    public TextMeshProUGUI gunText;
+    public TextMeshProUGUI shotgunText;
+    
     [Header("Upgrade Buttons")]
     public Button healthUpgradeButton; // Button to purchase health upgrades
     public Button speedUpgradeButton; // Button to purchase speed upgrades
@@ -22,6 +25,7 @@ public class UpgradeMenuController : MonoBehaviour
     
     private Color defaultHealthCostColor; // Stores the initial color of the health cost text
     private Color defaultSpeedCostColor; // Stores the initial color of the speed cost text
+    private Color defaultColor;
 
     private string selectedWeapon;
 
@@ -29,6 +33,7 @@ public class UpgradeMenuController : MonoBehaviour
     {
         defaultHealthCostColor = healthUpgradeCostText.color;
         defaultSpeedCostColor = speedUpgradeCostText.color;
+        defaultColor = swordText.color;
         
         // Initialize the UI with the player's current data
         UpdateUI();
@@ -62,6 +67,9 @@ public class UpgradeMenuController : MonoBehaviour
         // Enable or disable buttons based on affordability
         healthUpgradeButton.interactable = GameManager.Instance.playerData.coinBalance >= CalculateUpgradeCost(GameManager.Instance.playerData.healthLevel);
         speedUpgradeButton.interactable = GameManager.Instance.playerData.coinBalance >= CalculateUpgradeCost(GameManager.Instance.playerData.speedLevel);
+        
+        // Set the color of the current equipped weapon
+        HighlightEquippedWeapon(GameManager.Instance.playerData.equippedWeapon);
     }
 
     private int CalculateUpgradeCost(int currentLevel)
@@ -122,6 +130,34 @@ public class UpgradeMenuController : MonoBehaviour
         selectedWeapon = weaponName;
         GameManager.Instance.playerData.equippedWeapon = selectedWeapon;
         GameManager.Instance.SaveData();
-        
+
+        // Highlight the selected weapon
+        HighlightEquippedWeapon(weaponName);
+    }
+
+    // Highlights the equipped weapon by changing its text color
+    private void HighlightEquippedWeapon(string weaponName)
+    {
+        // Reset all weapon text colors to default
+        swordText.color = defaultColor;
+        gunText.color = defaultColor;
+        shotgunText.color = defaultColor;
+
+        // Change the color of the equipped weapon to green
+        switch (weaponName)
+        {
+            case "Sword":
+                swordText.color = Color.green;
+                break;
+            case "Gun":
+                gunText.color = Color.green;
+                break;
+            case "Shotgun":
+                shotgunText.color = Color.green;
+                break;
+            default:
+                Debug.LogWarning("Unknown weapon equipped: " + weaponName);
+                break;
+        }
     }
 }

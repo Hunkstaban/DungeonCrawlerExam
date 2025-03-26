@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private int coinsCollected = 0;
     private PlayerController player;
     
+    // Initializing GameManager instance and loading data from save file if any exists
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -23,7 +24,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         player = FindFirstObjectByType<PlayerController>();
         
-        // Load data immediately when the GameManager initializes
         LoadData();
     }
     
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         playerData = SaveSystem.LoadData();
     }
     
-    // Add coins
+    // Adding and saving coins to player's balance, and update the collected coins for the current game
     public void AddCoins(int amount)
     {
         if (player == null) player = FindFirstObjectByType<PlayerController>();
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
     
-    // Update room record if current is higher
+    // Updating and saving player's room record if current rooms cleared is higher, and update the rooms cleared for the current game
     public void UpdateRoomRecord()
     {
         if (player == null) player = FindFirstObjectByType<PlayerController>();

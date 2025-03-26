@@ -28,7 +28,7 @@ public class MenuController : MonoBehaviour
             cameraController = Camera.main.GetComponent<CustomCameraController>();
     }
     
-    // This will be called by button clicks
+    // Called by button clicks
     public void TransitionToMenu(string menuStateName)
     {
         // Find the menu destination

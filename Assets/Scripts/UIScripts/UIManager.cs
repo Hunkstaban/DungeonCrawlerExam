@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class UIManager : MonoBehaviour
 {
     private Dictionary<string, GameObject> panels = new Dictionary<string, GameObject>();
     public string defaultPanel;
-    public float hideFadeSpeed = 0.5f;
-    public float showFadeSpeed = 2f;
+    public float fadeOutDuration = 0.5f;
+    public float fadeInDuration = 2f;
 
     void Start()
     {
@@ -62,15 +63,15 @@ public class UIManager : MonoBehaviour
         }
     }
     
+    // Using Coroutine in other methods, fade in specific panel using CanvasGroup
     private IEnumerator FadeIn(CanvasGroup canvasGroup)
     {
         canvasGroup.alpha = 0;
         float startTime = Time.time;
-        float duration = 1f / showFadeSpeed; // Convert speed to duration
     
-        while (Time.time < startTime + duration)
+        while (Time.time < startTime + fadeInDuration)
         {
-            float progress = (Time.time - startTime) / duration;
+            float progress = (Time.time - startTime) / fadeInDuration;
             canvasGroup.alpha = progress;
             yield return null;
         }
@@ -78,15 +79,15 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = 1;
     }
 
+    // Using Coroutine in other methods, fade out specific panel using CanvasGroup
     private IEnumerator FadeOut(CanvasGroup canvasGroup)
     {
         canvasGroup.alpha = 1;
         float startTime = Time.time;
-        float duration = 1f / hideFadeSpeed; // Convert speed to duration
     
-        while (Time.time < startTime + duration)
+        while (Time.time < startTime + fadeOutDuration)
         {
-            float progress = 1f - ((Time.time - startTime) / duration);
+            float progress = 1f - ((Time.time - startTime) / fadeOutDuration);
             canvasGroup.alpha = progress;
             yield return null;
         }

@@ -11260,8 +11260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: MainPanel
-  hideFadeSpeed: 10
-  showFadeSpeed: 2
+  fadeOutDuration: 0.1
+  fadeInDuration: 0.5
 --- !u!95 &1805298016
 Animator:
   serializedVersion: 7

@@ -93,13 +93,13 @@ public class PlayerController : MonoBehaviour
 
         // Rotate using Rigidbody's MoveRotation for smooth physics-based rotation.
         rb.MoveRotation(targetRotation);
-
-        if (CurrentHealth <= 30)
+        int lowHealthThreshold = 30;
+        if (CurrentHealth <= lowHealthThreshold)
         {
             Vignette vignette;
             float pulse = Mathf.Sin(Time.time * 4f) * 0.05f;
-            float volumeValue = (1 - (CurrentHealth / 20)) + pulse;
-            float vignetteValue = Mathf.Lerp(0.25f, 1f, CurrentHealth / 20);
+            float volumeValue = (1 - (CurrentHealth / lowHealthThreshold)) + pulse;
+            float vignetteValue = Mathf.Lerp(0.25f, 1f, CurrentHealth / lowHealthThreshold);
             
             volume.profile.TryGet(out vignette);
             vignette.intensity.value = vignetteValue;

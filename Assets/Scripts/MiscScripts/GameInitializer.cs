@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameInitializer : MonoBehaviour
 {
-    public GameObject playerPrefab; // Reference to the player prefab
+    [SerializeField] private GameObject playerPrefab; // Reference to the player prefab
     private string selectedCosmetic;
     
     // Weapon prefabs
-    public GameObject swordPrefab;
-    public GameObject gunPrefab;
-    public GameObject shotgunPrefab;
-    public GameObject arPrefab;
+    [SerializeField] private GameObject swordPrefab;
+    [SerializeField] private GameObject gunPrefab;
+    [SerializeField] private GameObject shotgunPrefab;
+    [SerializeField] private GameObject arPrefab;
     
     private Dictionary<string, GameObject> weaponPrefabs;
     
@@ -34,6 +34,7 @@ public class GameInitializer : MonoBehaviour
     {
         // Find the player in the scene
         PlayerController player = FindFirstObjectByType<PlayerController>();
+        GameManager.Instance.ResetGameState();
         
         if (player == null)
         {

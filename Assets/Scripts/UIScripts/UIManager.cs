@@ -5,61 +5,58 @@ using UnityEngine.Serialization;
 
 public class UIManager : MonoBehaviour
 {
-    private Dictionary<string, GameObject> panels = new Dictionary<string, GameObject>();
-    public string defaultPanel;
-    public float fadeOutDuration = 0.5f;
-    public float fadeInDuration = 2f;
+    [SerializeField] private GameObject defaultPanel;
+    [SerializeField] private float fadeOutDuration;
+    [SerializeField] private float fadeInDuration;
 
     void Start()
     {
-        // Automatically find all panels in the scene and add them to the dictionary
+        // Find and hide all panels with tag UIPanel
         foreach (Transform child in transform)
         {
             if (child.gameObject.CompareTag("UIPanel"))
             {
-                panels.Add(child.gameObject.name, child.gameObject);
-                
-                // Ensure each panel has a CanvasGroup
-                CanvasGroup canvasGroup = child.gameObject.GetComponent<CanvasGroup>();
-                if (canvasGroup == null)
+                CanvasGroup canvasGroup = child.GetComponent<CanvasGroup>();
+                if (canvasGroup != null)
                 {
-                    canvasGroup = child.gameObject.AddComponent<CanvasGroup>();
+                    canvasGroup.alpha = 0;
+                    child.gameObject.SetActive(false);
                 }
-                
-                // Initially hide all panels
-                canvasGroup.alpha = 0;
-                child.gameObject.SetActive(false);
             }
         }
-        
-        // Show default panel
-        if (panels.ContainsKey(defaultPanel))
+
+        // Show the default panel if assigned
+        if (defaultPanel != null)
         {
             ShowPanel(defaultPanel);
         }
     }
     
     // Public method to show a specific panel with fade
-    public void ShowPanel(string panelName)
+    public void ShowPanel(GameObject panel)
     {
-        if (panels.ContainsKey(panelName))
+        if (panel != null)
         {
-            GameObject panel = panels[panelName];
             panel.SetActive(true);
-            StartCoroutine(FadeIn(panel.GetComponent<CanvasGroup>()));
+            CanvasGroup canvasGroup = panel.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                StartCoroutine(FadeIn(canvasGroup));
+            }
         }
         else
         {
-            Debug.LogWarning($"Panel '{panelName}' not found!");
+            Debug.LogWarning("Panel reference is null!");
         }
     }
     
     // Public method to hide all panels
     public void HideAllPanels()
     {
-        foreach (var panel in panels.Values)
+        CanvasGroup[] canvasGroups = GetComponentsInChildren<CanvasGroup>();
+        foreach (var canvasGroup in canvasGroups)
         {
-            StartCoroutine(FadeOut(panel.GetComponent<CanvasGroup>()));
+            StartCoroutine(FadeOut(canvasGroup));
         }
     }
     
@@ -68,14 +65,14 @@ public class UIManager : MonoBehaviour
     {
         canvasGroup.alpha = 0;
         float startTime = Time.time;
-    
+
         while (Time.time < startTime + fadeInDuration)
         {
             float progress = (Time.time - startTime) / fadeInDuration;
             canvasGroup.alpha = progress;
             yield return null;
         }
-    
+
         canvasGroup.alpha = 1;
     }
 
@@ -84,14 +81,14 @@ public class UIManager : MonoBehaviour
     {
         canvasGroup.alpha = 1;
         float startTime = Time.time;
-    
+
         while (Time.time < startTime + fadeOutDuration)
         {
             float progress = 1f - ((Time.time - startTime) / fadeOutDuration);
             canvasGroup.alpha = progress;
             yield return null;
         }
-    
+
         canvasGroup.alpha = 0;
         canvasGroup.gameObject.SetActive(false);
     }

@@ -12,6 +12,7 @@ public class PlayerData
     // Upgrades
     public int healthLevel;
     public int speedLevel;
+    public List<string> unlockedWeapons = new List<string>();
 
     // Misc
     public string equippedWeapon;
@@ -19,7 +20,7 @@ public class PlayerData
     // Progress
     public int roomRecord;
     public int coinBalance;
-    public List<string> unlockedWeapons = new List<string>();
+    
 
     // Default constructor with default values for a new player
     public PlayerData()
@@ -31,7 +32,7 @@ public class PlayerData
         roomRecord = 0;
         coinBalance = 100;
         
-        unlockedWeapons = new List<string> { "Sword" }; 
+        unlockedWeapons.Add("Sword"); 
     }
 }
 

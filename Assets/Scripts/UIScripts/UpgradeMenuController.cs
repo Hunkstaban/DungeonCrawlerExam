@@ -5,23 +5,23 @@ using UnityEngine.UI;
 public class UpgradeMenuController : MonoBehaviour
 {
     [Header("UI Elements")]
-    public TextMeshProUGUI totalCoinsText;
-    public TextMeshProUGUI roomRecordText; 
-    public TextMeshProUGUI healthCurrentLevelText; 
-    public TextMeshProUGUI speedCurrentLevelText; 
-    public TextMeshProUGUI healthUpgradeCostText; 
-    public TextMeshProUGUI speedUpgradeCostText; 
-    public TextMeshProUGUI swordText;
-    public TextMeshProUGUI gunText;
-    public TextMeshProUGUI shotgunText;
+    [SerializeField] private TextMeshProUGUI totalCoinsText;
+    [SerializeField] private TextMeshProUGUI roomRecordText; 
+    [SerializeField] private TextMeshProUGUI healthCurrentLevelText; 
+    [SerializeField] private TextMeshProUGUI speedCurrentLevelText; 
+    [SerializeField] private TextMeshProUGUI healthUpgradeCostText; 
+    [SerializeField] private TextMeshProUGUI speedUpgradeCostText; 
+    [SerializeField] private TextMeshProUGUI swordText;
+    [SerializeField] private TextMeshProUGUI gunText;
+    [SerializeField] private TextMeshProUGUI shotgunText;
     
     [Header("Upgrade Buttons")]
-    public Button healthUpgradeButton; // Button to purchase health upgrades
-    public Button speedUpgradeButton; // Button to purchase speed upgrades
+    [SerializeField] private Button healthUpgradeButton; 
+    [SerializeField] private Button speedUpgradeButton; 
 
     [Header("Upgrade Settings")]
-    public int baseUpgradeCost = 50; // Base cost for upgrades
-    public float costMultiplier = 1.5f; // Multiplier for upgrade costs 
+    [SerializeField] private int baseUpgradeCost = 50; 
+    [SerializeField] private float costMultiplier = 1.5f; 
     
     private Color defaultHealthCostColor; // Stores the initial color of the health cost text
     private Color defaultSpeedCostColor; // Stores the initial color of the speed cost text

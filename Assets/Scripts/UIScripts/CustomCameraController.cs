@@ -3,8 +3,8 @@ using System;
 
 public class CustomCameraController : MonoBehaviour
 {
-    public float moveSpeed = 5f; 
-    public float rotationSpeed = 5f; 
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float rotationSpeed; 
     private Vector3 targetPosition; 
     private Quaternion targetRotation; 
     private bool isMoving = false; 
@@ -20,10 +20,8 @@ public class CustomCameraController : MonoBehaviour
     {
         if (isMoving)
         {
-            // Move position
+            // Move position and rotation
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-
-            // Rotate
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Stop moving if the camera is close enough to the target position and rotation

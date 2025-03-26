@@ -11,7 +11,7 @@ public class CharacterMenuController : MonoBehaviour
         public Transform attachPoint; // The point on the player where the cosmetic will be attached
     }
 
-    public List<Cosmetic> cosmetics; // List of all available cosmetics
+    [SerializeField] private List<Cosmetic> cosmetics; // List of all available cosmetics
     private string selectedCosmetic; // The currently selected cosmetic
 
     private void Start()

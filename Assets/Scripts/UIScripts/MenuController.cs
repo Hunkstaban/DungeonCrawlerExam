@@ -13,10 +13,10 @@ public class MenuController : MonoBehaviour
     {
         public string menuState;
         public Transform cameraTarget;
-        public string panelName;
+        public GameObject panel;
     }
     
-    public MenuDestination[] menuDestinations;
+    [SerializeField] private MenuDestination[] menuDestinations;
     
     private void Awake()
     {
@@ -65,7 +65,7 @@ public class MenuController : MonoBehaviour
         {
             if (destination.menuState == menuStateName)
             {
-                uiManager.ShowPanel(destination.panelName);
+                uiManager.ShowPanel(destination.panel); 
                 return;
             }
         }

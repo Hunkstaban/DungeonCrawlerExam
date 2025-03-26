@@ -74,4 +74,10 @@ public class GameManager : MonoBehaviour
             SaveData();
         }
     }
+    
+    public void ResetGameState()
+    {
+        roomsCleared = 0;
+        coinsCollected = 0;
+    }
 }

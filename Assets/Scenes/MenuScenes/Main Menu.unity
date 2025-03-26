@@ -6232,11 +6232,11 @@ MonoBehaviour:
     selectedCosmetic: None
     healthLevel: 0
     speedLevel: 0
+    unlockedWeapons:
+    - Sword
     equippedWeapon: Sword
     roomRecord: 0
     coinBalance: 100
-    unlockedWeapons:
-    - Sword
 --- !u!4 &1034656941
 Transform:
   m_ObjectHideFlags: 0
@@ -11259,7 +11259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe173510f48e784388316ee33eec994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPanel: MainPanel
+  defaultPanel: {fileID: 2128402742}
   fadeOutDuration: 0.1
   fadeInDuration: 0.5
 --- !u!95 &1805298016
@@ -11299,16 +11299,16 @@ MonoBehaviour:
   menuDestinations:
   - menuState: MainMenu
     cameraTarget: {fileID: 1948636423}
-    panelName: MainPanel
+    panel: {fileID: 2128402742}
   - menuState: PlayMenu
     cameraTarget: {fileID: 967862048}
-    panelName: PlayPanel
+    panel: {fileID: 1690052724}
   - menuState: CharacterMenu
     cameraTarget: {fileID: 1048311269}
-    panelName: CharacterPanel
+    panel: {fileID: 2032984366}
   - menuState: UpgradeMenu
     cameraTarget: {fileID: 1182424728}
-    panelName: UpgradePanel
+    panel: {fileID: 1149858842}
 --- !u!1001 &1818954870
 PrefabInstance:
   m_ObjectHideFlags: 0
